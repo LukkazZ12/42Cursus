@@ -6,11 +6,30 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:34:42 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/09/16 21:34:44 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/09/18 00:28:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	**ft_clear(char **str, unsigned int l)
+{
+	unsigned int    i;
+
+	if (str[l] == NULL)
+	{
+		i = 0;
+		while (i < l)
+		{
+			free(str[i]);
+			i++;
+		}
+		free(str);
+		return (NULL);
+	}
+	else
+	return (str);
+}
 
 static unsigned int	get_num_ptr(char const *s, char c)
 {
@@ -57,7 +76,7 @@ static char	**get_ptr(char const *s, char c, char **str)
 			while (s[k] != c && s[k])
 				k++;
 			str[l] = malloc((k - j + 1));
-			if (str[l] == NULL)
+			if (ft_clear(str, l) == NULL)
 				return (NULL);
 			ft_strlcpy(str[l], &s[j], k - j + 1);
 			l++;

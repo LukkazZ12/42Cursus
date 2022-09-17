@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:35:12 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/09/16 21:35:15 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/09/18 00:01:24 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
-	if (size < 0)
-		dst[ft_strlen(src) + 1 + size] = '\0';
 	i = 0;
 	if (size != 0)
 	{
