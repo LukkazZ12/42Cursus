@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 00:15:37 by byoshimo          #+#    #+#             */
-/*   Updated: 2022/09/14 21:53:14 by lucade-s         ###   ########.fr       */
+/*   Created: 2022/09/16 21:35:22 by lucade-s          #+#    #+#             */
+/*   Updated: 2022/09/16 23:47:44 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*str;
 	unsigned int	i;
- 
+
 	str = malloc(ft_strlen(s) + 1);
 	if (str == NULL)
 		return (NULL);
