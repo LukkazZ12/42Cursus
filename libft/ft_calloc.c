@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:32:26 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/09/16 21:32:27 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:29:40 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	i = nmemb * size;
 	t = malloc(i);
+	if (!t)
+		return (NULL);
 	ft_bzero(t, i);
 	return (t);
 }
