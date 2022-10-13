@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:18:47 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/05 23:55:03 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:41:51 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*read_nl(int fd, int *count, char **st_str, char *res)
 			return (res);
 		}
 		(*st_str)[*count] = '\0';
-		res = ft_strjoin(res, *st_str);
+		res = ft_strjoin_free(res, *st_str);
 	}
 	return (res);
 }
@@ -48,7 +48,7 @@ char	*get_next_line(int fd)
 	res = (char *)ft_calloc(1, sizeof(char));
 	if (!res || !st_str)
 		return (NULL);
-	res = ft_strjoin(res, st_str);
+	res = ft_strjoin_free(res, st_str);
 	res = read_nl(fd, &count, &st_str, res);
 	if (count <= 0 || !st_str[0])
 		return (res);

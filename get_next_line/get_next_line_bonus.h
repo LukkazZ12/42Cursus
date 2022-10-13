@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 22:31:52 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/05 02:13:14 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:58:38 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(const char *s, int c);
 void	ft_strcpy(char *dest, const char *src);
 size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char *s1, char const *s2);
+char	*ft_strjoin_free(char *s1, char const *s2);
 char	*get_next_line(int fd);
 
 #endif

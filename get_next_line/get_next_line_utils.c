@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:18:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/12 19:30:00 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:58:26 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ size_t	ft_strlen(const char *s)
 	return (length);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin_free(char *s1, char const *s2)
 {
 	int		i;
 	int		j;
