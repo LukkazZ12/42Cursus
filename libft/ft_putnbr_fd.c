@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:34:30 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/09/16 21:34:33 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:30:36 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_putnbr_fd(int n, int fd)
 	char	c;
 
 	if (n < 0)
-	n = nb_is_negative(n, fd);
+		n = nb_is_negative(n, fd);
 	a = n % 10;
 	c = a + '0';
 	if (n <= 9)
