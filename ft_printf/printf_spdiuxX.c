@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_spdiuxX%.c                                  :+:      :+:    :+:   */
+/*   printf_spdiuxX.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:02:13 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/15 21:49:55 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/16 03:06:56 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,14 @@ int	ft_puthexa(unsigned long n, char specifier)
 	{
 		if (specifier == 'x')
 			counter += write(1, &HEXA_LOW[n % 16], 1);
-		if (specifier == 'X')
+		else
 			counter += write(1, &HEXA_UP[n % 16], 1);
 		return (counter);
 	}
 	counter += ft_puthexa(n / 16, specifier);
 	if (specifier == 'x')
 		counter += write(1, &HEXA_LOW[n % 16], 1);
-	if (specifier == 'X')
+	else
 		counter += write(1, &HEXA_UP[n % 16], 1);
 	return (counter);
 }
