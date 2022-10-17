@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/18 00:30:11 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/18 00:33:34 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
-	if ((unsigned char)c == '\0')
-		return (NULL);
 	i = 0;
 	while (s[i])
 	{
