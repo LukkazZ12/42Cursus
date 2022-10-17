@@ -1,10 +1,8 @@
-SRCS	= ft_printf.c printf_spdiuxX.c
+SRCS	= ft_printf.c ft_printf_spdiuxX.c
 
-HEADERS	= ./ft_printf.h 
+HEADERS	= ft_printf.h 
 
 OBJS	= ${SRCS:.c=.o}
-
-BONUS_OBJS	= ${BONUS:.c=.o}
 
 NAME	= libftprintf.a
 

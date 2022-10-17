@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/15 21:49:24 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/17 21:22:20 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-static int	printf_specifier(char specifier, va_list args)
+static int	ft_printf_specifier(char specifier, va_list args)
 {
 	int	counter;
 
@@ -37,6 +37,8 @@ static int	printf_specifier(char specifier, va_list args)
 		counter = ft_puthexa(va_arg(args, unsigned int), specifier);
 	else if (specifier == '%')
 		counter = ft_putchar('%');
+	else
+		counter = -1;
 	return (counter);
 }
 
@@ -44,6 +46,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		counter;
+	int		aux;
 
 	va_start(args, format);
 	counter = 0;
@@ -52,12 +55,18 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			counter += printf_specifier(*format, args);
+			aux = ft_printf_specifier(*format, args);
+			if (aux == -1)
+			{
+				counter += write(1, "%", 1) + ft_putstr((char *)format);
+				write(1, "\nError: no valid specifier found.\n", 34);
+				return (counter);
+			}
+			counter += aux;
 		}
 		else
 			counter += write(1, format, 1);
 		format++;
 	}
-	va_end(args);
-	return (counter);
+	return (va_end(args), counter);
 }
