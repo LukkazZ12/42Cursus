@@ -6,16 +6,43 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/17 21:22:20 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/18 00:30:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	length;
+
+	length = 0;
+	while (s[length])
+		length++;
+	return (length);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	if ((unsigned char)c == '\0')
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (unsigned char)c)
+			return (&((char *)s)[i]);
+		i++;
+	}
+	return (NULL);
 }
 
 static int	ft_printf_specifier(char specifier, va_list args)
@@ -54,11 +81,17 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			aux = 0;
+			while (format[aux] == '%')
+				aux++;
 			format++;
-			aux = ft_printf_specifier(*format, args);
+			if (aux % 2 == 0 || ft_strchr("cspdiuxX", format[aux - 1]))
+				aux = ft_printf_specifier(*format, args);
+			else
+				aux = -1;
 			if (aux == -1)
 			{
-				counter += write(1, "%", 1) + ft_putstr((char *)format);
+				counter += ft_putstr((char *)(format - 1));
 				write(1, "\nError: no valid specifier found.\n", 34);
 				return (counter);
 			}
