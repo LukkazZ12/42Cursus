@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/18 23:41:54 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/18 23:09:17 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ int	ft_printf(const char *format, ...)
 			counter += write(1, format, 1);
 		format++;
 	}
-	return (va_end(args), counter);
+	va_end(args);
+	return (counter);
 }
