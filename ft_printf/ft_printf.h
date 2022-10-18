@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:11:26 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/18 16:29:26 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:33:34 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define HEXA_LOW "0123456789abcdef"
 # define HEXA_UP "0123456789ABCDEF"
+
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
