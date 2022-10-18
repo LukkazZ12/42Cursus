@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:11:26 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/17 22:16:51 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:29:26 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		ft_putptr(unsigned long n);
 int		ft_putnbr(int n);
 int		ft_putunbr(unsigned int n);
 int		ft_puthexa(unsigned long n, char specifier);
-size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 int		ft_printf(const char *format, ...);
 

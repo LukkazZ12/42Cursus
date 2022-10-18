@@ -1,27 +1,25 @@
-SRCS	= ft_printf.c ft_printf_spdiuxX.c
+NAME = libftprintf.a
 
-HEADERS	= ft_printf.h 
+SRC = ft_printf.c ft_printf_spdiuxX.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJ = $(SRC:%.c=%.o)
 
-NAME	= libftprintf.a
+CFLAGS = -Wall -Wextra -Werror
 
-RM	= rm -f
+all: $(NAME)
 
-.c.o:
-	clang -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o} 
-
-all: ${NAME}
-
-${NAME}:	${OBJS}
-	ar -rcs ${NAME} ${OBJS}
+$(NAME): $(OBJ)
 
 clean:
-	${RM} ${OBJS} ${BONUS_OBJS} 
+	rm -f $(OBJ) $(BONUS_OBJ)
 
-fclean:	clean
-	${RM} ${NAME} 
+fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+%.o: %.c
+	cc $(CFLAGS) -c $< -o $@
+	ar rcs $(NAME) $@
+
+.PHONY: all clean fclean re bonus
