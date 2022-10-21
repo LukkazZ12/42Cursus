@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/18 23:09:17 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/20 23:27:25 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ static void	ft_flag(const char *flag, va_list args, int *counter)
 	{
 		integer = va_arg(args, int);
 		if (integer >= 0)
-			*counter = write(1, &aux_flag, 1) + ft_putnbr(integer);
-		else
-			*counter = ft_putnbr(integer);
+			*counter = write(1, &aux_flag, 1);
+		*counter += ft_putnbr(integer);
 	}
 	else if (aux_flag == '#' && (*flag == 'x' || *flag == 'X'))
 	{

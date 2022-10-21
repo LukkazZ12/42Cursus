@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/18 23:10:11 by lucade-s         ###   ########.fr       */
+/*   Updated: 2022/10/21 03:05:21 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_verification(const char **format, int *aux, va_list args)
 	else
 	{
 		counter += ft_putstr((char *)(*format - 1));
-		write(1, "\nError: no valid specifier or flag found.\n", 42);
+		write(1, "\nError: no valid specifier found.\n", 34);
 		*aux = -1;
 		return (counter);
 	}
