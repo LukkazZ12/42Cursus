@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:31 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/05 20:39:37 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/13 19:41:42 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ static void	signal_handler(int signal, siginfo_t *info, void *context)
 int	main(void)
 {
 	struct sigaction	action;
-	struct sigaction	old_action;
 	
 	print_pid();
 	action = (struct sigaction){0};
 	action.sa_sigaction = signal_handler;
 	sigemptyset(&action.sa_mask);
 	action.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &action, &old_action);
-	sigaction(SIGUSR2, &action, &old_action);
+	sigaction(SIGUSR1, &action, NULL);
+	sigaction(SIGUSR2, &action, NULL);
 	while (1)
 		pause();
 	return (EXIT_SUCCESS);

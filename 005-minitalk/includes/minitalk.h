@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:52 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/05 20:32:52 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:31:34 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,10 @@
 
 typedef struct s_client
 {
-	struct sigaction	action;
-	struct sigaction	old_action;
 	int					bit_acknowledged;
 	int					pid;
-	int					count;
-}	t_client;
-typedef void			t_handler(int sig, siginfo_t *info, void *context);
-typedef unsigned char	t_byte;
+	int					ver;
+}						t_client;
 
 void		terminate(int status, char *error_msg);
 void		ft_putstr_fd(char *s, int fd);

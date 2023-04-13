@@ -16,7 +16,7 @@ RM			= 		rm -rf
 
 all:				$(NAME) 
 
-$(NAME):			$(OBJS_PATH) $(OBJS) $(SERVER) $(CLIENT)			
+$(NAME):			$(OBJS_PATH) $(OBJS) $(SERVER) $(CLIENT)
 
 
 $(SERVER):			$(OBJS_PATH) $(OBJS)
