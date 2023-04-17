@@ -6,20 +6,31 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/17 16:26:29 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:52:24 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack_a)
+void	print_stack(t_stack *stack)
 {
-	while (stack_a != NULL)
+	while (stack != NULL)
 	{
-		ft_putnbr_fd(stack_a->number, 1);
+		ft_putnbr_fd(stack->number, 1);
+		ft_putstr_fd(", index: ", 1);
+		ft_putnbr_fd(stack->index, 1);
 		ft_putchar_fd('\n', 1);
-		stack_a = stack_a->next;
+		stack = stack->next;
 	}
+}
+
+t_stack	*ft_stacksecondlast(t_stack *stack)
+{
+	if (stack == NULL)
+		return (stack);
+	while (stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
 }
 
 t_stack	*ft_stacklast(t_stack *stack)
@@ -47,6 +58,7 @@ void	read_numbers(t_stack **stack, int argv)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	new->number = argv;
+	new->index = 0;
 	new->next = NULL;
 	ft_stackadd_back(stack, new);
 }
@@ -80,6 +92,43 @@ long long	ft_atoll(const char *nptr)
 	return (num);
 }
 
+void	check_duplicate(char *argv[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = i + 1;
+		while (argv[j])
+		{
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			{
+				ft_putstr_fd("ERROR: There is a duplicate ", 1);
+				ft_putstr_fd("number in the arguments.", 1);
+				exit (1);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	ascending_order(t_stack *stack_a)
+{
+	while ((stack_a->next)->index - stack_a->index == 1)
+	{
+		stack_a = stack_a->next;
+		if (stack_a->next == NULL)
+		{
+			ft_putstr_fd("The numbers are already in ", 1);
+			ft_putstr_fd("ascending order.", 1);
+			exit (1);
+		}
+	}
+}
+
 void	check_argv(char *argv[])
 {
 	int	i;
@@ -97,10 +146,31 @@ void	check_argv(char *argv[])
 			|| ft_atoll(argv[i]) < -2147483648
 			|| ft_atoll(argv[i]) > 2147483647)
 		{
-			ft_putstr_fd("There is a invalid number in the arguments.", 1);
+			ft_putstr_fd("ERROR: There is a invalid ", 1);
+			ft_putstr_fd("number in the arguments.", 1);
 			exit (1);
 		}
 		i++;
+	}
+	check_duplicate(argv);
+}
+
+void	set_index(t_stack *stack_a)
+{
+	t_stack	*stack_copy;
+	t_stack	*stack_aux;
+
+	stack_copy = stack_a;
+	while (stack_a != NULL)
+	{
+		stack_aux = stack_copy;
+		while (stack_aux != NULL)
+		{
+			if (stack_a->number > stack_aux->number)
+				(stack_a->index)++;
+			stack_aux = stack_aux->next;
+		}
+		stack_a = stack_a->next;
 	}
 }
 
@@ -112,7 +182,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		ft_putstr_fd("Wrong number of arguments.", 1);
+		ft_putstr_fd("ERROR: Wrong number of arguments.", 1);
 		return (1);
 	}
 	check_argv(argv);
@@ -124,5 +194,10 @@ int	main(int argc, char *argv[])
 		read_numbers(&stack_a, ft_atoi(argv[i]));
 		i++;
 	}
+	set_index(stack_a);
+	ascending_order(stack_a);
+	print_stack(stack_a);
+	ft_putchar_fd('\n', 1);
+	rrotate(&stack_a, 'a');
 	print_stack(stack_a);
 }

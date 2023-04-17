@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:05:40 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/17 15:07:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:02:30 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,15 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }	t_stack;
+
+t_stack	*ft_stacklast(t_stack *stack);
+t_stack	*ft_stacksecondlast(t_stack *stack);
+void	swap(t_stack **stack, char c);
+void	s_swap(t_stack **stack_a, t_stack **stack_b);
+void	push(t_stack **stack_src, t_stack **stack_dst, char c);
+void	rotate(t_stack **stack, char c);
+void	r_rotate(t_stack **stack_a, t_stack **stack_b);
+void	rrotate(t_stack **stack, char c);
+void	r_rrotate(t_stack **stack_a, t_stack **stack_b);
 
 #endif

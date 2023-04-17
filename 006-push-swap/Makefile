@@ -2,7 +2,8 @@ NAME =		push_swap
 CFLAGS =	-Wall -Wextra -Werror -g3
 LIBFT =		./libft/libft.a
 
-SRCS = push_swap.c
+SRCS =		push_swap.c \
+			operations.c
 
 OBJS = $(SRCS:%.c=%.o)
 
