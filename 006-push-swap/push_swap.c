@@ -1,0 +1,128 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
+/*   Updated: 2023/04/17 16:26:29 by lucade-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	print_stack(t_stack *stack_a)
+{
+	while (stack_a != NULL)
+	{
+		ft_putnbr_fd(stack_a->number, 1);
+		ft_putchar_fd('\n', 1);
+		stack_a = stack_a->next;
+	}
+}
+
+t_stack	*ft_stacklast(t_stack *stack)
+{
+	if (stack == NULL)
+		return (stack);
+	while (stack->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
+void	ft_stackadd_back(t_stack **stack, t_stack *new)
+{
+	if (*stack == NULL)
+	{
+		*stack = new;
+		return ;
+	}
+	ft_stacklast(*stack)->next = new;
+}
+
+void	read_numbers(t_stack **stack, int argv)
+{
+	t_stack	*new;
+
+	new = (t_stack *)malloc(sizeof(t_stack));
+	new->number = argv;
+	new->next = NULL;
+	ft_stackadd_back(stack, new);
+}
+
+long long	ft_atoll(const char *nptr)
+{
+	int			i;
+	int			j;
+	long long	num;
+
+	j = 0;
+	while ((nptr[j] >= 9 && nptr[j] <= 13) || nptr[j] == 32)
+		j++;
+	i = j;
+	if (nptr[i] != '-' && nptr[i] != '+' && ft_isdigit(nptr[i]) == 0)
+		return (0);
+	else if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (ft_isdigit(nptr[i + 1]) == 0)
+			return (0);
+		i++;
+	}
+	num = 0;
+	while (ft_isdigit(nptr[i]) == 1)
+	{
+		num = num * 10 + (nptr[i] - 48);
+		i++;
+	}
+	if (nptr[j] == '-')
+		num = -num;
+	return (num);
+}
+
+void	check_argv(char *argv[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		if (argv[i][j] == '+' || argv[i][j] == '-')
+			j++;
+		while (ft_isdigit(argv[i][j]))
+			j++;
+		if (argv[i][j] != '\0' || argv[i][0] == '\0'
+			|| ft_atoll(argv[i]) < -2147483648
+			|| ft_atoll(argv[i]) > 2147483647)
+		{
+			ft_putstr_fd("There is a invalid number in the arguments.", 1);
+			exit (1);
+		}
+		i++;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	int		i;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	if (argc < 2)
+	{
+		ft_putstr_fd("Wrong number of arguments.", 1);
+		return (1);
+	}
+	check_argv(argv);
+	stack_a = NULL;
+	stack_b = NULL;
+	i = 1;
+	while (i < argc)
+	{
+		read_numbers(&stack_a, ft_atoi(argv[i]));
+		i++;
+	}
+	print_stack(stack_a);
+}
