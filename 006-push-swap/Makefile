@@ -3,7 +3,8 @@ CFLAGS =	-Wall -Wextra -Werror -g3
 LIBFT =		./libft/libft.a
 
 SRCS =		push_swap.c \
-			operations.c
+			operations.c \
+			two_to_five.c
 
 OBJS = $(SRCS:%.c=%.o)
 

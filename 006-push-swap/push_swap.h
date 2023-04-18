@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:05:40 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/17 20:02:30 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/17 21:59:05 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ void	rotate(t_stack **stack, char c);
 void	r_rotate(t_stack **stack_a, t_stack **stack_b);
 void	rrotate(t_stack **stack, char c);
 void	r_rrotate(t_stack **stack_a, t_stack **stack_b);
+void	two_numbers(t_stack **stack_a);
+void	three_numbers(t_stack **stack_a);
+void	four_or_five_numbers(t_stack **stack_a, t_stack **stack_b, int argc);
 
 #endif

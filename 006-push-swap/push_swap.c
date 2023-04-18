@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/17 19:52:24 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/17 21:58:42 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stack(t_stack *stack)
 {
-	while (stack != NULL)
+	while (stack)
 	{
 		ft_putnbr_fd(stack->number, 1);
 		ft_putstr_fd(", index: ", 1);
@@ -28,7 +28,7 @@ t_stack	*ft_stacksecondlast(t_stack *stack)
 {
 	if (stack == NULL)
 		return (stack);
-	while (stack->next->next != NULL)
+	while (stack->next->next)
 		stack = stack->next;
 	return (stack);
 }
@@ -37,7 +37,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 {
 	if (stack == NULL)
 		return (stack);
-	while (stack->next != NULL)
+	while (stack->next)
 		stack = stack->next;
 	return (stack);
 }
@@ -117,22 +117,21 @@ void	check_duplicate(char *argv[])
 
 void	ascending_order(t_stack *stack_a)
 {
+	if (stack_a->next == NULL)
+		exit (0);
 	while ((stack_a->next)->index - stack_a->index == 1)
 	{
 		stack_a = stack_a->next;
 		if (stack_a->next == NULL)
-		{
-			ft_putstr_fd("The numbers are already in ", 1);
-			ft_putstr_fd("ascending order.", 1);
-			exit (1);
-		}
+			exit (0);
 	}
 }
 
 void	check_argv(char *argv[])
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	long long	n;
 
 	i = 1;
 	while (argv[i])
@@ -142,9 +141,10 @@ void	check_argv(char *argv[])
 			j++;
 		while (ft_isdigit(argv[i][j]))
 			j++;
+		n = ft_atoll(argv[i]);
 		if (argv[i][j] != '\0' || argv[i][0] == '\0'
-			|| ft_atoll(argv[i]) < -2147483648
-			|| ft_atoll(argv[i]) > 2147483647)
+			|| n < -2147483648
+			|| n > 2147483647)
 		{
 			ft_putstr_fd("ERROR: There is a invalid ", 1);
 			ft_putstr_fd("number in the arguments.", 1);
@@ -161,10 +161,10 @@ void	set_index(t_stack *stack_a)
 	t_stack	*stack_aux;
 
 	stack_copy = stack_a;
-	while (stack_a != NULL)
+	while (stack_a)
 	{
 		stack_aux = stack_copy;
-		while (stack_aux != NULL)
+		while (stack_aux)
 		{
 			if (stack_a->number > stack_aux->number)
 				(stack_a->index)++;
@@ -198,6 +198,11 @@ int	main(int argc, char *argv[])
 	ascending_order(stack_a);
 	print_stack(stack_a);
 	ft_putchar_fd('\n', 1);
-	rrotate(&stack_a, 'a');
+	if (argc == 3)
+		two_numbers(&stack_a);
+	else if (argc == 4)
+		three_numbers(&stack_a);
+	else if (argc >= 5 && argc <= 6)
+		four_or_five_numbers(&stack_a, &stack_b, argc);
 	print_stack(stack_a);
 }
