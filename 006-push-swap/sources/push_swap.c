@@ -6,23 +6,11 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/18 18:23:06 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:10:47 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	print_stack(t_stack *stack)
-// {
-// 	while (stack)
-// 	{
-// 		ft_putnbr_fd(stack->number, 1);
-// 		ft_putstr_fd(", index: ", 1);
-// 		ft_putnbr_fd(stack->index, 1);
-// 		ft_putchar_fd('\n', 1);
-// 		stack = stack->next;
-// 	}
-// }
 
 void	free_stack(t_stack **stack)
 {
@@ -41,6 +29,12 @@ static void	read_numbers(t_stack **stack, int argv)
 	t_stack	*new;
 
 	new = (t_stack *)malloc(sizeof(t_stack));
+	if (new == NULL)
+		if (stack != NULL)
+		{
+			free_stack(stack);
+			error(4);
+		}
 	new->number = argv;
 	new->index = 0;
 	new->next = NULL;
@@ -78,7 +72,7 @@ int	main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		read_numbers(&stack_a, ft_atoi(argv[i]));
+		read_numbers(&stack_a, ft_atoll(argv[i]));
 		i++;
 	}
 	set_index(stack_a);

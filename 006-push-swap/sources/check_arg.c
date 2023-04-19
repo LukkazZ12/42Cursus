@@ -6,20 +6,24 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/18 15:45:08 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:10:24 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	error(int er)
+void	error(int er)
 {
 	if (er == 0)
 		ft_putstr_fd("ERROR: Wrong number of arguments.", 1);
 	else if (er == 1)
 		ft_putstr_fd("ERROR: One of the arguments is not a number.", 1);
-	else
+	else if (er == 2)
 		ft_putstr_fd("ERROR: There is a duplicate argument.", 1);
+	else if (er == 3)
+		ft_putstr_fd("ERROR: A number is either too big or too small.", 1);
+	else
+		ft_putstr_fd("ERROR: Memory allocation failed.", 1);
 	exit (1);
 }
 
@@ -34,7 +38,7 @@ static void	check_duplicate(char *argv[])
 		j = i + 1;
 		while (argv[j])
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (ft_atoll(argv[i]) == ft_atoll(argv[j]))
 				error(2);
 			j++;
 		}
@@ -62,7 +66,7 @@ void	check_argv(int argc, char *argv[])
 			error(1);
 		n = ft_atoll(argv[i]);
 		if (n < -2147483648 || n > 2147483647)
-			error(1);
+			error(3);
 		i++;
 	}
 	check_duplicate(argv);

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:55:03 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/18 18:18:22 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:50:08 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,22 @@ void	two_numbers(t_stack **stack)
 
 void	three_numbers(t_stack **stack)
 {
-	if ((*stack)->index == 0 && (*stack)->next->index == 2)
+	if (((*stack)->index == 0 && (*stack)->next->index == 2) ||
+		((*stack)->index == 2 && (*stack)->next->index == 4))
 	{
 		rrotate(stack, 'a');
 		swap(stack, 'a');
 	}
-	else if ((*stack)->index == 1 && (*stack)->next->index == 0)
+	else if (((*stack)->index == 1 && (*stack)->next->index == 0) ||
+		((*stack)->index == 3 && (*stack)->next->index == 2))
 		swap(stack, 'a');
-	else if ((*stack)->index == 1 && (*stack)->next->index == 2)
+	else if (((*stack)->index == 1 && (*stack)->next->index == 2) ||
+		((*stack)->index == 3 && (*stack)->next->index == 4))
 		rrotate(stack, 'a');
-	else if ((*stack)->index == 2 && (*stack)->next->index == 0)
+	else if (((*stack)->index == 2 && (*stack)->next->index == 0) ||
+		((*stack)->index == 4 && (*stack)->next->index == 2))
 		rotate(stack, 'a');
-	else
+	else if (!((*stack)->index == 2 && (*stack)->next->index == 3))
 	{
 		rotate(stack, 'a');
 		swap(stack, 'a');
@@ -66,7 +70,7 @@ static int	get_max_bit(int arg)
 	int	max_bit;
 
 	max_bit = 0;
-	while ((arg | 0) != 0)
+	while (arg != 0)
 	{
 		max_bit++;
 		arg = arg >> 1;

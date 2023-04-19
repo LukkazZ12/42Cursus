@@ -1,30 +1,44 @@
-NAME =		push_swap
-CFLAGS =	-Wall -Wextra -Werror -g3
+NAME			=		push_swap
 
-SRCS =		push_swap.c \
-			libft.c \
-			check_arg.c \
-			stack_functions.c \
-			operations_s_p.c \
-			operations_r_rr.c \
-			two_to_five_radix.c
+SOURCES 		=		push_swap.c \
+						libft.c \
+						check_arg.c \
+						stack_functions.c \
+						operations_s_p.c \
+						operations_r_rr.c \
+						two_to_five_radix.c
 
-OBJS = $(SRCS:%.c=%.o)
+SOURCES_PATH	=		sources
 
-all: $(NAME)
+SOURCE			=		$(addprefix $(SOURCES_PATH)/, $(SOURCES))
 
-%.o:%.c
-	cc $(CFLAGS) -c $< -o $@
+OBJECTS_PATH	=		objects
 
-$(NAME): $(OBJS)
-	cc $(OBJS) -o $(NAME)
+OBJECTS			=		$(addprefix $(OBJECTS_PATH)/, $(SOURCES:.c=.o))
+
+CC				=		cc
+
+C_FLAGS			=		-Wall -Wextra -Werror -g3 -Iincludes
+
+RM				=		rm -rf
+
+all: 					$(NAME)
+
+$(NAME):				$(OBJECTS_PATH) $(OBJECTS)
+						$(CC) $(C_FLAGS) $(OBJECTS) -o $@
+
+$(OBJECTS_PATH):
+						@mkdir -p $(OBJECTS_PATH)
+
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c includes/push_swap.h
+					 	$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+						@$(RM) $(OBJECTS_PATH)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:					clean
+						@$(RM) $(NAME)
 
-re: fclean all
+re:						fclean all
 
-.PHONY: all clean fclean re
+.PHONY:					all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:05:40 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/18 18:18:42 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:05:19 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef struct s_stack
 int				ft_isdigit(int c);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
-int				ft_atoi(const char *nptr);
 long long		ft_atoll(const char *nptr);
 void			check_argv(int argc, char *argv[]);
+void			error(int er);
 t_stack			*ft_stacklast(t_stack *stack);
 t_stack			*ft_stacksecondlast(t_stack *stack);
 void			ft_stackadd_back(t_stack **stack, t_stack *new);
