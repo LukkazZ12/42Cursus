@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/19 20:10:47 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:36:18 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ static void	read_numbers(t_stack **stack, int argv)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
+	{
 		if (stack != NULL)
 		{
 			free_stack(stack);
 			error(4);
 		}
+	}
 	new->number = argv;
 	new->index = 0;
 	new->next = NULL;

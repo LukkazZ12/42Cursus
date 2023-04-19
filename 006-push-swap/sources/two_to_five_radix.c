@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:55:03 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/19 19:50:08 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:34:37 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ void	two_numbers(t_stack **stack)
 
 void	three_numbers(t_stack **stack)
 {
-	if (((*stack)->index == 0 && (*stack)->next->index == 2) ||
-		((*stack)->index == 2 && (*stack)->next->index == 4))
+	if (((*stack)->index == 0 && (*stack)->next->index == 2)
+		|| ((*stack)->index == 2 && (*stack)->next->index == 4))
 	{
 		rrotate(stack, 'a');
 		swap(stack, 'a');
 	}
-	else if (((*stack)->index == 1 && (*stack)->next->index == 0) ||
-		((*stack)->index == 3 && (*stack)->next->index == 2))
+	else if (((*stack)->index == 1 && (*stack)->next->index == 0)
+		|| ((*stack)->index == 3 && (*stack)->next->index == 2))
 		swap(stack, 'a');
-	else if (((*stack)->index == 1 && (*stack)->next->index == 2) ||
-		((*stack)->index == 3 && (*stack)->next->index == 4))
+	else if (((*stack)->index == 1 && (*stack)->next->index == 2)
+		|| ((*stack)->index == 3 && (*stack)->next->index == 4))
 		rrotate(stack, 'a');
-	else if (((*stack)->index == 2 && (*stack)->next->index == 0) ||
-		((*stack)->index == 4 && (*stack)->next->index == 2))
+	else if (((*stack)->index == 2 && (*stack)->next->index == 0)
+		|| ((*stack)->index == 4 && (*stack)->next->index == 2))
 		rotate(stack, 'a');
 	else if (!((*stack)->index == 2 && (*stack)->next->index == 3))
 	{
