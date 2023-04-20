@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/19 20:36:18 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:32:15 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ static void	read_numbers(t_stack **stack, int argv)
 	if (new == NULL)
 	{
 		if (stack != NULL)
-		{
 			free_stack(stack);
-			error(4);
-		}
+		error(4);
 	}
 	new->number = argv;
 	new->index = 0;
