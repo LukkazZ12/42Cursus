@@ -16,9 +16,11 @@ OBJECTS_PATH	=		objects
 
 OBJECTS			=		$(addprefix $(OBJECTS_PATH)/, $(SOURCES:.c=.o))
 
+HEADER_PATH		=		includes
+
 CC				=		cc
 
-C_FLAGS			=		-Wall -Wextra -Werror -g3 -Iincludes
+C_FLAGS			=		-Wall -Wextra -Werror -g3 -I$(HEADER_PATH)
 
 RM				=		rm -rf
 
