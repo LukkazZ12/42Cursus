@@ -6,56 +6,47 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/13 20:02:17 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:16:30 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
 t_client	g_client;
 
-void	send_bit(int bit)
-{
-	if (bit)
-	{
-		if (kill(g_client.pid, SIGUSR1) == -1)
-			terminate(1, "Server offline or invalid PID");
-		usleep(SLEEP_TIME);
-	}
-	else
-	{
-		if (kill(g_client.pid, SIGUSR2) == -1)
-			terminate(1, "Server offline or invalid PID");
-		usleep(SLEEP_TIME);
-	}
-}
-
 static void	signal_handler(int signal)
 {
+	static int	i = 0;
+
 	if (signal == SIGUSR1)
+		ft_putchar_fd('1', 1);
+	else
+		ft_putchar_fd('0', 1);
+	i++;
+	g_client.bit_acknowledged = 1;
+	if (i == 8)
 	{
-		if (g_client.ver == 0)
-		{
-			ft_putnbr_fd(g_client.pid, 1);
-			ft_putstr_fd(" server PID: data received.\n", 1);
-		}
-		g_client.bit_acknowledged = 1;
+		ft_putchar_fd(' ', 1);
+		i = 0;
 	}
 }
 
 static void	byte_to_binary(char byte)
 {
 	int		i;
-	char	aux;
-	
+	int		signal;
+
 	i = 0;
-	aux = byte;
 	while (i < 8)
 	{
 		g_client.bit_acknowledged = 0;
-		if (aux == '\n' && i == 7)
-			g_client.ver = 0;
-		send_bit(byte & (0x01 << i));
+		if (byte << i & 128)
+			signal = SIGUSR1;
+		else
+			signal = SIGUSR2;
+		if (kill(g_client.pid, signal))
+			terminate("Server offline or invalid PID");
+		usleep(SLEEP_TIME);
 		while (!g_client.bit_acknowledged)
 			usleep(SLEEP_TIME);
 		i++;
@@ -68,16 +59,16 @@ int	main(int argc, char **argv)
 	struct sigaction	action;
 
 	if (argc != 3)
-		terminate(1, "Invalid number of arguments.");
-	g_client.ver = 1;
+		terminate("Invalid number of arguments.");
 	action = (struct sigaction){0};
 	action.sa_handler = signal_handler;
 	sigemptyset(&action.sa_mask);
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
+	sigaction(SIGUSR2, &action, NULL);
 	g_client.pid = ft_atoi(argv[1]);
 	if (g_client.pid <= 0)
-		terminate(1, "Invalid PID.");
+		terminate("Invalid PID.");
 	i = 0;
 	while (argv[2][i] != '\0')
 	{

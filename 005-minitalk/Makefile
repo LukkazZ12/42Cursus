@@ -1,46 +1,56 @@
-NAME 		=		minitalk
-SERVER		=		server
-CLIENT 		=		client
-SRC			= 		server.c \
-					client.c \
-					utils.c \
-					libft.c
+NAME			=		minitalk
 
-SRCS_PATH	= 		sources
-OBJS_PATH	= 		objects
-SRCS		= 		$(addprefix $(SRCS_PATH)/, $(SRC))
-OBJS		= 		$(addprefix $(OBJS_PATH)/, $(SRC:.c=.o))
+SERVER			=		server
 
-CC			= 		cc -Wall -Wextra -Werror
-RM			= 		rm -rf
+CLIENT			=		client
 
-all:				$(NAME) 
+SOURCES			=		server.c \
+						client.c \
+						utils.c \
+						libft.c
 
-$(NAME):			$(OBJS_PATH) $(OBJS) $(SERVER) $(CLIENT)
+SOURCES_PATH	=		sources
 
+SOURCE			=		$(addprefix $(SOURCES_PATH)/, $(SOURCES))
 
-$(SERVER):			$(OBJS_PATH) $(OBJS)
-					$(CC) $(addprefix $(OBJS_PATH)/, server.o) \
-						$(addprefix $(OBJS_PATH)/, utils.o) \
-						$(addprefix $(OBJS_PATH)/, libft.o) -o $(SERVER)
+OBJECTS_PATH	=		objects
 
-$(CLIENT):			$(OBJS_PATH) $(OBJS)	
-					$(CC) $(addprefix $(OBJS_PATH)/, client.o) \
-						$(addprefix $(OBJS_PATH)/, utils.o) \
-						$(addprefix $(OBJS_PATH)/, libft.o) -o $(CLIENT)
+OBJECTS			=		$(addprefix $(OBJECTS_PATH)/, $(SOURCES:.c=.o))
+
+HEADER_PATH		=		includes
+
+CC				=		cc
+
+C_FLAGS			=		-Wall -Wextra -Werror -g3 -I$(HEADER_PATH)
+
+RM				=		rm -rf
+
+all:					$(NAME)
+
+$(NAME):				$(OBJECTS_PATH) $(OBJECTS) $(SERVER) $(CLIENT)
+
+$(SERVER):				$(OBJECTS_PATH) $(OBJECTS)
+						$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_PATH)/, server.o) \
+							$(addprefix $(OBJECTS_PATH)/, utils.o) \
+							$(addprefix $(OBJECTS_PATH)/, libft.o) -o $@
+
+$(CLIENT):				$(OBJECTS_PATH) $(OBJECTS)	
+						$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_PATH)/, client.o) \
+							$(addprefix $(OBJECTS_PATH)/, utils.o) \
+							$(addprefix $(OBJECTS_PATH)/, libft.o) -o $@
 					
-$(OBJS_PATH):
-					mkdir -p $(OBJS_PATH)
+$(OBJECTS_PATH):
+						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
-					$(CC) -c $< -o $@
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c includes/minitalk.h
+						$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
-					$(RM) $(OBJS_PATH)
+						@$(RM) $(OBJECTS_PATH)
 
-fclean:				clean
-					$(RM) $(SERVER) $(CLIENT)
+fclean:					clean
+						@$(RM) $(SERVER) $(CLIENT)
 
-re:					fclean all
+re:						fclean all
 
-.PHONY:				all clean fclean re
+.PHONY:					all clean fclean re

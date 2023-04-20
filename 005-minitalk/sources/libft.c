@@ -6,11 +6,11 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:24:00 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/05 16:54:21 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:16:39 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

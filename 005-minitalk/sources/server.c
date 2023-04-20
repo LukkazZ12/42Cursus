@@ -6,11 +6,11 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:31 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/13 19:41:42 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:16:27 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
 static void	print_pid(void)
 {
@@ -26,24 +26,23 @@ static void	signal_handler(int signal, siginfo_t *info, void *context)
 
 	(void)context;
 	if (signal == SIGUSR1)
-		byte |= (0x01 << bit);
+		byte |= 128 >> bit;
 	if (bit == 7)
 	{
-		if (byte)
-			ft_putchar_fd(byte, 1);
+		ft_putchar_fd(byte, 1);
 		bit = 0;
 		byte = 0;
 	}
 	else
 		bit++;
-	if (kill(info->si_pid, SIGUSR1))
-		terminate(1, "Error communicating with Client.");
+	if (kill(info->si_pid, signal))
+		terminate("Error communicating with Client.");
 }
 
 int	main(void)
 {
 	struct sigaction	action;
-	
+
 	print_pid();
 	action = (struct sigaction){0};
 	action.sa_sigaction = signal_handler;
@@ -53,5 +52,5 @@ int	main(void)
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
 		pause();
-	return (EXIT_SUCCESS);
+	return (0);
 }
