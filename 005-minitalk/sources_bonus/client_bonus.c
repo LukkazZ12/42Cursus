@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/20 17:57:35 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:57:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 t_client	g_client;
 
@@ -27,8 +27,19 @@ static void	terminate(char *error_msg)
 
 static void	signal_handler(int signal)
 {
-	if (signal == SIGUSR1 || signal == SIGUSR2)
-		g_client.send_signal = 1;
+	static int	i = 0;
+
+	if (signal == SIGUSR1)
+		ft_putchar_fd('1', 1);
+	else
+		ft_putchar_fd('0', 1);
+	i++;
+	g_client.send_signal = 1;
+	if (i == 8)
+	{
+		ft_putchar_fd(' ', 1);
+		i = 0;
+	}
 }
 
 static void	byte_to_binary(char byte)

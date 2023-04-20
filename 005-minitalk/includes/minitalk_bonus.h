@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 17:08:54 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/20 16:16:43 by lucade-s         ###   ########.fr       */
+/*   Created: 2023/04/05 15:27:52 by lucade-s          #+#    #+#             */
+/*   Updated: 2023/04/20 17:59:05 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-void	terminate(char *error_msg)
+# define SLEEP_TIME 100
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <signal.h>
+
+typedef struct s_client
 {
-	if (error_msg)
-	{
-		ft_putstr_fd("Server error: ", 1);
-		ft_putstr_fd(error_msg, 1);
-		ft_putstr_fd(".\n", 1);
-	}
-	exit(1);
-}
+	int	send_signal;
+	int	pid;
+}	t_client;
+
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(int n, int fd);
+int		ft_atoi(const char *nptr);
+
+#endif
