@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:52 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/20 17:57:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:11:54 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_client
 {
-	int	send_signal;
+	int	signal_received;
 	int	pid;
 }	t_client;
 

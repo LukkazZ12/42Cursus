@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/20 17:57:13 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:08:52 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	terminate(char *error_msg)
 	{
 		ft_putstr_fd("ERROR: ", 1);
 		ft_putstr_fd(error_msg, 1);
-		ft_putstr_fd(".\n", 1);
+		ft_putstr_fd("\n", 1);
 	}
 	exit(1);
 }
@@ -34,7 +34,7 @@ static void	signal_handler(int signal)
 	else
 		ft_putchar_fd('0', 1);
 	i++;
-	g_client.send_signal = 1;
+	g_client.signal_received = 1;
 	if (i == 8)
 	{
 		ft_putchar_fd(' ', 1);
@@ -42,7 +42,7 @@ static void	signal_handler(int signal)
 	}
 }
 
-static void	byte_to_binary(char byte)
+static void	bit_by_bit(char byte)
 {
 	int		i;
 	int		signal;
@@ -50,15 +50,15 @@ static void	byte_to_binary(char byte)
 	i = 0;
 	while (i < 8)
 	{
-		g_client.send_signal = 0;
+		g_client.signal_received = 0;
 		if (byte << i & 128)
 			signal = SIGUSR1;
 		else
 			signal = SIGUSR2;
 		if (kill(g_client.pid, signal))
-			terminate("Server offline or invalid PID");
+			terminate("Server offline or invalid PID.");
 		usleep(SLEEP_TIME);
-		while (!g_client.send_signal)
+		while (!g_client.signal_received)
 			usleep(SLEEP_TIME);
 		i++;
 	}
@@ -83,9 +83,9 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (argv[2][i] != '\0')
 	{
-		byte_to_binary(argv[2][i]);
+		bit_by_bit(argv[2][i]);
 		i++;
 	}
-	byte_to_binary('\n');
+	bit_by_bit('\n');
 	return (0);
 }

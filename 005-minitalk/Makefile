@@ -55,7 +55,7 @@ $(CLIENT):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c includes/minitalk.h
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/minitalk.h
 						$(CC) $(C_FLAGS) -c $< -o $@
 
 bonus:					$(OBJECTS_B_PATH) $(OBJECTS_BONUS) $(SERVER_BONUS) $(CLIENT_BONUS)
@@ -71,7 +71,7 @@ $(CLIENT_BONUS):		$(OBJECTS_B_PATH) $(OBJECTS_BONUS)
 $(OBJECTS_B_PATH):
 						@mkdir -p $(OBJECTS_B_PATH)
 
-$(OBJECTS_B_PATH)/%.o:	$(SOURCES_B_PATH)/%.c includes/minitalk_bonus.h
+$(OBJECTS_B_PATH)/%.o:	$(SOURCES_B_PATH)/%.c $(HEADER_PATH)/minitalk_bonus.h
 						$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
