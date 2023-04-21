@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:31 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/21 16:10:43 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:43:42 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,13 @@ static void	signal_handler(int signal, siginfo_t *info, void *context)
 	(void)context;
 	if (signal == SIGUSR1)
 		byte |= 128 >> bit;
-	if (bit == 7)
+	bit++;
+	if (bit == 8)
 	{
 		ft_putchar_fd(byte, 1);
 		bit = 0;
 		byte = 0;
 	}
-	else
-		bit++;
 	if (kill(info->si_pid, signal))
 		terminate("Error communicating with Client.");
 }
