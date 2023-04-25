@@ -1,6 +1,6 @@
 NAME			=		push_swap
 
-SOURCES 		=		push_swap.c \
+SOURCES			=		push_swap.c \
 						libft.c \
 						check_arg.c \
 						stack_functions.c \
@@ -33,7 +33,7 @@ $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
 $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/push_swap.h
-					 	$(CC) $(C_FLAGS) -c $< -o $@
+						$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
 						@$(RM) $(OBJECTS_PATH)
