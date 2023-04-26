@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/19 20:10:24 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/25 21:12:25 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	check_duplicate(char *argv[])
 	}
 }
 
-void	check_argv(int argc, char *argv[])
+void	check_arg(int argc, char *argv[])
 {
 	int			i;
 	int			j;
