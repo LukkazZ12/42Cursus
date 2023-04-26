@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:05:40 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/25 21:12:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:04:10 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 long long		ft_atoll(const char *nptr);
 void			check_arg(int argc, char *argv[]);
-void			error(int er);
+void			error(void);
 t_stack			*ft_stacklast(t_stack *stack);
 t_stack			*ft_stacksecondlast(t_stack *stack);
 void			ft_stackadd_back(t_stack **stack, t_stack *new);

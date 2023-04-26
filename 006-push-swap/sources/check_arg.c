@@ -6,25 +6,17 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/25 21:12:25 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:11:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(int er)
+void	error(void)
 {
-	if (er == 0)
-		ft_putstr_fd("ERROR: Wrong number of arguments.", 1);
-	else if (er == 1)
-		ft_putstr_fd("ERROR: One of the arguments is not a number.", 1);
-	else if (er == 2)
-		ft_putstr_fd("ERROR: There is a duplicate argument.", 1);
-	else if (er == 3)
-		ft_putstr_fd("ERROR: A number is either too big or too small.", 1);
-	else
-		ft_putstr_fd("ERROR: Memory allocation failed.", 1);
-	exit (1);
+	ft_putstr_fd("Error", 1);
+	ft_putchar_fd('\n', 1);
+	exit(1);
 }
 
 static void	check_duplicate(char *argv[])
@@ -39,7 +31,7 @@ static void	check_duplicate(char *argv[])
 		while (argv[j])
 		{
 			if (ft_atoll(argv[i]) == ft_atoll(argv[j]))
-				error(2);
+				error();
 			j++;
 		}
 		i++;
@@ -53,7 +45,7 @@ void	check_arg(int argc, char *argv[])
 	long long	n;
 
 	if (argc < 2)
-		error(0);
+		exit(1);
 	i = 1;
 	while (argv[i])
 	{
@@ -63,10 +55,10 @@ void	check_arg(int argc, char *argv[])
 		while (ft_isdigit(argv[i][j]))
 			j++;
 		if (argv[i][j] != '\0' || argv[i][0] == '\0')
-			error(1);
+			error();
 		n = ft_atoll(argv[i]);
 		if (n < -2147483648 || n > 2147483647)
-			error(3);
+			error();
 		i++;
 	}
 	check_duplicate(argv);
