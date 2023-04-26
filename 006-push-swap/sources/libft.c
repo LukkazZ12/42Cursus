@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/19 18:41:20 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/25 21:34:43 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void	ft_putstr_fd(char *s, int fd)
 
 	i = 0;
 	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+		write(fd, &s[i++], 1);
 }
 
 long long	ft_atoll(const char *nptr)
@@ -56,10 +53,7 @@ long long	ft_atoll(const char *nptr)
 	}
 	num = 0;
 	while (ft_isdigit(nptr[i]) == 1)
-	{
-		num = num * 10 + (nptr[i] - 48);
-		i++;
-	}
+		num = num * 10 + (nptr[i++] - 48);
 	if (nptr[j] == '-')
 		num = -num;
 	return (num);

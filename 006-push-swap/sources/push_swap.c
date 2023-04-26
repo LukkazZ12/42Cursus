@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/25 21:11:45 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/25 21:25:42 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,7 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	i = 1;
 	while (i < argc)
-	{
-		read_numbers(&stack_a, ft_atoll(argv[i]));
-		i++;
-	}
+		read_numbers(&stack_a, ft_atoll(argv[i++]));
 	set_index(stack_a);
 	ascending_order(&stack_a);
 	if (argc == 3)
