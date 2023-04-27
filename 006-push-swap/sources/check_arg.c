@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/25 22:11:11 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:40:12 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	error(void)
 {
-	ft_putstr_fd("Error", 1);
-	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("Error\n", 1);
 	exit(1);
 }
 
