@@ -16,12 +16,9 @@ t_client	g_client;
 
 static void	terminate(char *error_msg)
 {
-	if (error_msg)
-	{
-		ft_putstr_fd("ERROR: ", 1);
-		ft_putstr_fd(error_msg, 1);
-		ft_putstr_fd("\n", 1);
-	}
+	ft_putstr_fd("ERROR: ", 1);
+	ft_putstr_fd(error_msg, 1);
+	ft_putstr_fd("\n", 1);
 	exit(1);
 }
 

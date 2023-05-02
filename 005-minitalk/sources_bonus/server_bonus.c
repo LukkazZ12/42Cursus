@@ -14,12 +14,9 @@
 
 static void	terminate(char *error_msg)
 {
-	if (error_msg)
-	{
-		ft_putstr_fd("ERROR: ", 1);
-		ft_putstr_fd(error_msg, 1);
-		ft_putstr_fd("\n", 1);
-	}
+	ft_putstr_fd("ERROR: ", 1);
+	ft_putstr_fd(error_msg, 1);
+	ft_putstr_fd("\n", 1);
 	exit(1);
 }
 
@@ -32,8 +29,8 @@ static void	print_pid(void)
 
 static void	signal_handler(int signal, siginfo_t *info, void *context)
 {
-	static int	bit;
-	static char	byte;
+	static int	bit = 0;
+	static char	byte = 0;
 
 	(void)context;
 	if (signal == SIGUSR1)
