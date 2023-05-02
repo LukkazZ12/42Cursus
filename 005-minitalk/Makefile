@@ -45,34 +45,34 @@ all:					$(NAME)
 $(NAME):				$(OBJECTS_PATH) $(OBJECTS) $(SERVER) $(CLIENT)
 
 $(SERVER):				$(OBJECTS_PATH) $(OBJECTS)
-						$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_PATH)/, server.o) \
+						@$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_PATH)/, server.o) \
 							$(addprefix $(OBJECTS_PATH)/, libft.o) -o $@
 
 $(CLIENT):				$(OBJECTS_PATH) $(OBJECTS)	
-						$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_PATH)/, client.o) \
+						@$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_PATH)/, client.o) \
 							$(addprefix $(OBJECTS_PATH)/, libft.o) -o $@
 					
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
 $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/minitalk.h
-						$(CC) $(C_FLAGS) -c $< -o $@
+						@$(CC) $(C_FLAGS) -c $< -o $@
 
 bonus:					$(OBJECTS_B_PATH) $(OBJECTS_BONUS) $(SERVER_BONUS) $(CLIENT_BONUS)
 
 $(SERVER_BONUS):		$(OBJECTS_B_PATH) $(OBJECTS_BONUS)
-						$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_B_PATH)/, server_bonus.o) \
+						@$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_B_PATH)/, server_bonus.o) \
 							$(addprefix $(OBJECTS_B_PATH)/, libft_bonus.o) -o $@
 
 $(CLIENT_BONUS):		$(OBJECTS_B_PATH) $(OBJECTS_BONUS)	
-						$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_B_PATH)/, client_bonus.o) \
+						@$(CC) $(C_FLAGS) $(addprefix $(OBJECTS_B_PATH)/, client_bonus.o) \
 							$(addprefix $(OBJECTS_B_PATH)/, libft_bonus.o) -o $@
 					
 $(OBJECTS_B_PATH):
 						@mkdir -p $(OBJECTS_B_PATH)
 
 $(OBJECTS_B_PATH)/%.o:	$(SOURCES_B_PATH)/%.c $(HEADER_PATH)/minitalk_bonus.h
-						$(CC) $(C_FLAGS) -c $< -o $@
+						@$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
 						@$(RM) $(OBJECTS_PATH) $(OBJECTS_B_PATH)
