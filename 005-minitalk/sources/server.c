@@ -46,10 +46,13 @@ static void	signal_handler(int signal, siginfo_t *info, void *context)
 		terminate("Error communicating with Client.");
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	struct sigaction	action;
 
+	if (argc != 1)
+		terminate("Invalid number of arguments. Try only <./server>.");
+	(void)argv;
 	print_pid();
 	action = (struct sigaction){0};
 	action.sa_sigaction = signal_handler;

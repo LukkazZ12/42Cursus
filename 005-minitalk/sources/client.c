@@ -56,7 +56,8 @@ int	main(int argc, char **argv)
 	struct sigaction	action;
 
 	if (argc != 3)
-		terminate("Invalid number of arguments.");
+		terminate("Invalid number of arguments."
+			" Try <./client> <PID server> <message>.");
 	action = (struct sigaction){0};
 	action.sa_handler = signal_handler;
 	sigemptyset(&action.sa_mask);
