@@ -21,7 +21,7 @@
 
 typedef struct s_client
 {
-	int	signal_received;
+	int	sending_signal;
 	int	pid;
 }	t_client;
 

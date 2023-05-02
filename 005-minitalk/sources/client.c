@@ -25,26 +25,25 @@ static void	terminate(char *error_msg)
 static void	signal_handler(int signal)
 {
 	if (signal == SIGUSR1 || signal == SIGUSR2)
-		g_client.signal_received = 1;
+		g_client.sending_signal = 0;
 }
 
 static void	bit_by_bit(char byte)
 {
-	int		i;
-	int		signal;
+	int	i;
+	int	signal;
 
 	i = 0;
 	while (i < 8)
 	{
-		g_client.signal_received = 0;
+		g_client.sending_signal = 1;
 		if (byte << i & 128)
 			signal = SIGUSR1;
 		else
 			signal = SIGUSR2;
 		if (kill(g_client.pid, signal))
 			terminate("Server offline or invalid PID.");
-		usleep(SLEEP_TIME);
-		while (!g_client.signal_received)
+		while (g_client.sending_signal)
 			usleep(SLEEP_TIME);
 		i++;
 	}
