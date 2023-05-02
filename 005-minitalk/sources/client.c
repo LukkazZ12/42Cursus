@@ -51,7 +51,7 @@ static void	bit_by_bit(char byte)
 
 int	main(int argc, char **argv)
 {
-	static int			i;
+	int					i;
 	struct sigaction	action;
 
 	if (argc != 3)
