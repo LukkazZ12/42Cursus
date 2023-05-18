@@ -1,4 +1,4 @@
-name: norminette_build
+name: Run
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
       
 jobs:
   norminette:
+    name: Norminette
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -26,6 +27,7 @@ jobs:
         norminette
  
   build:
+    name: Build
     needs: norminette
     runs-on: ubuntu-latest
     defaults:
