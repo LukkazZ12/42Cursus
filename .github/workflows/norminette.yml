@@ -24,3 +24,12 @@ jobs:
     - name: Lint with norminette
       run: |
         norminette
+    build:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory:  006-push-swap
+      steps:
+      - uses: actions/checkout@v3
+      - name: make
+        run: make
