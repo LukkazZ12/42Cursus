@@ -1,6 +1,8 @@
 name: build
 on:
-  norminette:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -9,5 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: ../norminette@v1
     - name: make
       run: make
