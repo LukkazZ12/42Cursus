@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory:  sources
+        working-directory:  006-push-swap/sources
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
