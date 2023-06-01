@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: 1-phase_two/10-push_swap/sources
+        working-directory: 1-phase_two/10-push_swap
     steps:
     - uses: actions/checkout@v3
     - name: make
