@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/19 18:41:29 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:37:12 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,18 @@ void	ascending_order(t_stack **stack)
 	t_stack	*stack_aux;
 
 	stack_aux = *stack;
-	if ((*stack)->next == NULL)
+	if (stack_aux->next == NULL)
 	{
 		free_stack(stack);
 		exit(0);
 	}
-	while ((*stack)->next->index - (*stack)->index == 1)
+	while (stack_aux->next->index - stack_aux->index == 1)
 	{
-		*stack = (*stack)->next;
-		if ((*stack)->next == NULL)
+		stack_aux = stack_aux->next;
+		if (stack_aux->next == NULL)
 		{
-			*stack = stack_aux;
 			free_stack(stack);
 			exit(0);
 		}
 	}
-	*stack = stack_aux;
 }

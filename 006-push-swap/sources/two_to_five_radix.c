@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:55:03 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/25 21:50:29 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:55:29 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	radix(t_stack **stack_a, t_stack **stack_b, int arg)
 		}
 		while (*stack_b)
 			push(stack_b, stack_a, 'a');
-		ascending_order(stack_a);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/01 17:15:39 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:30:51 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ static void	check_duplicate(char *argv[])
 {
 	int	i;
 	int	j;
+	int	num;
 
+	num = 0;
 	i = 1;
 	while (argv[i])
 	{
+		num = ft_atoll(argv[i]);
 		j = i + 1;
 		while (argv[j])
 		{
-			if (ft_atoll(argv[i]) == ft_atoll(argv[j]))
+			if (num == ft_atoll(argv[j]))
 				error();
 			j++;
 		}
