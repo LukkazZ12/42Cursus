@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:06:15 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/27 14:40:12 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:15:39 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	check_arg(int argc, char *argv[])
 	while (argv[i])
 	{
 		j = 0;
+		while ((argv[i][j] >= 9 && argv[i][j] <= 13) || argv[i][j] == 32)
+			j++;
 		if (argv[i][j] == '+' || argv[i][j] == '-')
 			j++;
 		while (ft_isdigit(argv[i][j]))
@@ -56,7 +58,7 @@ void	check_arg(int argc, char *argv[])
 		if (argv[i][j] != '\0' || argv[i][0] == '\0')
 			error();
 		n = ft_atoll(argv[i]);
-		if (n < -2147483648 || n > 2147483647)
+		if (n > 2147483647)
 			error();
 		i++;
 	}
