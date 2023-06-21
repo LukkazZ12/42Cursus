@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:10:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2022/10/20 23:27:25 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:44:05 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,22 @@ static int	ft_verification(const char **format, int *aux, va_list args)
 	return (counter);
 }
 
+static int	ft_isnull(const char *format)
+{
+	if (!format)
+		return (-1);
+	return (0);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		counter;
 	int		aux;
 
+	counter = ft_isnull(format);
 	va_start(args, format);
-	counter = 0;
-	while (*format)
+	while (format && *format)
 	{
 		if (*format == '%')
 		{
