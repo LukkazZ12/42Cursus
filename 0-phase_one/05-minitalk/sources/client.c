@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:27:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/05/03 16:33:20 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:53:44 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	g_client.pid = ft_atoi(argv[1]);
+	g_client.pid = ft_atoll(argv[1]);
 	if (g_client.pid <= 0)
 		terminate("Invalid PID.");
 	i = 0;

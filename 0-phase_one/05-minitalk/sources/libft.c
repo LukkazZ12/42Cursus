@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:24:00 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/04/20 16:16:39 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:58:04 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,31 +62,27 @@ static int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoll(const char *nptr)
 {
-	int	i;
-	int	j;
-	int	num;
+	int			flag;
+	long long	num;
 
-	j = 0;
-	while ((nptr[j] >= 9 && nptr[j] <= 13) || nptr[j] == 32)
-		j++;
-	i = j;
-	if (nptr[i] != '-' && nptr[i] != '+' && ft_isdigit(nptr[i]) == 0)
-		return (0);
-	else if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (ft_isdigit(nptr[i + 1]) == 0)
-			return (0);
-		i++;
-	}
+	flag = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == '+')
+		nptr++;
 	num = 0;
-	while (ft_isdigit(nptr[i]) == 1)
+	while (ft_isdigit(*nptr))
 	{
-		num = num * 10 + (nptr[i] - 48);
-		i++;
+		num = num * 10 + (*nptr - 48);
+		if (num > 2147483647)
+			return (0);
+		nptr++;
 	}
-	if (nptr[j] == '-')
-		num = -num;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr && !ft_isdigit(*nptr))
+		return (0);
 	return (num);
 }
