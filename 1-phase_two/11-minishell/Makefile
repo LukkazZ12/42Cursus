@@ -118,15 +118,11 @@ SOURCES_B		=		$(LEXER_B) \
 						$(PARSER_B) \
 						$(WILDCARDS)
 
-OBJECT			=		$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.c=.o))
+OBJECTS			=		$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.c=.o))
 
-SOURCE			=		$(addprefix $(SOURCES_PATH)/,	$(SOURCES))
-
-OBJECT_B		=		$(filter-out $(OBJECTS_PATH)/$(LEXER_PATH)/quotes.o, \
-							$(filter-out $(OBJECTS_PATH)/$(PARSER_PATH)/parser.o, $(OBJECT))) \
+OBJECTS_B		=		$(filter-out $(OBJECTS_PATH)/$(LEXER_PATH)/quotes.o, \
+							$(filter-out $(OBJECTS_PATH)/$(PARSER_PATH)/parser.o, $(OBJECTS))) \
 						$(addprefix $(OBJECTS_B_PATH)/,	$(SOURCES_B:.c=.o))
-
-SOURCE_B		=		$(addprefix $(SOURCES_B_PATH)/,	$(SOURCES_B))
 
 CC				=		cc
 
@@ -141,8 +137,8 @@ all:					$(LIBFT) $(NAME)
 $(LIBFT):
 						@make -C $(LIBFT_PATH)
 
-$(NAME):				$(OBJECTS_PATH) $(OBJECT)
-						@$(CC) $(C_FLAGS) $(OBJECT) $(LIBFT_FLAGS) -o $@ -lreadline
+$(NAME):				$(OBJECTS_PATH) $(OBJECTS)
+						@$(CC) $(C_FLAGS) $(OBJECTS) $(LIBFT_FLAGS) -o $@ -lreadline
 
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH) \
@@ -163,7 +159,7 @@ $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/minishell.h
 
 bonus:					$(LIBFT) $(OBJECTS_PATH) $(NAME_B)
 
-$(NAME_B):				$(OBJECTS_B_PATH) $(OBJECT_B)
+$(NAME_B):				$(OBJECTS_B_PATH) $(OBJECTS_B)
 						@$(CC) $(C_FLAGS) $(OBJECT_B) $(LIBFT_FLAGS) -o $@ -lreadline
 
 $(OBJECTS_B_PATH):
