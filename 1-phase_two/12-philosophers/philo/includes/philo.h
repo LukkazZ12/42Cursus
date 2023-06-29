@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/28 21:32:51 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:41:54 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@
 
 typedef struct s_dragrace
 {
-	int		num_of_queens;
+	int					num_of_queens;
+	int					time_to_sashay_away;
+	int					time_to_read;
+	int					time_to_be_read;
+	int					times_must_read;
+	pthread_t			*queens;
+	pthread_mutex_t		a_queen_is_reading;
 }	t_dragrace;
 
 // check_args.c functions
 unsigned int	ft_atoui(const char *nptr);
-int				check_args(int argc, char *argv[]);
+int				hello_hello_hello(int argc, char *argv[]);
 
 #endif

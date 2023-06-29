@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 21:13:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/28 21:36:55 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:08:54 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ unsigned int	ft_atoui(const char *nptr)
 	return (num);
 }
 
-int	check_args(int argc, char *argv[])
+int	hello_hello_hello(int argc, char *argv[])
 {
 	int	i;
 
-	if (argc != 4 && argc != 5)
+	if (argc != 5 && argc != 6)
 	{
 		printf("Invalid number of arguments. Try: ./philo");
-		printf(" number_of_queens time_to_sashay_way time_to_slay");
-		printf(" [optional]number_of_times_each_queen_must_slay\n");
+		printf(" number_of_queens time_to_sashay_way time_to_read time_to");
+		printf("_be_read [optional]number_of_times_each_queen_must_read\n");
 		return (0);
 	}
 	i = 1;
