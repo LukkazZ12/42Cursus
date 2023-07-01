@@ -6,8 +6,12 @@ OBJECTS_PATH	=		objects
 
 SOURCES_PATH	=		sources
 
-SOURCES			=		check_args.c \
-						philo.c
+SOURCES			=		hello_hello_hello.c \
+						pit_crew.c \
+						reading_is_fundamental.c \
+						rupauls_dragrace.c \
+						the_library_is_open.c \
+						the_library_is_officially_closed.c
 
 OBJECTS			=		$(addprefix $(OBJECTS_PATH)/, $(SOURCES:.c=.o))
 
@@ -25,7 +29,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/philo.h
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/werkroom.h
 						@$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
