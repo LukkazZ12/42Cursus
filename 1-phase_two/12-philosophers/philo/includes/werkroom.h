@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/01 17:08:56 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:50:34 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@
 typedef struct s_library
 {
 	int					num_of_queens;
-	int					time_to_sashay_away;
-	int					time_to_read;
-	int					time_to_be_read;
+	unsigned long		time_to_sashay_away;
+	unsigned long		time_to_read;
+	unsigned long		time_to_be_read;
 	int					times_must_read;
+	int					ru_is_laughing;
 	unsigned long		start;
 	pthread_t			*queens;
 	pthread_mutex_t		*glasses;
 	pthread_mutex_t		print;
+	pthread_mutex_t		last_reading;
+	pthread_mutex_t		ru_is_laughing_lock;
 }	t_library;
 	//pthread_mutex_t		rupaul_is_judging;
 
@@ -37,6 +40,7 @@ typedef struct s_queens
 {
 	int					index;
 	int					readings;
+	int					last_reading_time;
 	time_t				time_since_last_reading;
 	pthread_mutex_t		*left_glasses;
 	pthread_mutex_t		*right_glasses;

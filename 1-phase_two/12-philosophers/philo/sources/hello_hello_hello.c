@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 21:13:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/01 16:20:49 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:04:08 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ unsigned int	ft_atoui(const char *nptr)
 	unsigned int	num;
 
 	while (ft_iswhitespace(*nptr))
-		nptr++;
-	if (*nptr == '+')
 		nptr++;
 	num = 0;
 	while (ft_isdigit(*nptr))
@@ -66,7 +64,7 @@ int	hello_hello_hello(int argc, char *argv[])
 		if (!ft_atoui(argv[i]))
 		{
 			printf("One of the parameters is not a number");
-			printf(" or a valid number. Try again.");
+			printf(" or a valid number. Try again.\n");
 			return (0);
 		}
 		i++;
