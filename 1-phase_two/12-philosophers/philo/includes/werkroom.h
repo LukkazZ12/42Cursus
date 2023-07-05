@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/04 17:50:34 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/04 21:48:26 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ typedef struct s_library
 	unsigned long		time_to_read;
 	unsigned long		time_to_be_read;
 	int					times_must_read;
-	int					ru_is_laughing;
+	int					the_library_is_over;
 	unsigned long		start;
+	pthread_t			rupaul;
 	pthread_t			*queens;
 	pthread_mutex_t		*glasses;
 	pthread_mutex_t		print;
-	pthread_mutex_t		last_reading;
-	pthread_mutex_t		ru_is_laughing_lock;
+	//pthread_mutex_t		last_reading;
+	pthread_mutex_t		ru_is_judging;
 }	t_library;
-	//pthread_mutex_t		rupaul_is_judging;
 
 typedef struct s_queens
 {
