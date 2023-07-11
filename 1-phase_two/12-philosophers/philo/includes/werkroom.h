@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/04 21:48:26 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/10 21:56:40 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+# define NUM_OF_QUEENS 1
+# define TIME_TO_SASHAY_AWAY 2
+# define TIME_TO_READ 3
+# define TIME_TO_BE_READ 4
+# define TIMES_MUST_READ 5
+# define START 6
+
 typedef struct s_library
 {
 	int					num_of_queens;
@@ -27,13 +34,15 @@ typedef struct s_library
 	unsigned long		time_to_be_read;
 	int					times_must_read;
 	int					the_library_is_over;
+	int					*queens_readings;
 	unsigned long		start;
 	pthread_t			rupaul;
 	pthread_t			*queens;
 	pthread_mutex_t		*glasses;
 	pthread_mutex_t		print;
-	//pthread_mutex_t		last_reading;
 	pthread_mutex_t		ru_is_judging;
+	pthread_mutex_t		time_last_reading;
+	pthread_mutex_t		readings;
 }	t_library;
 
 typedef struct s_queens
@@ -52,6 +61,9 @@ unsigned int	ft_atoui(const char *nptr);
 int				hello_hello_hello(int argc, char *argv[]);
 
 // pit_crew.c functions
+//int				get_value_from_library(t_library *library, int ver);
+int				read_the_house_down(t_library *library);
+int				ru_is_laughing(t_library *library);
 unsigned long	time_now(void);
 void			print_queen_state(t_queens *queen, char *state);
 
@@ -65,7 +77,12 @@ int				the_library_is_open(t_queens **queens, \
 // the_library_is_officially_closed.c functions
 void			the_library_is_officially_closed(t_queens *queens, \
 	t_library *library);
-int				say_something_funny_silky_nutmeg_ganache(t_queens *queens, \
-	t_library *library);
+int				say_something_funny_silky_nutmeg_ganache(void);
+
+// tuck_and_untuck.c functions
+void			set_time_last_reading(t_queens *queen);
+unsigned int	get_time_last_reading(t_queens *queen_i);
+void			set_queen_readings(t_queens *queen);
+int				get_queen_readings(t_library *library, int i);
 
 #endif

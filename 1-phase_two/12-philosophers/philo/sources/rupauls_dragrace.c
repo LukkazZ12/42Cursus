@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:39 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/01 16:41:58 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:48:41 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 	library = (t_library *)malloc(sizeof(t_library));
 	queens = NULL;
 	the_library_is_open(&queens, library, argv);
-	if (!reading_is_fundamental(queens, library))
-		the_library_is_officially_closed(queens, library);
+	reading_is_fundamental(queens, library);
+	the_library_is_officially_closed(queens, library);
 	return (0);
 }

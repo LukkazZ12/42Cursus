@@ -11,7 +11,8 @@ SOURCES			=		hello_hello_hello.c \
 						reading_is_fundamental.c \
 						rupauls_dragrace.c \
 						the_library_is_open.c \
-						the_library_is_officially_closed.c
+						the_library_is_officially_closed.c \
+						tuck_and_untuck.c
 
 OBJECTS			=		$(addprefix $(OBJECTS_PATH)/, $(SOURCES:.c=.o))
 
