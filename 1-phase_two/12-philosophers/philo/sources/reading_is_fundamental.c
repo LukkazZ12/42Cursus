@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:41:41 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/10 21:54:02 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:46:43 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ static void	get_the_glasses(t_queens *queen)
 	if (queen->index % 2 == 1)
 	{
 		pthread_mutex_lock(queen->left_glasses);
-		print_queen_state(queen, "has taken a fork\n");
+		print_queen_state(queen, HAS_TAKEN_GLASSES);
 		pthread_mutex_lock(queen->right_glasses);
-		print_queen_state(queen, "has taken a fork\n");
+		print_queen_state(queen, HAS_TAKEN_GLASSES);
 	}
 	else
 	{
 		pthread_mutex_lock(queen->right_glasses);
-		print_queen_state(queen, "has taken a fork\n");
+		print_queen_state(queen, HAS_TAKEN_GLASSES);
 		pthread_mutex_lock(queen->left_glasses);
-		print_queen_state(queen, "has taken a fork\n");
+		print_queen_state(queen, HAS_TAKEN_GLASSES);
 	}
 }
 
@@ -44,14 +44,12 @@ static void	*rupaul_is_judging(void *queens_)
 		if (current_time - get_time_last_reading(&queens[i]) > \
 			queens->library->time_to_sashay_away)
 		{
-			print_queen_state(&queens[i], "died\n");
-			pthread_mutex_lock(&queens->library->ru_is_judging);
-			queens->library->the_library_is_over = 1;
-			pthread_mutex_unlock(&queens->library->ru_is_judging);
+			print_queen_state(&queens[i], SASHAYED_AWAY);
+			set_library_is_over(queens);
 			return (NULL);
 		}
 		i = (i + 1) % queens->library->num_of_queens;
-		usleep(2000);
+		usleep(1000);
 	}
 	return (NULL);
 }
@@ -59,7 +57,7 @@ static void	*rupaul_is_judging(void *queens_)
 static void	read_the_queens(t_queens *queen)
 {
 	get_the_glasses(queen);
-	print_queen_state(queen, "is eating\n");
+	print_queen_state(queen, IS_READING);
 	set_time_last_reading(queen);
 	usleep(queen->library->time_to_read * 1000);
 	pthread_mutex_unlock(queen->left_glasses);
@@ -68,16 +66,12 @@ static void	read_the_queens(t_queens *queen)
 	if (queen->readings == queen->library->times_must_read)
 		set_queen_readings(queen);
 	if (read_the_house_down(queen->library))
+		set_library_is_over(queen);
+	if (ru_is_laughing(queen))
 	{
-		pthread_mutex_lock(&queen->library->ru_is_judging);
-		queen->library->the_library_is_over = 1;
-		pthread_mutex_unlock(&queen->library->ru_is_judging);
-	}
-	if (ru_is_laughing(queen->library))
-	{
-		print_queen_state(queen, "is sleeping\n");
+		print_queen_state(queen, IS_BEING_READ);
 		usleep(queen->library->time_to_be_read * 1000);
-		print_queen_state(queen, "is thinking\n");
+		print_queen_state(queen, IS_GAGGING);
 		usleep(500);
 	}
 }
@@ -92,11 +86,11 @@ static void	*paris_is_burning(void *queens_i)
 	if (queen->library->num_of_queens == 1)
 	{
 		pthread_mutex_lock(queen->left_glasses);
-		print_queen_state(queen, "has taken a fork\n");
+		print_queen_state(queen, HAS_TAKEN_GLASSES);
 		pthread_mutex_unlock(queen->left_glasses);
 		return (NULL);
 	}
-	while (ru_is_laughing(queen->library))
+	while (ru_is_laughing(queen))
 		read_the_queens(queen);
 	if (queen->index % 2 == 0)
 		usleep(3000);

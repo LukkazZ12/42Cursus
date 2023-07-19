@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 17:07:24 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/10 21:56:35 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:27:56 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	read_the_house_down(t_library *library)
 	return (0);
 }
 
-int	ru_is_laughing(t_library *library)
+int	ru_is_laughing(t_queens *queen)
 {
 	int	laughing;
 
 	laughing = 1;
-	pthread_mutex_lock(&library->ru_is_judging);
-	if (library->the_library_is_over)
+	pthread_mutex_lock(&queen->library->ru_is_judging);
+	if (queen->library->the_library_is_over)
 		laughing = 0;
-	pthread_mutex_unlock(&library->ru_is_judging);
+	pthread_mutex_unlock(&queen->library->ru_is_judging);
 	return (laughing);
 }
 
@@ -61,7 +61,7 @@ void	print_queen_state(t_queens *queen, char *state)
 	if (!over)
 	{
 		pthread_mutex_lock(&queen->library->print);
-		printf("%lu %i %s", current_time, queen->index, state);
+		printf("%lu %i %s\n", current_time, queen->index, state);
 		pthread_mutex_unlock(&queen->library->print);
 	}
 }

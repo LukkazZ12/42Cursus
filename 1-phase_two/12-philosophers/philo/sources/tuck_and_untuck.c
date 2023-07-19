@@ -6,11 +6,18 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:53:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/10 21:56:30 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:25:50 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "werkroom.h"
+
+void	set_library_is_over(t_queens *queen)
+{
+	pthread_mutex_lock(&queen->library->ru_is_judging);
+	queen->library->the_library_is_over = 1;
+	pthread_mutex_unlock(&queen->library->ru_is_judging);
+}
 
 void	set_time_last_reading(t_queens *queen)
 {

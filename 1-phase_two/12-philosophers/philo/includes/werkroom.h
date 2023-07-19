@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/10 21:56:40 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:27:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # define TIME_TO_BE_READ 4
 # define TIMES_MUST_READ 5
 # define START 6
+# define HAS_TAKEN_GLASSES "has taken a fork"
+# define IS_READING "is eating"
+# define IS_BEING_READ "is sleeping"
+# define IS_GAGGING "is thinking"
+# define SASHAYED_AWAY "died"
 
 typedef struct s_library
 {
@@ -63,7 +68,7 @@ int				hello_hello_hello(int argc, char *argv[]);
 // pit_crew.c functions
 //int				get_value_from_library(t_library *library, int ver);
 int				read_the_house_down(t_library *library);
-int				ru_is_laughing(t_library *library);
+int				ru_is_laughing(t_queens *queen);
 unsigned long	time_now(void);
 void			print_queen_state(t_queens *queen, char *state);
 
@@ -80,6 +85,7 @@ void			the_library_is_officially_closed(t_queens *queens, \
 int				say_something_funny_silky_nutmeg_ganache(void);
 
 // tuck_and_untuck.c functions
+void			set_library_is_over(t_queens *queen);
 void			set_time_last_reading(t_queens *queen);
 unsigned int	get_time_last_reading(t_queens *queen_i);
 void			set_queen_readings(t_queens *queen);
