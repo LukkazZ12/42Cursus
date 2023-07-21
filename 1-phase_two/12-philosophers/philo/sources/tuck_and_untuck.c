@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:53:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/18 21:25:50 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:48:06 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ void	set_library_is_over(t_queens *queen)
 
 void	set_time_last_reading(t_queens *queen)
 {
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
 	pthread_mutex_lock(&queen->library->time_last_reading);
-	queen->time_since_last_reading = time_now() - queen->library->start;
+	queen->time_since_last_reading = time.tv_sec * 1000 + time.tv_usec / 1000 \
+		- queen->library->start;
 	pthread_mutex_unlock(&queen->library->time_last_reading);
 }
 

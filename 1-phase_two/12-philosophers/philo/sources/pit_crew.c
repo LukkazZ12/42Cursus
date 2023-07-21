@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 17:07:24 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/18 21:27:56 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:53:10 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,15 @@ int	ru_is_laughing(t_queens *queen)
 	return (laughing);
 }
 
-unsigned long	time_now(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
 void	print_queen_state(t_queens *queen, char *state)
 {
 	int				over;
 	unsigned long	current_time;
+	struct timeval	time;
 
-	current_time = time_now() - queen->library->start;
+	gettimeofday(&time, NULL);
+	current_time = time.tv_sec * 1000 + time.tv_usec / 1000 \
+		- queen->library->start;
 	pthread_mutex_lock(&queen->library->ru_is_judging);
 	over = queen->library->the_library_is_over;
 	pthread_mutex_unlock(&queen->library->ru_is_judging);

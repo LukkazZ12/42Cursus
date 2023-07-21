@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/18 21:27:11 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:53:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int				hello_hello_hello(int argc, char *argv[]);
 //int				get_value_from_library(t_library *library, int ver);
 int				read_the_house_down(t_library *library);
 int				ru_is_laughing(t_queens *queen);
-unsigned long	time_now(void);
 void			print_queen_state(t_queens *queen, char *state);
 
 // reading_is_fundamental.c functions

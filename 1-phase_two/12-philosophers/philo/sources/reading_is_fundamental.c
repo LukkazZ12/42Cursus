@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:41:41 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/18 21:46:43 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:41:57 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,16 @@ static void	*rupaul_is_judging(void *queens_)
 {
 	int					i;
 	unsigned long		current_time;
+	struct timeval		time;
 	t_queens			*queens;
 
 	queens = (t_queens *)queens_;
 	i = 0;
 	while (1)
 	{
-		current_time = time_now() - queens->library->start;
+		gettimeofday(&time, NULL);
+		current_time = time.tv_sec * 1000 + time.tv_usec / 1000 \
+			- queens->library->start;
 		if (current_time - get_time_last_reading(&queens[i]) > \
 			queens->library->time_to_sashay_away)
 		{
@@ -49,7 +52,7 @@ static void	*rupaul_is_judging(void *queens_)
 			return (NULL);
 		}
 		i = (i + 1) % queens->library->num_of_queens;
-		usleep(1000);
+		usleep(100);
 	}
 	return (NULL);
 }
@@ -93,7 +96,7 @@ static void	*paris_is_burning(void *queens_i)
 	while (ru_is_laughing(queen))
 		read_the_queens(queen);
 	if (queen->index % 2 == 0)
-		usleep(3000);
+		usleep(8000);
 	return (NULL);
 }
 
