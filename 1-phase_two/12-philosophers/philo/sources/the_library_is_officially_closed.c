@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:25:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/11 17:16:50 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:24:32 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@ void	the_library_is_officially_closed(t_queens *queens, t_library *library)
 	{
 		pthread_mutex_destroy(&library->glasses[i]);
 		i++;
-	}	
+	}
+	i = 0;
+	while (i < 76)
+	{
+		free(library->hall_of_fame[i]);
+		i++;
+	}
+	free(library->hall_of_fame);
 	free(library->queens);
 	free(library->glasses);
 	free(library->queens_readings);

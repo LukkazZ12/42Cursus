@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 17:07:24 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/20 17:53:10 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:38:53 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	print_queen_state(t_queens *queen, char *state)
 	if (!over)
 	{
 		pthread_mutex_lock(&queen->library->print);
-		printf("%lu %i %s\n", current_time, queen->index, state);
+		printf("%lu %s %s\n", current_time, \
+			queen->library->hall_of_fame[queen->index - 1], state);
 		pthread_mutex_unlock(&queen->library->print);
 	}
 }

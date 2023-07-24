@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:41:41 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/20 21:41:57 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:46:39 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	*rupaul_is_judging(void *queens_)
 			return (NULL);
 		}
 		i = (i + 1) % queens->library->num_of_queens;
-		usleep(100);
+		usleep(500);
 	}
 	return (NULL);
 }

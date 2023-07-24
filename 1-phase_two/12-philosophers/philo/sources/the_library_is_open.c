@@ -6,11 +6,31 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:19:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/20 17:47:23 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:39:07 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "werkroom.h"
+
+static char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	size_t	length;
+	char	*c;
+
+	length = ft_strlen(s);
+	c = malloc(length + 1);
+	if (c == NULL)
+		return (NULL);
+	i = 0;
+	while (i < length)
+	{
+		c[i] = s[i];
+		i++;
+	}
+	c[i] = '\0';
+	return (c);
+}
 
 static void	get_arround_queens(t_queens **queens, t_library *library)
 {
@@ -54,6 +74,27 @@ static int	silver_tape(t_library *library)
 	return (0);
 }
 
+static void	hall_of_fame(t_library *library)
+{
+	char	*gnl;
+	int		fd;
+	int		i;
+
+	fd = open("hall_of_fame", O_RDONLY);
+	library->hall_of_fame = (char **)malloc(sizeof(char *) * 76);
+	library->hall_of_fame[75] = NULL;
+	i = 0;
+	while (i < 75)
+	{
+		gnl = get_next_line(fd);
+		library->hall_of_fame[i] = ft_strdup(gnl);
+		library->hall_of_fame[i][ft_strlen(library->hall_of_fame[i]) - 1] \
+			= '\0';
+		free(gnl);
+		i++;
+	}
+}
+
 int	the_library_is_open(t_queens **queens, t_library *library, char *argv[])
 {
 	struct timeval	time;
@@ -70,6 +111,7 @@ int	the_library_is_open(t_queens **queens, t_library *library, char *argv[])
 		* library->num_of_queens);
 	gettimeofday(&time, NULL);
 	library->start = time.tv_sec * 1000 + time.tv_usec / 1000;
+	hall_of_fame(library);
 	library->queens = (pthread_t *)malloc(sizeof(pthread_t) \
 		* (library->num_of_queens));
 	library->glasses = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \

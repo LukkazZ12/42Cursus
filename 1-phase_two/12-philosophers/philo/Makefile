@@ -2,9 +2,14 @@ NAME			=		philo
 
 HEADER_PATH		=		includes
 
+GNL_PATH		=		get_next_line
+
 OBJECTS_PATH	=		objects
 
 SOURCES_PATH	=		sources
+
+GNL				=		$(addprefix $(GNL_PATH)/,	get_next_line.c \
+													get_next_line_utils.c)
 
 SOURCES			=		hello_hello_hello.c \
 						pit_crew.c \
@@ -12,7 +17,8 @@ SOURCES			=		hello_hello_hello.c \
 						rupauls_dragrace.c \
 						the_library_is_open.c \
 						the_library_is_officially_closed.c \
-						tuck_and_untuck.c
+						tuck_and_untuck.c \
+						$(GNL)
 
 OBJECTS			=		$(addprefix $(OBJECTS_PATH)/, $(SOURCES:.c=.o))
 
@@ -29,8 +35,9 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
+						@mkdir -p $(OBJECTS_PATH)/$(GNL)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/werkroom.h
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/werkroom.h $(HEADER_PATH)/get_next_line.h
 						@$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:12:56 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/20 17:53:13 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:37:49 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include "get_next_line.h"
 
 # define NUM_OF_QUEENS 1
 # define TIME_TO_SASHAY_AWAY 2
@@ -25,11 +26,11 @@
 # define TIME_TO_BE_READ 4
 # define TIMES_MUST_READ 5
 # define START 6
-# define HAS_TAKEN_GLASSES "has taken a fork"
-# define IS_READING "is eating"
-# define IS_BEING_READ "is sleeping"
-# define IS_GAGGING "is thinking"
-# define SASHAYED_AWAY "died"
+# define HAS_TAKEN_GLASSES "has taken glasses"
+# define IS_READING "is reading the others queens"
+# define IS_BEING_READ "is being read by a queen"
+# define IS_GAGGING "is gagging"
+# define SASHAYED_AWAY "sashayed away"
 
 typedef struct s_library
 {
@@ -41,6 +42,7 @@ typedef struct s_library
 	int					the_library_is_over;
 	int					*queens_readings;
 	unsigned long		start;
+	char				**hall_of_fame;
 	pthread_t			rupaul;
 	pthread_t			*queens;
 	pthread_mutex_t		*glasses;
@@ -66,7 +68,6 @@ unsigned int	ft_atoui(const char *nptr);
 int				hello_hello_hello(int argc, char *argv[]);
 
 // pit_crew.c functions
-//int				get_value_from_library(t_library *library, int ver);
 int				read_the_house_down(t_library *library);
 int				ru_is_laughing(t_queens *queen);
 void			print_queen_state(t_queens *queen, char *state);
