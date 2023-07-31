@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:19:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/07/24 16:39:07 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:05:43 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ static void	hall_of_fame(t_library *library)
 		free(gnl);
 		i++;
 	}
+	close(fd);
 }
 
 int	the_library_is_open(t_queens **queens, t_library *library, char *argv[])
