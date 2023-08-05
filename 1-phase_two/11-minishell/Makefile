@@ -135,7 +135,7 @@ RM				=		rm -rf
 all:					$(LIBFT) $(NAME)
 
 $(LIBFT):
-						@make -C $(LIBFT_PATH)
+						@make -C $(LIBFT_PATH) --no-print-directory
 
 $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 						@$(CC) $(C_FLAGS) $(OBJECTS) $(LIBFT_FLAGS) -o $@ -lreadline
@@ -173,11 +173,11 @@ $(OBJECTS_B_PATH)/%.o:	$(SOURCES_B_PATH)/%.c $(HEADER_B_PATH)/minishell_bonus.h
 
 clean:
 						@$(RM) $(OBJECTS_PATH) $(OBJECTS_B_PATH)
-						@make -C $(LIBFT_PATH) clean
+						@make -C $(LIBFT_PATH) clean --no-print-directory
 
 fclean:					clean
 						@$(RM) $(NAME) $(NAME_B)
-						@make -C $(LIBFT_PATH) fclean
+						@make -C $(LIBFT_PATH) fclean --no-print-directory
 
 re:						fclean all
 
