@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:27:18 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/06/17 14:01:16 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:41:03 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_ctrl_d(char *prompt)
 		printf("\n");
 		free(g_ms.pipe_fd);
 		free(g_ms.pid);
-		free_ptrptr(g_ms.env);
+		free_ptrptr(&g_ms.env);
 		free(g_ms.home);
 		rl_clear_history();
 		exit (0);

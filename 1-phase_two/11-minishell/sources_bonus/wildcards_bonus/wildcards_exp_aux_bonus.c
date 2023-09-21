@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:04:19 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/13 19:38:00 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:41:10 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,5 @@ void	aux_get_wildcards(char *token_i, t_list *files)
 		try_find_split(token_i, split_wc, aux_files, show_hidden_files);
 		aux_files = aux_files->next;
 	}
-	free_ptrptr(split_wc);
+	free_ptrptr(&split_wc);
 }

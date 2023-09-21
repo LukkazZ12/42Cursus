@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 18:12:43 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/16 16:55:36 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:40:31 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	dup_env(void)
 	char	**aux;
 
 	aux = copy_env();
-	free_ptrptr(g_ms.env);
+	free_ptrptr(&g_ms.env);
 	g_ms.env_nbr_ptr++;
 	g_ms.env = (char **)
 		ft_calloc(g_ms.env_nbr_ptr + 1, sizeof(char *));
@@ -43,7 +43,7 @@ int	dup_env(void)
 		g_ms.env[i] = ft_strdup(aux[i]);
 		i++;
 	}
-	free_ptrptr(aux);
+	free_ptrptr(&aux);
 	return (i);
 }
 

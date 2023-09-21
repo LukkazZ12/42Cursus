@@ -160,7 +160,7 @@ $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADER_PATH)/minishell.h
 bonus:					$(LIBFT) $(OBJECTS_PATH) $(NAME_B)
 
 $(NAME_B):				$(OBJECTS_B_PATH) $(OBJECTS_B)
-						@$(CC) $(C_FLAGS) $(OBJECT_B) $(LIBFT_FLAGS) -o $@ -lreadline
+						@$(CC) $(C_FLAGS) $(OBJECTS_B) $(LIBFT_FLAGS) -o $@ -lreadline
 
 $(OBJECTS_B_PATH):
 						@mkdir -p $(OBJECTS_B_PATH) \
@@ -170,6 +170,18 @@ $(OBJECTS_B_PATH):
 
 $(OBJECTS_B_PATH)/%.o:	$(SOURCES_B_PATH)/%.c $(HEADER_B_PATH)/minishell_bonus.h
 						@$(CC) $(C_FLAGS) -c $< -o $@
+
+v:						all
+						@valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes \
+						--suppressions=ignorelibs.txt --track-fds=yes --track-origins=yes \
+						--trace-children-skip='*/bin/*,*/sbin/*' \
+						./minishell
+
+v_bonus:				bonus
+						@valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes \
+						--suppressions=ignorelibs.txt --track-fds=yes --track-origins=yes \
+						--trace-children-skip='*/bin/*,*/sbin/*' \
+						./minishell_bonus
 
 clean:
 						@$(RM) $(OBJECTS_PATH) $(OBJECTS_B_PATH)

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 20:14:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/15 23:14:34 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:41:43 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,14 @@ void	heredoc(t_token *token, int i)
 void	redirect_heredoc(t_token *token_list)
 {
 	int		i;
-	int		ver;
 	t_token	*aux;
 
 	aux = token_list;
 	g_ms.token_list = token_list;
 	while (aux)
 	{
-		ver = 0;
 		i = 0;
-		while (aux->token[i] && !ver)
+		while (aux->token[i])
 		{
 			if (aux->token[i][0] == '<'
 				&& aux->token[i][1] == '<' && !aux->token[i][2])

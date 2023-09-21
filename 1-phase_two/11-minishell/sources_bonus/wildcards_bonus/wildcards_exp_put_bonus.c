@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:07:02 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/13 21:54:32 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:41:15 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	remalloc(t_token *token, t_list *wildcards)
 		aux_wildcards = aux_wildcards->next;
 	}
 	j += l;
-	free_ptrptr(token->token);
+	free_ptrptr(&token->token);
 	token->token = (char **)ft_calloc(j + 1, sizeof(char *));
 	return (l);
 }
@@ -105,5 +105,5 @@ void	put_wildcards(t_token *token, int *i,
 		j++;
 	}
 	free_list(&wildcards);
-	free_ptrptr(cp_token);
+	free_ptrptr(&cp_token);
 }

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 19:06:19 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/17 15:01:03 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:40:22 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	print_error(char *str1, char *str2, char *str3, int exit_status);
 void	print_error_heredoc(char *prompt, char *dlmt);
 
 // free_utils.c functions
-void	free_ptrptr(char **ptrptr);
+void	free_ptrptr(char ***ptrptr);
 void	free_token_list(t_token **token_list);
 
 // execution folder

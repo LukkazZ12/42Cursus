@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 22:02:24 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/16 19:26:21 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:41:01 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	set_pathname(t_token *token)
 		get_paths();
 		find_pathname(token);
 		if (g_ms.paths)
-			free_ptrptr(g_ms.paths);
+			free_ptrptr(&g_ms.paths);
 	}
 }
