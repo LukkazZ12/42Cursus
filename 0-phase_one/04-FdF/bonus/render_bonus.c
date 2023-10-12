@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:46:36 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/03/27 11:46:36 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:08:20 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 static void	copy(t_data *data, t_data my_data)
 {
+	data->z_scale = my_data.z_scale;
+	data->hor = my_data.hor;
+	data->vert = my_data.vert;
+	data->scale = my_data.scale;
+	data->zoom = my_data.zoom;
+	data->angle = my_data.angle;
 	data->aux_rows = 0;
 	data->aux_cols = 0;
 	while (data->aux_rows < data->rows)
@@ -43,6 +49,26 @@ static void	draw(t_data *data)
 	draw_lines(data);
 }
 
+static void	apply_scale(t_data *data)
+{
+	data->scale = data->zoom * WIN_HEIGHT / hypot(data->rows, data->cols);
+	data->aux_rows = 0;
+	data->aux_cols = 0;
+	while (data->aux_rows < data->rows)
+	{
+		while (data->aux_cols < data->cols)
+		{
+			data->map[data->aux_rows][data->aux_cols].y
+				= data->aux_rows * data->scale;
+			data->map[data->aux_rows][data->aux_cols].x
+				= data->aux_cols * data->scale;
+			data->aux_cols++;
+		}
+		data->aux_cols = 0;
+		data->aux_rows++;
+	}
+}
+
 int	mlx_render_frame(t_data *my_data)
 {
 	t_data	*data;
@@ -58,9 +84,7 @@ int	mlx_render_frame(t_data *my_data)
 	data->win_ptr = my_data->win_ptr;
 	data->rows = my_data->rows;
 	data->cols = my_data->cols;
-	data->z_scale = my_data->z_scale;
-	data->hor = my_data->hor;
-	data->vert = my_data->vert;
+	apply_scale(my_data);
 	malloc_map(data);
 	copy(data, *my_data);
 	draw(data);
@@ -87,6 +111,14 @@ int	fdf_keys(int keycode, t_data *data)
 		data->vert += 5;
 	else if (keycode == KEY_LEFT && data->vert > -MAX_VERT)
 		data->vert -= 5;
+	else if (keycode == KEY_A_ZOOM_IN && data->zoom > 0.1)
+		data->zoom -= 0.1;
+	else if (keycode == KEY_D_ZOOM_OUT && data->zoom < MAX_ZOOM)
+		data->zoom += 0.1;
+	else if (keycode == KEY_F_ROT)
+		data->angle += 0.1;
+	else if (keycode == KEY_G_ROT)
+		data->angle -= 0.1;
 	mlx_render_frame(data);
 	return (0);
 }

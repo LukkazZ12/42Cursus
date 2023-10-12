@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:46:36 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/03/27 11:46:36 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:02:08 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	matrix(t_data *data)
 {
 	double	alpha;
 
-	alpha = atan(M_SQRT2);
+	alpha = atan(M_SQRT2 + data->angle);
 	data->sin_a = sin(alpha);
 	data->cos_a = cos(alpha);
 	data->sin_b = sin(M_PI_4);
@@ -37,9 +37,9 @@ static void	centralize(t_data *data)
 		while (data->aux_cols < data->cols)
 		{
 			data->map[data->aux_rows][data->aux_cols].x += (WIN_WIDTH
-					- center[0]) / 2 + data->vert;
+					- center[0]) / 2 - data->vert;
 			data->map[data->aux_rows][data->aux_cols].y += (WIN_HEIGHT
-					- center[1]) / 2 + data->hor;
+					- center[1]) / 2 - data->hor;
 			data->aux_cols++;
 		}
 		data->aux_cols = 0;
@@ -63,7 +63,8 @@ static void	transformation(t_data *data)
 				* data->x - data->sin_b * data->y;
 			data->map[data->aux_rows][data->aux_cols].y = data->cos_a
 				* data->sin_b * data->x + data->cos_a
-				* data->cos_b * data->y - data->sin_a * data->z * data->z_scale;
+				* data->cos_b * data->y - data->sin_a * data->z
+				* data->z_scale * data->zoom;
 			data->aux_cols++;
 		}
 		data->aux_cols = 0;

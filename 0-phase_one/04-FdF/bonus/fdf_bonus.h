@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:46:36 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/03/27 11:46:36 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:05:59 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,18 @@
 # define KEY_ESCAPE 65307
 # define KEY_W_UP 119
 # define KEY_S_DOWN 115
+# define KEY_A_ZOOM_IN 97
+# define KEY_D_ZOOM_OUT 100
+# define KEY_F_ROT 102
+# define KEY_G_ROT 103
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define MAX_Z 20
-# define MAX_HOR 150
-# define MAX_VERT 400
+# define MAX_HOR 300
+# define MAX_VERT 800
+# define MAX_ZOOM 10
 
 typedef struct s_point {
 	double	x;
@@ -71,6 +76,8 @@ typedef struct s_data {
 	double	z_scale;
 	double	hor;
 	double	vert;
+	double	zoom;
+	double	angle;
 	char	**z_color;
 	int		er;
 }			t_data;

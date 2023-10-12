@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:46:36 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/03/27 11:46:36 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:03:03 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	init_map(t_data *data)
 	data->z_scale = 1;
 	data->hor = 0;
 	data->vert = 0;
+	data->zoom = 1;
+	data->angle = 0;
 	data->er = 0;
 }
 
