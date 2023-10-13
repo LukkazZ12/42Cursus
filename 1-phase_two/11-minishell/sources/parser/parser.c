@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:57:10 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/05/31 19:24:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:28:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ void	parser(t_token *token_list)
 		redirect_heredoc(token_list);
 		remove_quotes(token_list);
 		redirect_in_out(token_list);
+		change_metachar_back(token_list);
 	}
 }

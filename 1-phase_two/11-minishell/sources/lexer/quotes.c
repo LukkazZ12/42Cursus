@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 20:04:09 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/06/07 19:48:51 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:31:49 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,31 @@ void	find_metachar(char *prompt)
 	}
 }
 
-void	change_metachar_back(char *prompt)
+void	change_metachar_back(t_token *token_list)
 {
-	int	i;
+	int		i;
+	int		j;
+	t_token	*aux;
 
-	i = 0;
-	while (prompt[i])
+	aux = token_list;
+	while (aux)
 	{
-		if (prompt[i] == PIPE_QUOTES)
-			prompt[i] = '|';
-		else if (prompt[i] == L_RDCT_QUOTES)
-			prompt[i] = '<';
-		else if (prompt[i] == R_RDCT_QUOTES)
-			prompt[i] = '>';
-		i++;
+		i = 0;
+		while (aux->token[i])
+		{
+			j = 0;
+			while (aux->token[i][j])
+			{
+				if (aux->token[i][j] == PIPE_QUOTES)
+					aux->token[i][j] = '|';
+				else if (aux->token[i][j] == L_RDCT_QUOTES)
+					aux->token[i][j] = '<';
+				else if (aux->token[i][j] == R_RDCT_QUOTES)
+					aux->token[i][j] = '>';
+				j++;
+			}
+			i++;
+		}
+		aux = aux->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:27:18 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/09/21 17:41:03 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:12:36 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,4 @@ void	lexer(char **prompt)
 	create_spaces(prompt);
 	mark_pipe_spaces(*prompt);
 	mark_token_spaces(*prompt);
-	change_metachar_back(*prompt);
 }
