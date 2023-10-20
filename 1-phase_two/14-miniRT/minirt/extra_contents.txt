@@ -1,0 +1,3 @@
+Errata: https://pragprog.com/cms/errata/jbtracer-errata/
+Forum: https://forum.raytracerchallenge.com/
+Bonus: http://raytracerchallenge.com/bonus/texture-mapping.html
