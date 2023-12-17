@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 17:12:32 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/09/21 17:40:56 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:46:42 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	free_token_list(t_token **token_list)
 		free(*token_list);
 		(*token_list) = aux;
 	}
-	if (g_ms.on_fork != 2)
+	if (g_ms.on_fork != HEREDOC)
 		unlink(".h*e*r*e*d*o*c*");
 }

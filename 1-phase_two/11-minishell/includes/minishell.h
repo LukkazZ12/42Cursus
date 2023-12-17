@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 19:06:19 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/10/13 17:30:48 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:45:36 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@
 # define RED_OUT_TRUNC 1
 # define RED_OUT_APPEND 2
 # define RED_IN 3
+# define PARENT 0
+# define CHILD 1
+# define HEREDOC 2
 
 typedef struct s_ms
 {

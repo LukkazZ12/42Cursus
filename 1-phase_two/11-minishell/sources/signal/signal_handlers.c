@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 19:40:21 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/06/16 17:28:02 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:46:47 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	handler_child(int signal)
 {
 	if (signal == SIGINT)
 	{
-		if (g_ms.on_fork != 2)
+		if (g_ms.on_fork != HEREDOC)
 			ft_putstr_fd("\n", 1);
 		rl_replace_line("", 0);
 		g_ms.exit_status = 130;
@@ -55,7 +55,7 @@ void	signal_handler_parent(void)
 void	signal_handler_child(void)
 {
 	signal(SIGINT, handler_child);
-	if (g_ms.on_fork == 1)
+	if (g_ms.on_fork == CHILD)
 	{
 		signal(SIGQUIT, handler_child);
 		signal(SIGPIPE, handler_child);

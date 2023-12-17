@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 20:14:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/09/21 17:41:43 by lucade-s         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:46:25 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	heredoc(t_token *token, int i)
 	if (g_ms.fd_heredoc)
 		close(g_ms.fd_heredoc);
 	g_ms.fd_heredoc = open(".h*e*r*e*d*o*c*", O_RDWR | O_CREAT | O_TRUNC, 0644);
-	g_ms.on_fork = 2;
+	g_ms.on_fork = HEREDOC;
 	signal_handler_child();
 	pid = fork();
 	if (!pid)
@@ -125,7 +125,7 @@ void	redirect_heredoc(t_token *token_list)
 				if (g_ms.first_heredoc)
 					g_ms.exit_status = 0;
 				heredoc(aux, i);
-				g_ms.on_fork = 0;
+				g_ms.on_fork = PARENT;
 				signal_handler_parent();
 			}
 			i++;
