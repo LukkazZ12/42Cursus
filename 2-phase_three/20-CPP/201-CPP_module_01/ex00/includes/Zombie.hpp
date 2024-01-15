@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 16:01:34 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/15 17:50:52 by lucade-s         ###   ########.fr       */
+/*   Created: 2024/01/15 16:08:26 by lucade-s          #+#    #+#             */
+/*   Updated: 2024/01/15 18:00:46 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 # include <iostream>
-# include <sstream>
-# include <iomanip>
-# include "Contact.hpp"
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -27,19 +24,18 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-class	PhoneBook
+class	Zombie
 {
 	private:
-		Contact	contacts[8];
-		int		number_of_contacts;
-		int		index;
+		std::string	name;
 	public:
-		PhoneBook();
-		~PhoneBook();
-		void	add(void);
-		void	search(void);
-		void	print_info(Contact contact, int index);
-		void	print_contact(Contact contact);
+		Zombie(std::string zombieName);
+		Zombie(void);
+		~Zombie(void);
+		void	announce(void);
 };
+
+Zombie*	newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif
