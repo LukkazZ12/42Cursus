@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:26:33 by lucade-s          #+#    #+#             */
-/*   Updated: 2023/11/03 19:41:17 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:06:04 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int	main(void)
 			std::cout << CLEAR_WINDOW << RED <<
 			"\n--------------------------------------\n"
 			"Your phone book has been lost forever!\n"
-	 		"--------------------------------------\n\n";
-			return(0);
+	 		"--------------------------------------\n\n" << RESET;
+			return (0);
 		}
 		else
 			std::cout << CLEAR_WINDOW << RED <<
 				"\nInvalid command. Try again.\n\n" << RESET;
 	}
-	return(0);
+	return (0);
 }
