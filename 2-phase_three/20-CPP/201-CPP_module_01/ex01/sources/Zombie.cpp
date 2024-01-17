@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:06:31 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/17 17:13:40 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:56:45 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Zombie::~Zombie(void)
 
 void	Zombie::announce(void)
 {
-	std::cout << GREEN << std::endl << this->name << RESET
+	std::cout << std::endl << GREEN << this->name << RESET
 		<< ":  BraiiiiiiinnnzzzZ...\n";
 }
 
