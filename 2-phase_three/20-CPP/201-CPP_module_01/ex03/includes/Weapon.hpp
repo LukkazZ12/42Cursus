@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 21:07:55 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/15 21:43:57 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:31:01 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class	Weapon
 		Weapon(std::string weaponType);
 		Weapon(void);
 		~Weapon(void);
-		const std::string	getType(void);
+		const std::string	&getType(void);
 		void				setType(std::string weaponType);
 };
 

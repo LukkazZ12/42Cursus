@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 21:27:51 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/16 18:24:44 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:23:22 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Harl::complain(std::string level)
 			break ;
 		default:
 			std::cout << CYAN
-				<< "[ Probably complaining about insignificant problems ]\n" << RESET;
+				<< "[ Probably complaining about insignificant problems ]\n\n" << RESET;
 			break ;
 	}
 	return ;

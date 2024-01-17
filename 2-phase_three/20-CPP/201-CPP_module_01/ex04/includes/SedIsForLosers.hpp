@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   SedIsForLosers.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 21:19:48 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/17 17:21:39 by lucade-s         ###   ########.fr       */
+/*   Created: 2024/01/17 16:19:00 by lucade-s          #+#    #+#             */
+/*   Updated: 2024/01/17 19:26:19 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef SEDISFORLOSERS_HPP
+# define SEDISFORLOSERS_HPP
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+#include <cstdlib>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -24,18 +28,18 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-class	Harl
+class	SedIsForLosers
 {
 	private:
-		std::pair<std::string, void (Harl::*)(void)> level[4];
-		void	debug(void);
-		void	info(void);
-		void	warning(void);
-		void	error(void);
+		char			*s1;
+		char			*s2;
+		std::ifstream	inputFile;
+		std::ofstream	outputFile;
 	public:
-		Harl(void);
-		~Harl(void);
-		void	complain(std::string level);
+		SedIsForLosers(void);
+		SedIsForLosers(char **argv);
+		~SedIsForLosers(void);
+		void			replaceString(void);
 };
 
 #endif

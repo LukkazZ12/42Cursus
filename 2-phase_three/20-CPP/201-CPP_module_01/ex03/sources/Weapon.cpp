@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 21:07:16 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/15 21:47:17 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:31:07 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Weapon::~Weapon(void)
 	return ;
 }
 
-const std::string	Weapon::getType(void)
+const std::string	&Weapon::getType(void)
 {
 	return (this->type);
 }

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:08:26 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/15 18:00:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:25:37 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	Zombie
 		void	announce(void);
 };
 
-Zombie*	newZombie(std::string name);
+Zombie	*newZombie(std::string name);
 void	randomChump(std::string name);
 
 #endif

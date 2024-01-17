@@ -1,14 +1,17 @@
 NAME					=	sedIsForLosers
 
+HEADER_PATH				=	includes
+
 SOURCES_PATH			=	sources
 
 OBJECTS_PATH			=	objects
 
-FLAGS					=	-Wall -Wextra -Werror -std=c++98
+FLAGS					=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER_PATH)
 
 CPP						=	c++
 
-SOURCES					=	main.cpp
+SOURCES					=	main.cpp \
+							SedIsForLosers.cpp
 
 OBJECTS					=	$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.cpp=.o))
 
@@ -23,7 +26,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/SedIsForLosers.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
