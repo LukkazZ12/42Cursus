@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:18:45 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/19 16:17:29 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:53:51 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	Fixed beta = ((y3 - y1) * (x - x3) + (x1 - x3) * (y - y3)) / detT;
 	Fixed gamma = Fixed(1) - alpha - beta;
 
-	return alpha > Fixed(0) && beta > Fixed(0) && gamma > Fixed(0);
+	return (alpha > Fixed(0) && beta > Fixed(0) && gamma > Fixed(0));
 }
 
 void	message(Point const a, Point const b, Point const c, Point const point, bool is)
