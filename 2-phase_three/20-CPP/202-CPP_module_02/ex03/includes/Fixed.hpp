@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/19 18:42:29 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:55:34 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <sstream>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:48:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/18 20:04:06 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:44:05 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int	Fixed::toInt(void) const
 	return (this->value >> this->fractionalBits);
 }
 
-std::ostream	&operator<<(std::ostream &lhs, const Fixed &f)
+std::ostream	&operator<<(std::ostream &lhs, const Fixed &fixed)
 {
-	lhs << f.toFloat();
+	lhs << fixed.toFloat();
 	return (lhs);
 }

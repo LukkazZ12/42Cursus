@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/18 19:12:47 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:42:15 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ class Fixed
 		int					toInt(void) const;
 };
 
-std::ostream &operator<<(std::ostream &lhs, const Fixed &f);
+std::ostream &operator<<(std::ostream &lhs, const Fixed &fixed);
 
 #endif
