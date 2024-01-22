@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 21:40:16 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/17 20:56:45 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:34:20 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ HumanB::~HumanB(void)
 
 void	HumanB::attack(void)
 {
+	if (this->weaponB == NULL)
+	{
+		std::cout << std::endl << GREEN << this->name << RESET
+			<< " attacks without a weapon.\n";
+		return ;
+	}
 	std::cout << std::endl << GREEN << this->name << RESET
 		<< " attacks with their " << GREEN << this->weaponB->getType() << ".\n" << RESET;
 }
