@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:48:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/23 19:28:47 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:28:20 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ unsigned int	ClapTrap::getAttackDamage(void) const
 void	ClapTrap::attack(const std::string &target)
 {
 	if (!this->hitPoints)
-		std::cout << this->type << " " << GREEN << this->name << RESET
+		std::cout << "ClapTrap " << GREEN << this->name << RESET
 			<< " is dead and can't attack.\n";
 	else if (!this->energyPoints)
-		std::cout << this->type << " " << GREEN << this->name << RESET
+		std::cout << "ClapTrap " << GREEN << this->name << RESET
 			<< " has no energy points to attack.\n";
 	else
 	{
 		this->energyPoints--;
-		std::cout << this->type << " " << GREEN << this->name << RESET
+		std::cout << "ClapTrap " << GREEN << this->name << RESET
 			<< " attacks " << GREEN << target << RESET
 			<< ", causing " << RED << this->attackDamage << RESET;
 		if (this->attackDamage <= 1)
