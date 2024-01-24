@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:19:31 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 16:29:08 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:05:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ class Brain
 		Brain(const Brain &brain);
 		Brain &operator=(const Brain &brain);
 		~Brain(void);
+		std::string	getIdea(int i) const;
+		void		setIdea(std::string idea, int i);
 };
 
 #endif

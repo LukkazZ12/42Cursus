@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 17:01:17 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:20:01 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Dog::Dog(void) : Animal()
 	return ;
 }
 
-Dog::Dog(const Dog &dog)
+Dog::Dog(const Dog &dog) : brain(new Brain(*dog.brain))
 {
 	std::cout << RED <<
 		"Dog copy constructor called.\n" << RESET;
@@ -50,4 +50,14 @@ void	Dog::makeSound(void) const
 {
 	std::cout << RED << "Woof-woof!\n" << RESET;
 	return ;
+}
+
+std::string	Dog::getBrainIdea(int i) const
+{
+	return (this->brain->getIdea(i));
+}
+
+void	Dog::setBrainIdea(std::string idea, int i)
+{
+	this->brain->setIdea(idea, i);
 }

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 16:41:54 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:20:19 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Dog : public Animal
 		Dog &operator=(const Dog &dog);
 		~Dog(void);
 		void	makeSound(void) const;
+		std::string	getBrainIdea(int i) const;
+		void		setBrainIdea(std::string idea, int i);
 };
 
 #endif

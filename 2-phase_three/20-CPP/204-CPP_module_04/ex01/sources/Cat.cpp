@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 17:01:38 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:15:25 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Cat::Cat()
 	return ;
 }
 
-Cat::Cat(const Cat &cat)
+Cat::Cat(const Cat &cat) : brain(new Brain(*cat.brain))
 {
 	std::cout << GREEN <<
 		"Cat copy constructor called.\n" << RESET;
@@ -50,4 +50,14 @@ void	Cat::makeSound(void) const
 {
 	std::cout << GREEN << "Meow!\n" << RESET;
 	return ;
+}
+
+std::string	Cat::getBrainIdea(int i) const
+{
+	return (this->brain->getIdea(i));
+}
+
+void	Cat::setBrainIdea(std::string idea, int i)
+{
+	this->brain->setIdea(idea, i);
 }

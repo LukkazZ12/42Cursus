@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 16:28:23 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:47:00 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Brain	&Brain::operator=(const Brain &brain)
 	if (this != &brain)
 	{
 		for (int i = 0; i < 100; i++)
-			this->ideas[i] = brain.ideas[i];
+			this->ideas[i] = brain.getIdea(i);
 	}
 	return (*this);
 }
@@ -43,5 +43,16 @@ Brain::~Brain(void)
 {
 	std::cout << YELLOW <<
 		"Brain destructor called.\n" << RESET;
+	return ;
+}
+
+std::string	Brain::getIdea(int i) const
+{
+	return (this->ideas[i]);
+}
+
+void	Brain::setIdea(std::string idea, int i)
+{
+	this->ideas[i] = idea;
 	return ;
 }
