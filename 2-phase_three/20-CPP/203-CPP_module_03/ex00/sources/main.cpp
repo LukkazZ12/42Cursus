@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/22 15:33:19 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:08:46 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int	main(void)
 {
-	ClapTrap	a("A");
-	ClapTrap	b("B");
+	ClapTrap	clap("Clap");
+	ClapTrap	trap("Trap");
+	ClapTrap	trapCopy(trap);
+	ClapTrap	nameless;
 
-	a.getStatus();
-	b.getStatus();
-	
-	a.attack("B");
-	b.takeDamage(a.getAttackDamage());
-	b.beRepaired(1);
-
-	a.getStatus();
-	b.getStatus();
+	clap.getStatus();
+	trap.getStatus();
+	trapCopy.getStatus();
+	nameless.getStatus();
+	nameless = trap;
+	clap.attack(nameless.getName());
+	clap.getStatus();
+	nameless.takeDamage(clap.getAttackDamage());
+	nameless.beRepaired(1);
+	nameless.getStatus();
 }

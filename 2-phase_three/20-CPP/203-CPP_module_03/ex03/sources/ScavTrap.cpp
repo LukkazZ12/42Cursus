@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:31:50 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/23 16:54:33 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:13:22 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	this->type = "ScavTrap";
-	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackDamage = 20;
+	this->hitPoints = this->HIT_POINTS;
+	this->energyPoints = this->ENERGY_POINTS;
+	this->attackDamage = this->ATTACK_DAMAGE;
 	std::cout << YELLOW
 		<< "ScavTrap default constructor called.\n" << RESET;
 	return ;
@@ -26,9 +26,9 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 {
 	this->type = "ScavTrap";
-	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackDamage = 20;
+	this->hitPoints = this->HIT_POINTS;
+	this->energyPoints = this->ENERGY_POINTS;
+	this->attackDamage = this->ATTACK_DAMAGE;
 	std::cout << YELLOW <<
 		"ScavTrap constructor called.\n" << RESET;
 	return ;

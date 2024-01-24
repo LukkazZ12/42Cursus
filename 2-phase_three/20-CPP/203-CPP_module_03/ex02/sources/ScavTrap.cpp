@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:31:50 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/22 16:55:08 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:56:21 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
+	this->type = "ScavTrap";
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
@@ -24,6 +25,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 {
+	this->type = "ScavTrap";
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
@@ -46,6 +48,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap)
 	if (this != &scavTrap)
 	{
 		this->name = scavTrap.getName();
+		this->type = scavTrap.getType();
 		this->hitPoints = scavTrap.getHitPoints();
 		this->energyPoints = scavTrap.getEnergyPoints();
 		this->attackDamage = scavTrap.getAttackDamage();
@@ -62,7 +65,7 @@ ScavTrap::~ScavTrap(void)
 
 void ScavTrap::guardGate(void)
 {
-	std::cout << YELLOW
+	std::cout << CYAN
 		<< "ScavTrap " << this->name << " is now in Gatekeeper mode.\n" << RESET;
 	return ;
 }

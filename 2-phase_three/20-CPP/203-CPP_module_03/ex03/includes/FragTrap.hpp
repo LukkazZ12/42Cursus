@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:31:37 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/23 19:27:33 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:28:02 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : public virtual ClapTrap
 {
+	protected:
+		const static int	HIT_POINTS = 100;
+		const static int	ENERGY_POINTS = 100;
+		const static int	ATTACK_DAMAGE = 30;
 	public:
 		FragTrap(void);
 		FragTrap(const std::string name);

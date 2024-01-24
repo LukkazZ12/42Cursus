@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:48:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/22 16:34:53 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:28:47 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ClapTrap::ClapTrap(void)
 {
 	this->name = "What's my name?";
+	this->type = "ClapTrap";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
@@ -26,6 +27,7 @@ ClapTrap::ClapTrap(void)
 ClapTrap::ClapTrap(const std::string name)
 {
 	this->name = name;
+	this->type = "ClapTrap";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
@@ -49,6 +51,7 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &clapTrap)
 	if (this != &clapTrap)
 	{
 		this->name = clapTrap.getName();
+		this->type = clapTrap.getType();
 		this->hitPoints = clapTrap.getHitPoints();
 		this->energyPoints = clapTrap.getEnergyPoints();
 		this->attackDamage = clapTrap.getAttackDamage();
@@ -66,6 +69,11 @@ ClapTrap::~ClapTrap(void)
 std::string	ClapTrap::getName(void) const
 {
 	return (this->name);
+}
+
+std::string	ClapTrap::getType(void) const
+{
+	return (this->type);
 }
 
 unsigned int	ClapTrap::getHitPoints(void) const
@@ -86,15 +94,15 @@ unsigned int	ClapTrap::getAttackDamage(void) const
 void	ClapTrap::attack(const std::string &target)
 {
 	if (!this->hitPoints)
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " is dead and can't attack.\n";
 	else if (!this->energyPoints)
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " has no energy points to attack.\n";
 	else
 	{
 		this->energyPoints--;
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " attacks " << GREEN << target << RESET
 			<< ", causing " << RED << this->attackDamage << RESET;
 		if (this->attackDamage <= 1)
@@ -108,22 +116,22 @@ void	ClapTrap::attack(const std::string &target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (!this->hitPoints)
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
-			<< " is dead already.\n";
-	else if (this->hitPoints < amount)
+		std::cout << this->type << " " << GREEN << this->name << RESET
+			<< " is already dead.\n";
+	else if (this->hitPoints <= amount)
 	{
-		this->hitPoints = 0;
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " took " << RED << this->hitPoints << RESET;
 		if (this->hitPoints <= 1)
 			std::cout << " point of damage and died.\n";
 		else
 			std::cout << " points of damage and died.\n";
+		this->hitPoints = 0;
 	}
 	else
 	{
 		this->hitPoints -= amount;
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " took " << RED << amount << RESET
 			<< " points of damage.\n";
 	}
@@ -133,16 +141,16 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!this->hitPoints)
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " is dead and can't be repaired.\n";
 	else if (this->energyPoints == 0)
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " has no energy points to repair yourself.\n";
 	else
 	{
 		this->hitPoints += amount;
 		this->energyPoints--;
-		std::cout << "ClapTrap " << GREEN << this->name << RESET
+		std::cout << this->type << " " << GREEN << this->name << RESET
 			<< " was repaired, getting " << BLUE << amount << RESET
 			<< " hit points back.\n";
 	}
@@ -151,7 +159,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void	ClapTrap::getStatus(void)
 {
-	std::cout << "ClapTrap " GREEN << this->name << RESET << " status:\n"
+	std::cout << this->type << " " << GREEN << this->name << RESET << " status:\n"
 		<< "Hit points: " << this->hitPoints << std::endl
 		<< "Energy points: " << this->energyPoints << std::endl
 		<< "Attack damage: " << this->attackDamage << std::endl << std::endl;

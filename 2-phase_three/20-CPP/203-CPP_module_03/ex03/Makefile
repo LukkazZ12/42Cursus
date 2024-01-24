@@ -1,4 +1,4 @@
-NAME					=	BSP
+NAME					=	clapTrap
 
 HEADER_PATH				=	includes
 
@@ -10,10 +10,11 @@ FLAGS					=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER_PATH)
 
 CPP						=	c++
 
-SOURCES					=	bsp.cpp \
-							Fixed.cpp \
+SOURCES					=	ClapTrap.cpp \
+							DiamondTrap.cpp \
+							FragTrap.cpp \
 							main.cpp \
-							Point.cpp
+							ScavTrap.cpp
 
 OBJECTS					=	$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.cpp=.o))
 
@@ -28,7 +29,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/Fixed.hpp $(HEADER_PATH)/Point.hpp
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/ClapTrap.hpp $(HEADER_PATH)/DiamondTrap.hpp $(HEADER_PATH)/FragTrap.hpp $(HEADER_PATH)/ScavTrap.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
