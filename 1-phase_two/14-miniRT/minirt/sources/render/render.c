@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:28:08 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/10/03 17:36:55 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:43:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ static void	calculate_pixel_size(t_rt *rt)
 
 static void	draw(t_rt *rt)
 {
-	int				i;
-	int				j;
-	t_ray			ray;
+	int		i;
+	int		j;
+	t_ray	ray;
 
 	j = -1;
 	while (++j < HEIGHT)
