@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 15:12:28 by lucade-s         ###   ########.fr       */
+/*   Created: 2024/01/24 16:19:31 by lucade-s          #+#    #+#             */
+/*   Updated: 2024/01/24 18:05:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include <iostream>
 
@@ -24,17 +24,17 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-class WrongAnimal
+class Brain
 {
-	protected:
-		std::string	type;
+	private:
+		std::string	ideas[100];
 	public:
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &wrongAnimal);
-		WrongAnimal &operator=(const WrongAnimal &wrongAnimal);
-		virtual ~WrongAnimal(void);
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		Brain(void);
+		Brain(const Brain &brain);
+		Brain &operator=(const Brain &brain);
+		~Brain(void);
+		std::string	getIdea(int i) const;
+		void		setIdea(std::string idea, int i);
 };
 
 #endif

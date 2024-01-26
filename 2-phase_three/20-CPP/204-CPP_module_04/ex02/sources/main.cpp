@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/25 20:03:21 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:58:01 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int	main(void)
 {
-	const Animal	*MrLonely[10];
+	// const AAnimal	aanimal;
+	const AAnimal	*MrLonely[10];
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -52,13 +53,21 @@ int	main(void)
 		Tom.setBrainIdea("I don't want Whiskas anymore!", i);
 
 	Cat	MandaChuva(Tom);
-
 	std::cout << "Manda Chuva type: " << BLUE
 		<< MandaChuva.getType() << RESET << std::endl;
 	for (int i = 0; i < 100; i++)
-	{
 		std::cout << MandaChuva.getBrainIdea(i) << std::endl;
-		std::cout << cat.getBrainIdea(i) << std::endl;
-	}
+
+	const AAnimal	*Garfield = new Cat();
+	const AAnimal	*dog = new Dog();
+
+	std::cout << "Garfield type: " << GREEN << Garfield->getType() << RESET << std::endl;
+	std::cout << "dog type: " << RED << dog->getType() << RESET << std::endl;
+	std::cout << "Garfield sound: ";
+	Garfield->makeSound();
+	std::cout << "dog sound: ";
+	dog->makeSound();
+	delete (Garfield);
+	delete (dog);
 	return (0);
 }

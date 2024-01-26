@@ -1,4 +1,4 @@
-NAME					=	brain
+NAME					=	aanimal
 
 HEADER_PATH				=	includes
 
@@ -10,7 +10,7 @@ FLAGS					=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER_PATH)
 
 CPP						=	c++
 
-SOURCES					=	Animal.cpp \
+SOURCES					=	AAnimal.cpp \
 							Brain.cpp \
 							Cat.cpp \
 							Dog.cpp \
@@ -29,7 +29,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/Animal.hpp $(HEADER_PATH)/Brain.hpp \
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/AAnimal.hpp $(HEADER_PATH)/Brain.hpp \
 							$(HEADER_PATH)/Cat.hpp $(HEADER_PATH)/Dog.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 

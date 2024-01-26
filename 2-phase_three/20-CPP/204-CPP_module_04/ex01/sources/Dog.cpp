@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 18:20:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:17:09 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ Dog	&Dog::operator=(const Dog &dog)
 	std::cout << RED <<
 		"Dog copy assignment operator called.\n" << RESET;
 	if (this != &dog)
+	{
 		this->type = dog.getType();
+		*this->brain = *dog.brain;
+	}
 	return (*this);
 }
 

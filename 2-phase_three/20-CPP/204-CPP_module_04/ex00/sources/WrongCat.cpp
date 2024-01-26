@@ -6,13 +6,13 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/24 16:35:16 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:15:20 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()
+WrongCat::WrongCat(void)
 {
 	std::cout << GREEN <<
 		"Wrong cat default constructor called.\n" << RESET;

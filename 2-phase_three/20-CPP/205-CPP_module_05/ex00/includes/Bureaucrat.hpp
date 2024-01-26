@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 15:12:28 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:27:47 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <iostream>
 
@@ -24,17 +24,33 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-class WrongAnimal
+class Bureaucrat
 {
-	protected:
-		std::string	type;
+	private:
+		const std::string	name;
+		int					grade;
 	public:
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &wrongAnimal);
-		WrongAnimal &operator=(const WrongAnimal &wrongAnimal);
-		virtual ~WrongAnimal(void);
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		Bureaucrat(void);
+		Bureaucrat(const std::string name, int grade);
+		Bureaucrat(const Bureaucrat &bureaucrat);
+		Bureaucrat &operator=(const Bureaucrat &bureaucrat);
+		~Bureaucrat(void);
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+		const std::string	getName(void) const;
+		int					getGrade(void) const;
+		void				incrementGrade(void);
+		void				decrementGrade(void);
 };
+
+std::ostream &operator<<(std::ostream &lhs, const Bureaucrat &bureaucrat);
 
 #endif

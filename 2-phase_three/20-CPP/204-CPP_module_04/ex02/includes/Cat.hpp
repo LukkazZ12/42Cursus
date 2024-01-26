@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 15:12:28 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:36:59 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-# include <iostream>
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-# define RESET			"\033[0m"
-# define RED			"\033[31m"
-# define GREEN			"\033[32m"
-# define YELLOW			"\033[33m"
-# define BLUE			"\033[34m"
-# define MAGENTA		"\033[35m"
-# define CYAN			"\033[36m"
-# define CLEAR_WINDOW	"\033[2J\033[1;1H"
-
-class WrongAnimal
+class Cat : public AAnimal
 {
-	protected:
-		std::string	type;
+	private:
+		Brain		*brain;
 	public:
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &wrongAnimal);
-		WrongAnimal &operator=(const WrongAnimal &wrongAnimal);
-		virtual ~WrongAnimal(void);
-		std::string	getType(void) const;
+		Cat(void);
+		Cat(const Cat &cat);
+		Cat &operator=(const Cat &cat);
+		~Cat(void);
 		void		makeSound(void) const;
+		std::string	getBrainIdea(int i) const;
+		void		setBrainIdea(std::string idea, int i);
 };
 
 #endif
