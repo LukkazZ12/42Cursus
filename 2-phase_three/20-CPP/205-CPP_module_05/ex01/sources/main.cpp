@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 20:15:50 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:10:39 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,85 @@
 
 int	main(void)
 {
-	Bureaucrat	a("A", 100);
-	Form		f("Contract", 50, 50);
-
-	std::cout << std::endl << a << std::endl;
-	std::cout << f << std::endl;
 	try
 	{
-		a.signForm(f);
+		Form	form("42 case", 0, 50);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
-	std::cout << std::endl << a << std::endl;
-	std::cout << f << std::endl;
 	try
 	{
-		a.incrementGrade();
+		Form	form("42 case", 160, 50);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what();
+	}
+	try
+	{
+		Form	form("42 case", 50, 160);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what();
+	}
+	try
+	{
+		Form	form("42 case", 50, -160);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what();
+	}
+
+	Bureaucrat	dumbestBureaucrat("byoshimo's coworker", 150);
+	Form		form("42 case", 50, 50);
+
+	std::cout << dumbestBureaucrat;
+	std::cout << form;
+	try
+	{
+		dumbestBureaucrat.signForm(form);
+	}
+	catch(const std::exception &e)
+	{
+		std::cout << e.what();
+	}
+	
+	Bureaucrat	smartestBureaucrat("byoshimo", 1);
+
+	std::cout << smartestBureaucrat;
+	try
+	{
+		smartestBureaucrat.incrementGrade();
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
-	std::cout << std::endl << a << std::endl;
-	std::cout << f << std::endl;
+	std::cout << smartestBureaucrat;
+	std::cout << form;
 	try
 	{
-		a.signForm(f);
+		smartestBureaucrat.signForm(form);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
-	std::cout << std::endl << a << std::endl;
-	std::cout << f << std::endl;
+	std::cout << smartestBureaucrat;
+	std::cout << form;
 	try
 	{
-		a.signForm(f);
+		smartestBureaucrat.signForm(form);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
-	std::cout << std::endl << a << std::endl;
-	std::cout << f << std::endl;
+	std::cout << smartestBureaucrat;
+	std::cout << form;
 	return (0);
 }
-

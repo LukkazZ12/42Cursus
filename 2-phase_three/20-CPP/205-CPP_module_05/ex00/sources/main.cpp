@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 18:57:07 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:57:28 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
 	try
 	{
@@ -28,21 +28,21 @@ int	main(void)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
 
-	Bureaucrat	dumbestBureaucrat("byoshimo", 150);
-	Bureaucrat	smartestBureaucrat("byoshimo's coworker", 1);
+	Bureaucrat	dumbestBureaucrat("byoshimo's coworker", 150);
+	Bureaucrat	smartestBureaucrat("byoshimo", 1);
 
-	std::cout << dumbestBureaucrat << std::endl;
-	std::cout << smartestBureaucrat << std::endl;
+	std::cout << dumbestBureaucrat;
+	std::cout << smartestBureaucrat;
 	try
 	{
 		dumbestBureaucrat.decrementGrade();
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	}
 	try
 	{
@@ -50,7 +50,7 @@ int	main(void)
 	}
 	catch(std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what();
 	} 
 	return (0);
 }

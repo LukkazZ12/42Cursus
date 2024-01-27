@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 20:14:10 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:51:38 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,28 +89,35 @@ void	Bureaucrat::signForm(Form &form)
 {
 	if (form.getIsSigned() == true)
 	{
-		std::cout << this->getName() << " couldn't sign " << form.getName() << " because it's already signed" << std::endl;
+		std::cout << GREEN << this->getName() << RESET
+			<< " couldn't sign " << GREEN << form.getName() << RESET
+			<< " because it's already signed.\n";
 		return ;
 	}
 	form.beSigned(*this);
 	if (form.getIsSigned() == true)
-		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		std::cout << GREEN << this->getName() << RESET
+			<< " signed " << GREEN << form.getName() << RESET << ".\n";
 	else
-		std::cout << this->getName() << " couldn't sign " << form.getName() << " because the grade is too low" << std::endl;
+		std::cout << GREEN << this->getName() << RESET
+			<< " couldn't sign " << GREEN << form.getName() << RESET
+			<< " because the grade is too low.\n";
+	return ;
 }
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade too high!");
+	return ("Grade too high!\n");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade too low!");
+	return ("Grade too low!\n");
 }
 
 std::ostream &operator<<(std::ostream &lhs, const Bureaucrat &bureaucrat)
 {
-	lhs << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+	lhs << bureaucrat.getName() << ", bureaucrat grade "
+		<< GREEN << bureaucrat.getGrade() << RESET << std::endl;
 	return (lhs);
 }

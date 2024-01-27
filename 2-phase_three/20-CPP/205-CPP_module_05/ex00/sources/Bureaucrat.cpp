@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/26 18:39:32 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:56:27 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,17 @@ void	Bureaucrat::decrementGrade(void)
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade too high!");
+	return ("Grade too high!\n");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade too low!");
+	return ("Grade too low!\n");
 }
 
 std::ostream &operator<<(std::ostream &lhs, const Bureaucrat &bureaucrat)
 {
-	lhs << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+	lhs << bureaucrat.getName() << ", bureaucrat grade "
+		<< GREEN << bureaucrat.getGrade() << RESET << std::endl;
 	return (lhs);
 }
