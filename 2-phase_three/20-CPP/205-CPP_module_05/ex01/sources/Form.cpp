@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/27 17:00:54 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:40:10 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,12 @@ int	Form::getGradeExecute(void) const
 void	Form::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->getGradeSign())
+	{
+		std::cout << GREEN << bureaucrat.getName() << RESET
+			<< " couldn't sign " << GREEN << this->getName() << RESET
+			<< ". ";
 		throw Form::GradeTooLowException();
+	}
 	this->isSigned = true;
 	return ;
 }

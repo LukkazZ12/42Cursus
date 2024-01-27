@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/27 17:23:08 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:38:15 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,26 @@ void	Bureaucrat::decrementGrade(void)
 	return ;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &aform)
 {
-	if (form.getIsSigned() == true)
+	if (aform.getIsSigned() == true)
 	{
 		std::cout << GREEN << this->getName() << RESET
-			<< " couldn't sign " << GREEN << form.getName() << RESET
+			<< " couldn't sign " << GREEN << aform.getName() << RESET
 			<< " because it's already signed.\n";
 		return ;
 	}
-	form.beSigned(*this);
+	aform.beSigned(*this);
 	std::cout << GREEN << this->getName() << RESET
-		<< " signed " << GREEN << form.getName() << RESET << ".\n";
+		<< " signed " << GREEN << aform.getName() << RESET << ".\n";
 	return ;
+}
+
+void Bureaucrat::executeForm(AForm const &form) const
+{
+	
+	std::cout << GREEN << this->name << RESET
+		<< " executed " << GREEN << form.getName() << RESET << ".\n";
 }
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()

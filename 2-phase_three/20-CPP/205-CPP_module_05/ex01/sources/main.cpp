@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/27 17:10:39 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:41:33 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	{
 		Form	form("42 case", 0, 50);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what();
 	}
@@ -26,7 +26,7 @@ int	main(void)
 	{
 		Form	form("42 case", 160, 50);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what();
 	}
@@ -34,7 +34,7 @@ int	main(void)
 	{
 		Form	form("42 case", 50, 160);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what();
 	}
@@ -42,7 +42,7 @@ int	main(void)
 	{
 		Form	form("42 case", 50, -160);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what();
 	}
@@ -68,7 +68,7 @@ int	main(void)
 	{
 		smartestBureaucrat.incrementGrade();
 	}
-	catch (std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cout << e.what();
 	}
@@ -78,7 +78,7 @@ int	main(void)
 	{
 		smartestBureaucrat.signForm(form);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what();
 	}
@@ -88,7 +88,7 @@ int	main(void)
 	{
 		smartestBureaucrat.signForm(form);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what();
 	}
