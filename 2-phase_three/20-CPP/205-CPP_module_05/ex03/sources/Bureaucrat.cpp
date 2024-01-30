@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/28 17:05:04 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:38:15 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ void	Bureaucrat::signForm(AForm &aform)
 	return ;
 }
 
-void Bureaucrat::executeForm(AForm const &aform) const
+void Bureaucrat::executeForm(AForm const &form) const
 {
 	
 	std::cout << GREEN << this->name << RESET
-		<< " executed " << GREEN << aform.getName() << RESET << ".\n";
+		<< " executed " << GREEN << form.getName() << RESET << ".\n";
 }
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()

@@ -1,4 +1,4 @@
-NAME					=	form
+NAME					=	intern
 
 HEADER_PATH				=	includes
 
@@ -12,6 +12,7 @@ CPP						=	c++
 
 SOURCES					=	AForm.cpp \
 							Bureaucrat.cpp \
+							Intern.cpp \
 							main.cpp \
 							PresidentialPardonForm.cpp \
 							RobotomyRequestForm.cpp \
@@ -31,8 +32,8 @@ $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
 $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/AForm.hpp $(HEADER_PATH)/Bureaucrat.hpp \
-						$(HEADER_PATH)/PresidentialPardonForm.hpp $(HEADER_PATH)/RobotomyRequestForm.hpp \
-						$(HEADER_PATH)/ShrubberyCreationForm.hpp
+						$(HEADER_PATH)/Intern.hpp $(HEADER_PATH)/PresidentialPardonForm.hpp \
+						$(HEADER_PATH)/RobotomyRequestForm.hpp $(HEADER_PATH)/ShrubberyCreationForm.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:

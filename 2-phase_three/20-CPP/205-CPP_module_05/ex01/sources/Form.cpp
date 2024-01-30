@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/27 18:40:10 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:38:16 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ std::ostream &operator<<(std::ostream &lhs, const Form &form)
 	else
 		isSigned = "No";
 	lhs << "Is form " << GREEN << form.getName() << RESET << " signed? "
-		<< BLUE << isSigned << RESET << ".\nGrade required to sign: "
+		<< BLUE << isSigned << RESET << "\nGrade required to sign: "
 		<< GREEN << form.getGradeSign() << RESET
-		<< ".\nGrade required to execute: "
+		<< "\nGrade required to execute: "
 		<< GREEN << form.getGradeExecute() << RESET << std::endl;
 	return (lhs);
 }
