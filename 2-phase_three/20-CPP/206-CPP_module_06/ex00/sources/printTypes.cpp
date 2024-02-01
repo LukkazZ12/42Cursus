@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/31 21:58:29 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:48:38 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	printInt(long double number)
 		if (integer >= 32 && integer <= 126)
 			std::cout << "'" << static_cast<char>(integer) << "'" << std::endl;
 		else
-			std::cout << "Non displayble\n";
+			std::cout << "non displayble\n";
 	}
 	else
 		std::cout << "impossible\n";
@@ -49,7 +49,7 @@ void	printFloat(long double number, int decimals)
 		if (floor >= 32 && floor <= 126)
 			std::cout << "'" << static_cast<char>(floor) << "'" << std::endl;
 		else
-			std::cout << "Non displayble\n";
+			std::cout << "non displayble\n";
 	}
 	else
 		std::cout << "impossible\n";
@@ -76,7 +76,7 @@ void	printDouble(long double number, int decimals)
 		if (floor >= 32 && floor <= 126)
 			std::cout << "'" << static_cast<char>(floor) << "'" << std::endl;
 		else
-			std::cout << "Non displayble\n";
+			std::cout << "non displayble\n";
 	}
 	else
 		std::cout << "impossible\n";
@@ -110,7 +110,7 @@ void	printLiterals(int i, std::string str)
 
 void	printImpossible(void)
 {
-	std::cout << "The paramter is " << CYAN << "impossible.\n";
+	std::cout << "The paramter is " << CYAN << "impossible" << RESET << ".\n";
 	std::cout << BLUE << "char: " << RESET << "impossible\n";
 	std::cout << RED << "int: " << RESET << "impossible\n";
 	std::cout << GREEN << "float: " << RESET << "impossible\n";

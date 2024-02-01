@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/31 21:58:22 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:48:07 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ ScalarConverter::~ScalarConverter(void)
 
 static bool	isChar(std::string str)
 {
-	if (str.size() > 1 || !isprint(str[0]))
+	if (str.size() > 1 || !isprint(str[0]) || (str.size() == 1 && isdigit(str[0])))
 		return (false);
-	std::cout << "The parameter is " << BLUE << "char.\n" << RESET;
+	std::cout << "The parameter is " << BLUE << "char" << RESET << ".\n";
 	printChar(str[0]);
 	return (true);
 }
@@ -68,7 +68,7 @@ static bool	isInt(std::string str)
 	number = atof(str.c_str());
 	if (number > 2147483647 || number < -2147483648)
 		return (false);
-	std::cout << "The parameter is " << RED << "int.\n" << RESET;
+	std::cout << "The parameter is " << RED << "int" << RESET << ".\n";
 	printInt(number);
 	return (true);
 }
@@ -105,7 +105,7 @@ static bool	isFloat(std::string str)
 	if (number > std::numeric_limits<float>::max() ||
 		number < -std::numeric_limits<float>::max())
 		return (false);
-	std::cout << "The parameter is " << GREEN << "float.\n" << RESET;
+	std::cout << "The parameter is " << GREEN << "float" << RESET << ".\n";
 	printFloat(number, decimals);
 	return (true);
 }
@@ -141,7 +141,7 @@ static bool	isDouble(std::string str)
 	if (number > std::numeric_limits<double>::max() ||
 		number < -std::numeric_limits<double>::max())
 		return (false);
-	std::cout << "The parameter is " << GREEN << "double.\n" << RESET;
+	std::cout << "The parameter is " << GREEN << "double" << RESET << ".\n";
 	printDouble(number, decimals);
 	return (true);
 }
@@ -162,7 +162,7 @@ static bool	isPseudoLiterals(std::string str)
 	for (int i = 0; i < 8 ; i++)
 		if (pseudoLiterals[i] == str)
 		{
-			std::cout << "The parameter is " << MAGENTA <<  "pseudo literal.\n" << RESET;
+			std::cout << "The parameter is " << MAGENTA <<  "pseudo literal" << RESET << ".\n";
 			printLiterals(i, str);
 			return (true);
 		}

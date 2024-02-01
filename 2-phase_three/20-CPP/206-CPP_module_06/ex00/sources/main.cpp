@@ -6,28 +6,20 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/31 21:58:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:43:36 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	
-	// ScalarConverter::convert(" ");
-	// ScalarConverter::convert("1");
-	ScalarConverter::convert("nan");
-	// ScalarConverter::convert("12.6");
-	std::cout << std::endl;
-	// ScalarConverter::convert(".12345");
-	// std::cout << std::endl;
-	// ScalarConverter::convert("123..45");
-	// std::cout << std::endl;
-	// ScalarConverter::convert("12345...");
-	// std::cout << std::endl;
-	// ScalarConverter::convert("");
-	// int i = static_cast<int>(546546465465465465486);
-	// std::cout << i << std::endl;
+	if (argc != 2)
+	{
+		std::cerr << "Invalid arguments.\n";
+		std::cerr << "Usage: ./converter <value>\n";
+		return (1);
+	}
+	ScalarConverter::convert(argv[1]);
 	return (0);
 }
