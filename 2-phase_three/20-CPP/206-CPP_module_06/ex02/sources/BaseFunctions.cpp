@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/01 20:24:44 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:19:44 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Base	*generate(void)
 {
+	srand(time(NULL));
 	char	type = 'A' + rand() % 3;
 	Base	*base;
 
