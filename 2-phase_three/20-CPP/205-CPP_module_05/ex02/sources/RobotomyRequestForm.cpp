@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/28 16:49:44 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:03:45 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const &bureaucrat) const
 	}
 	bureaucrat.executeForm(*this);
 	std::cout << RED << "O: DRILLING NOISES :O\n" << RESET;
-	
+
+	srand(time(NULL));
 	int	randomNumber = std::rand() % 100 + 1;
 
 	if (randomNumber % 2 == 0)

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/01 12:48:38 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:30:49 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	printChar(int c)
 {
 	std::cout << BLUE << "char: " << RESET << "'" << static_cast<char>(c) << "'" << std::endl;
-	std::cout << RED << "int: " << RESET << c << std::endl;
+	std::cout << RED << "int: " << RESET << static_cast<int>(c) << std::endl;
 	std::cout << GREEN << "float: " << RESET << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
 	std::cout << YELLOW << "double: " << RESET << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
@@ -34,7 +34,7 @@ void	printInt(long double number)
 	}
 	else
 		std::cout << "impossible\n";
-	std::cout << RED << "int: " << RESET << integer << std::endl;
+	std::cout << RED << "int: " << RESET << static_cast<int>(number) << std::endl;
 	std::cout << GREEN << "float: " << RESET << std::fixed << std::setprecision(1) << static_cast<float>(number) << "f" << std::endl;
 	std::cout << YELLOW << "double: " << RESET << std::fixed << std::setprecision(1) << static_cast<double>(number) << std::endl;
 }

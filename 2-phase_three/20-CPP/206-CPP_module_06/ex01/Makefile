@@ -1,4 +1,4 @@
-NAME					=	convert
+NAME					=	serializer
 
 HEADER_PATH				=	includes
 
@@ -10,9 +10,9 @@ FLAGS					=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER_PATH)
 
 CPP						=	c++
 
-SOURCES					=	main.cpp \
-							printTypes.cpp \
-							ScalarConverter.cpp
+SOURCES					=	Data.cpp \
+							main.cpp \
+							Serializer.cpp
 
 OBJECTS					=	$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.cpp=.o))
 
@@ -27,7 +27,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/ScalarConverter.hpp
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/Data.hpp $(HEADER_PATH)/Serializer.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
