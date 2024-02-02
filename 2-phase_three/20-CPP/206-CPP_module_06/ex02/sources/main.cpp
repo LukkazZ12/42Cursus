@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/01 20:25:49 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/02 11:09:08 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(void)
 	std::cout << YELLOW << "TEST 4 (INVALID POINTER)\n" << RESET;
 
 	Base	*ptrNull = NULL;
-	std::cout << "Generated a " << GREEN << "NULL" << RESET << " pointer.\n";
+	std::cout << "Generated a " << GREEN << "NULL" << RESET << " pointer.\n\n";
 
 	std::cout << BLUE << "Identify pointer:\n" << RESET;
 	identify(ptrNull);
