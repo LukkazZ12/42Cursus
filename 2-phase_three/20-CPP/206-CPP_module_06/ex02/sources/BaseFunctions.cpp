@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/02 12:19:44 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:21:21 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	identify(Base *p)
 
 void	identify(Base &p)
 {
-	try {
+	try
+	{
 		A	a = dynamic_cast<A &>(p);
 		std::cout << "The actual type of the object is " << GREEN << "A.\n" << RESET;
 	}
