@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:48:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/19 18:55:35 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:12:51 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Fixed::Fixed(const int number)
 
 Fixed::Fixed(const float number)
 {
-	this->value = (int)roundf(number * pow(2, this->fractionalBits));
+	this->value = roundf(number * 256);
 	return ;
 }
 
@@ -60,7 +60,7 @@ void	Fixed::setRawBits(const int raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->value / pow(2, this->fractionalBits));
+	return ((float)this->value / 256);
 }
 
 int	Fixed::toInt(void) const
