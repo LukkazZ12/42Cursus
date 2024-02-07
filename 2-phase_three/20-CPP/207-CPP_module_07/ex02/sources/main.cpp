@@ -6,12 +6,11 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/07 15:49:55 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:53:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array.hpp"
-#define MAX_VAL 750
 
 int main(int, char**)
 {
@@ -40,7 +39,7 @@ int main(int, char**)
 	std::cout << "b address: " << b.getArray() << std::endl;
 	
 	Array<int>	numbers(MAX_VAL);
-	int*		mirror = new int[MAX_VAL];
+	int			*mirror = new int[MAX_VAL];
 
 	srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++)

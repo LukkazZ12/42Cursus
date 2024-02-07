@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/07 15:47:16 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:54:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <cstdlib>
+# define MAX_VAL 750
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -58,11 +59,14 @@ class Array
 		}
 		Array	&operator=(const Array &array)
 		{
-			if (this->array)
-				delete[] this->array;
-			new(this) Array(array.arraySize);
-			for (unsigned int i = 0; i < array.arraySize; i++)
-				this->array[i] = array.array[i];
+			if (this != &array)
+			{
+				if (this->array)
+					delete[] this->array;
+				new(this) Array(array.arraySize);
+				for (unsigned int i = 0; i < array.arraySize; i++)
+					this->array[i] = array.array[i];
+			}
 			return (*this);
 		}
 		~Array()
