@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/02 20:02:40 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:03:59 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,26 @@
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
 template <typename T>
-void	iter(T *array, size_t size, void f(T&, T&))
+void	iter(T *array, size_t size, void f(T&))
+{
+	if (size <= 1)
+		std::cout << RED << "Invalid size.\n" << RESET;
+	if (array)
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			if (i < size - 1)
+				f(array[i], array[i + 1]);
+			else
+				f(array[i], array[0]);
+		}
+	}
+	else
+		std::cout << RED << "Array is NULL.\n" << RESET;
+	return ;
+}
+
+void	iter(T *array, size_t size, void f(const T&))
 {
 	if (size <= 1)
 		std::cout << RED << "Invalid size.\n" << RESET;

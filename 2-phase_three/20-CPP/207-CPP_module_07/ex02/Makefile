@@ -1,4 +1,4 @@
-NAME					=	whatever
+NAME					=	array
 
 HEADER_PATH				=	includes
 
@@ -25,7 +25,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/whatever.hpp
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/array.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
