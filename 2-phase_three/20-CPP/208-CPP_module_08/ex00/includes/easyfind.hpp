@@ -6,12 +6,12 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/08 18:21:38 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:19:51 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 # include <iostream>
 # include <algorithm>

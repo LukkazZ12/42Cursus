@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/07 16:07:20 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:29:25 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 # include <iostream>
+# include <vector>
+# include <algorithm>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -24,35 +26,29 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-template <typename T>
-void	iter(T *array, size_t size, void f(T&, T&))
+class Span
 {
-	if (size <= 1)
-		std::cout << RED << "Invalid size.\n" << RESET;
-	if (array)
-	{
-		for (size_t i = 0; i < size; i++)
+	private:
+		std::vector<int>	integers;
+		unsigned int		size;
+	public:
+		Span(void);
+		Span(unsigned int N);
+		Span(const Span &span);
+		Span &operator=(const Span &span);
+		~Span(void);
+		void				addNumber(int number);
+		int					shortestSpan(void);
+		int					longestSpan(void);
+		template <typename Iterator>
+		void addNumbers(Iterator first, Iterator last)
 		{
-			if (i < size - 1)
-				f(array[i], array[i + 1]);
-			else
-				f(array[i], array[0]);
+			while (first != last)
+			{
+				addNumber(*first);
+				first++;
+			}
 		}
-	}
-	else
-		std::cout << RED << "Array is NULL.\n" << RESET;
-	return ;
-}
-
-template <typename T>
-void	swap(T &a, T &b)
-{
-	T	tmp;
-
-	tmp = a;
-	a = b;
-	b = tmp;
-	return ;
-}
+};
 
 #endif
