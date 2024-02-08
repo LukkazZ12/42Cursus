@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/08 17:59:22 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:53:11 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int main(int, char**)
 	{
 		numbers[-2] = 0;
 	}
-	catch(const std::exception &e)
+	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -80,7 +80,7 @@ int main(int, char**)
 	{
 		numbers[MAX_VAL] = 0;
 	}
-	catch(const std::exception &e)
+	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
