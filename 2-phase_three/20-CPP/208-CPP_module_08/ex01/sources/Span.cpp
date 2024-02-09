@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/09 15:53:52 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:17:07 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	Span::longestSpan(void)
 	int	max = this->integers[0];
 	int	min = this->integers[0];
 
-	for (unsigned int i = 1; i < std::distance(this->integers.begin(), this->integers.end()); i++)
+	for (unsigned int i = 1; i < this->integers.size(); i++)
 	{
 		if (this->integers[i] < min)
 			min = this->integers[i];
