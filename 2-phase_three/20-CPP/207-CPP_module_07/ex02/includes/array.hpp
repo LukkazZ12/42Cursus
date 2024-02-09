@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/07 17:54:11 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:32:14 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Array
 		{
 			this->array = NULL;
 			this->arraySize = 0;
+			return ;
 		};
 		Array(unsigned int size)
 		{
@@ -50,12 +51,14 @@ class Array
 				this->array = new T[size];
 				this->arraySize = size;
 			}
+			return ;
 		};
 		Array(const Array &array)
 		{
 			this->array = NULL;
 			this->arraySize = 0;
 			*this = array;
+			return ;
 		}
 		Array	&operator=(const Array &array)
 		{
@@ -69,12 +72,13 @@ class Array
 			}
 			return (*this);
 		}
-		~Array()
+		~Array(void)
 		{
 			if (this->array)
 				delete[] this->array;
 			this->arraySize = 0;
 			this->array = NULL;
+			return ;
 		};
 		T	&operator[](int index)
 		{

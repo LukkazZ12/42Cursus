@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/08 20:14:55 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:53:52 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "span.hpp"
+#include "Span.hpp"
 
 Span::Span(void)
 {
@@ -56,8 +56,25 @@ Span::~Span(void)
 	return ;
 }
 
+unsigned int	Span::getSize(void) const
+{
+	return (this->size);
+}
+
+int	Span::getInteger(unsigned int i) const
+{
+	return (this->integers[i]);
+}
+
+void	Span::setInteger(unsigned int i, int integer)
+{
+	this->integers[i] = integer;
+}
+
 void	Span::addNumber(int number)
 {
+	if (!this->size)
+		throw std::runtime_error("The integers vector size is 0.");
 	if (this->integers.size() == this->size)
 		throw std::runtime_error("The integers vector is already full.");
 	else
@@ -87,9 +104,9 @@ int	Span::shortestSpan(void)
 
 int	Span::longestSpan(void)
 {
-	if (!std::distance(this->integers.begin(), this->integers.end()))
+	if (!this->integers.size())
 		throw std::runtime_error("The integers vector is empty. No span can be found.");
-	if (std::distance(this->integers.begin(), this->integers.end()) == 1)
+	if (this->integers.size() == 1)
 		throw std::runtime_error("The integers vector has only one number. No span can be found.");
 
 	int	max = this->integers[0];

@@ -11,7 +11,7 @@ FLAGS					=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER_PATH)
 CPP						=	c++
 
 SOURCES					=	main.cpp \
-							span.cpp
+							Span.cpp
 
 OBJECTS					=	$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.cpp=.o))
 
@@ -26,7 +26,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/span.hpp
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/Span.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:

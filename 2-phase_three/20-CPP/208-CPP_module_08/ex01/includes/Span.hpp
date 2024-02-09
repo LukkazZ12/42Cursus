@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.hpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/08 20:29:25 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:50:37 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ class Span
 		void				addNumber(int number);
 		int					shortestSpan(void);
 		int					longestSpan(void);
+		unsigned int		getSize(void) const;
+		int					getInteger(unsigned int i) const;
+		void				setInteger(unsigned int i, int integer);
 		template <typename Iterator>
-		void addNumbers(Iterator first, Iterator last)
+		void				addNumbers(Iterator first, Iterator last)
 		{
 			while (first != last)
 			{
