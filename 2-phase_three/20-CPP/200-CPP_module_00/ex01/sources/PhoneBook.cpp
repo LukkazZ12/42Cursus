@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:01:34 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/16 17:00:34 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:45:42 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,18 +146,7 @@ void	PhoneBook::print_info(Contact contact, int index)
 	{
 		format.set_phone_number(format.get_phone_number().substr(0, 14) + '.');
 	}
-	if (format.get_darkest_secreExam Rank 02 10 months ago  100
-Exam Rank 03 7 months ago  100
-Exam Rank 04 4 months ago 100
-miniRT 3 months ago 125
-minitalk 8 months ago 125
-NetPractice 5 months ago 100
-PROJECTS
-EVALUATION LOGS
-FEEDBACKS LOGS
-QUESTS
-CPP Module 01
-t().length() > 15)
+	if (format.get_darkest_secret().length() > 15)
 	{
 		format.set_darkest_secret(format.get_darkest_secret().substr(0, 14) + '.');
 	}

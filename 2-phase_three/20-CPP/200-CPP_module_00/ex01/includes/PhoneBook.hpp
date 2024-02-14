@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:01:34 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/01/15 17:50:52 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:46:01 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class	PhoneBook
 		int		number_of_contacts;
 		int		index;
 	public:
-		PhoneBook();
-		~PhoneBook();
+		PhoneBook(void);
+		~PhoneBook(void);
 		void	add(void);
 		void	search(void);
 		void	print_info(Contact contact, int index);
