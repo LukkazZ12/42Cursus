@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:29:38 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/15 17:47:40 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:39:00 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ BitcoinExchange::~BitcoinExchange(void)
 	return ;
 }
 
-static bool	is_whitespace(char c)
+static bool	isWhitespace(char c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
 		return (true);
@@ -51,7 +51,7 @@ static void	ltrim(std::string &str)
 {
 	size_t	i = 0;
 
-	while (i < str.size() && is_whitespace(str[i]))
+	while (i < str.size() && isWhitespace(str[i]))
 		i++;
 	str = str.substr(i);
 }
@@ -60,7 +60,7 @@ static void	rtrim(std::string &str)
 {
 	size_t	i = str.size();
 
-	while (i > 0 && is_whitespace(str[i - 1]))
+	while (i > 0 && isWhitespace(str[i - 1]))
 		i--;
 	str = str.substr(0, i);
 }

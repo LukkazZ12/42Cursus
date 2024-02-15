@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/09 15:50:37 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:35:27 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-# define SPAN_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 # include <iostream>
-# include <vector>
-# include <algorithm>
+# include <stack>
+# include <sstream>
+# include <cstdlib>
+# include <limits>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -26,32 +28,11 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-class Span
-{
-	private:
-		std::vector<int>	integers;
-		unsigned int		size;
-	public:
-		Span(void);
-		Span(unsigned int N);
-		Span(const Span &span);
-		Span &operator=(const Span &span);
-		~Span(void);
-		void				addNumber(int number);
-		int					shortestSpan(void);
-		int					longestSpan(void);
-		unsigned int		getSize(void) const;
-		int					getInteger(unsigned int i) const;
-		void				setInteger(unsigned int i, int integer);
-		template <typename Iterator>
-		void				addNumbers(Iterator first, Iterator last)
-		{
-			while (first != last)
-			{
-				addNumber(*first);
-				first++;
-			}
-		}
-};
+# define ADD	0
+# define SUB	1
+# define MULT	2
+# define DIV	3
+
+void	rpn(std::string str);
 
 #endif
