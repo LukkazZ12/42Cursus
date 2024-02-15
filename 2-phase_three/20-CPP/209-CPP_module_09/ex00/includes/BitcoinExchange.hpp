@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/14 20:20:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:51:03 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sstream>
 # include <string>
 # include <cmath>
+# include <iomanip>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -29,6 +30,7 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
+# define DATA			"files/data.csv"
 # define NORMAL_YEAR	2
 # define LEAP_YEAR		3
 # define T_E_MONTH		5
@@ -50,10 +52,10 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &bitcoin);
 		BitcoinExchange	&operator=(const BitcoinExchange &bitcoin);
 		~BitcoinExchange(void);
-		// void	initDataBase(std::string filename);
 		void	readFile(const std::string &filename);
-		// void	seachInDataBase(std::string date, std::string value);
-		// void	printDataBase();
+		void	readDataBase(void);
+		float	searchInDataBase(const std::string &date);
+		void	printMessage(std::string str, float value);
 };
 
 #endif

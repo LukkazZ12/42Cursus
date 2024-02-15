@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:29:38 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/14 20:34:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:47:40 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,31 +79,21 @@ static void	validateHeader(const std::string &header)
 
 	while (std::getline(line, subString, '|'))
 	{
+		trim(subString);
 		if (!i)
-		{
-			trim(subString);
-			if (subString != "date")
-				throw std::runtime_error("Invalid header.");
-		}
+			subString != "date" ? \
+				throw std::runtime_error("Invalid header.") : i++;
 		else if (i == 1)
-		{
-			trim(subString);
-			if (subString != "value")
-				throw std::runtime_error("Invalid header.");
-		}
+			subString != "value" ? \
+				throw std::runtime_error("Invalid header.") : i++;
 		else
 			throw std::runtime_error("Invalid header.");
-		i++;
 	}
 }
 
 static bool	validateYear(std::string &yearStr, int &ver)
 {
-	ltrim(yearStr);
-
-	size_t	size = yearStr.size();
-
-	if (size != 4)
+	if (yearStr.size() != 4)
 		return (false);
 	for (int i = 0; i < 4; i++)
 	{
@@ -117,18 +107,14 @@ static bool	validateYear(std::string &yearStr, int &ver)
 	toInt >> year;
 	if (year < 2009)
 		return (false);
-	if ((year % 100 != 0 && year % 4 == 0) || year % 400 == 0)
-		ver = LEAP_YEAR;
-	else
-		ver = NORMAL_YEAR;
+	(year % 100 != 0 && year % 4 == 0) || year % 400 == 0 ? \
+		ver = LEAP_YEAR : ver = NORMAL_YEAR;
 	return (true);
 }
 
 static bool	validateMonth(std::string &monthStr, int &ver)
 {
-	size_t	size = monthStr.size();
-
-	if (size != 2)
+	if (monthStr.size() != 2)
 		return (false);
 	for (int i = 0; i < 2; i++)
 	{
@@ -143,26 +129,16 @@ static bool	validateMonth(std::string &monthStr, int &ver)
 	if (month < 1 || month > 12)
 		return (false);
 	if (month == FEB)
-	{ 
-		if (ver == NORMAL_YEAR)
-			ver = T_E_MONTH;
-		else
-			ver = T_N_MONTH;
-	}
-	else if (month == APR || month == JUN || month == SEP || month == NOV)
-		ver = T_MONTH;
+		ver == NORMAL_YEAR ? ver = T_E_MONTH : ver = T_N_MONTH;
 	else
-		ver = T_O_MONTH;
+		month == APR || month == JUN || month == SEP || month == NOV ? \
+			ver = T_MONTH : ver = T_O_MONTH;
 	return (true);
 }
 
 static bool	validateDay(std::string &dayStr, int &ver)
 {
-	rtrim(dayStr);
-
-	size_t	size = dayStr.size();
-
-	if (size != 2)
+	if (dayStr.size() != 2)
 		return (false);
 	for (int i = 0; i < 2; i++)
 	{
@@ -208,7 +184,6 @@ static bool	validateDate(std::string &date)
 			return (false);
 		i++;
 	}
-	trim(date);
 	if (date == "2009-01-01")
 		return (false);
 	return (true);
@@ -216,8 +191,6 @@ static bool	validateDate(std::string &date)
 
 static std::string	validateValue(std::string &value, bool &valueError)
 {
-	trim(value);
-
 	int			dot = 0;
 	int			i = 0;
 	int			size = (int)value.size() - 1;
@@ -242,7 +215,7 @@ static std::string	validateValue(std::string &value, bool &valueError)
 	}
 	if (decimals == -1)
 		decimals = 1;
-	if (dot > 1 || value[0] == '.' || value[i - 1] == '.')
+	if (dot > 1 || value[0] == '.' || value[i] == '.')
 		return ("Error: bad input => " + value);
 	number = atof(value.c_str());
 	if (number > 1000)
@@ -263,7 +236,7 @@ void	BitcoinExchange::readFile(const std::string &filename)
 	std::string		subStringAux;
 
 	if (!file.is_open())
-		throw std::runtime_error("Couldn't open de file.");
+		throw std::runtime_error("Couldn't open the input file.");
 	std::getline(file, line);
 	validateHeader(line);
 	while (std::getline(file, line))
@@ -273,6 +246,7 @@ void	BitcoinExchange::readFile(const std::string &filename)
 		while (std::getline(lineSplit, subString, '|'))
 		{
 			valueError = true;
+			trim(subString);
 			if (!i)
 			{
 				if (!validateDate(subString))
@@ -297,7 +271,7 @@ void	BitcoinExchange::readFile(const std::string &filename)
 					float				value;
 
 					toFloat >> value;
-					this->dataBase[subStringAux] = value;
+					printMessage(subStringAux, value);
 				}
 			}
 			else
@@ -308,11 +282,70 @@ void	BitcoinExchange::readFile(const std::string &filename)
 			i++;
 		}
 	}
-	// std::map<std::string, float>::iterator	it;
-	// for (it = this->dataBase.begin(); it != this->dataBase.end(); it++)
-	// {
-	// 	std::cout << "Chave: " << it->first << ", Valor: " << it->second << std::endl;
-	// }
+	file.close();
 	return ;
 }
 
+void	BitcoinExchange::readDataBase(void)
+{
+	int				i;
+	std::ifstream	file(DATA);
+	std::string		line;
+	std::string		subString;
+	std::string		subStringAux;
+
+	if (!file.is_open())
+		throw std::runtime_error("Couldn't open the database file.");
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		i = 0;
+		std::stringstream	lineSplit(line);
+		while (std::getline(lineSplit, subString, ','))
+		{
+			if (!i)
+				subStringAux = subString;
+			else if (i == 1)
+			{
+				std::istringstream	toFloat(subString);
+				float				value;
+
+				toFloat >> value;
+				this->dataBase[subStringAux] = value;
+			}
+			i++;
+		}
+	}
+	file.close();
+	return ;
+}
+
+float	BitcoinExchange::searchInDataBase(const std::string &date)
+{
+	std::map<std::string, float>::iterator	it;
+	std::map<std::string, float>::iterator	itAux;
+	std::map<std::string, float>::iterator	itBegin = this->dataBase.begin();
+	std::map<std::string, float>::iterator	itEnd = this->dataBase.end();
+
+	for (it = itBegin; it != itEnd; it++)
+	{
+		itAux = it;
+		itAux++;
+		if (date == it->first || (itAux != itEnd && date \
+			> it->first && date < itAux->first))
+			return (it->second);
+	}
+	return ((--it)->second);
+};
+
+void	BitcoinExchange::printMessage(std::string str, float value)
+{
+	float		monetaryUnits = value * searchInDataBase(str);
+	std::string	bitcoin;
+	
+	value <= 1 ? bitcoin = "bitcoin" : bitcoin = "bitcoins";
+	std::cout << YELLOW << str << RESET << " => " << GREEN << std::fixed << std::setprecision(2)
+		<< value << RESET << " " << bitcoin << ": " << GREEN << std::fixed << std::setprecision(2)
+		<< monetaryUnits << RESET << " m.u.\n";
+	return ;
+}

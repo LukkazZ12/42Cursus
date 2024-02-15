@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/14 17:48:47 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:56:03 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int argc, char **argv)
 
 	try
 	{
+		bitcoin.readDataBase();
 		bitcoin.readFile(argv[1]);
 	}
 	catch(const std::exception &e)
