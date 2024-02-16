@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/15 18:35:27 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:04:28 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,21 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-# define ADD	0
-# define SUB	1
-# define MULT	2
-# define DIV	3
+enum	signals {ADD, SUB, MULT, DIV};
 
-void	rpn(std::string str);
+class RPN
+{
+	private:
+		std::stack<std::string>	parameters;
+		std::stack<double>		numbers;
+	public:
+		RPN(void);
+		RPN(const RPN &rpn);
+		RPN	&operator=(const RPN &rpn);
+		~RPN(void);
+		void	rpn(std::string str);
+		void	populateStack(std::string parameter);
+		void	calculateResult(void);
+};
 
 #endif

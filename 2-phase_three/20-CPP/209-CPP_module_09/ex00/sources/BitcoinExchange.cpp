@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:29:38 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/15 18:39:00 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:03:08 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &bitcoin)
 	*this = bitcoin;
 	return ;
 }
+
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &bitcoin)
 {
 	if (this != &bitcoin)

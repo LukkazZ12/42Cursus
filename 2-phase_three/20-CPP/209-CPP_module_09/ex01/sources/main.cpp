@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/15 18:31:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:06:09 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int main(int argc, char **argv)
 		std::cerr << GREEN << "Usage: ./RPN <parameter>\n" << RESET;
 		return (1);
 	}
+
+	RPN	rpn;
 	try
 	{
-		rpn(argv[1]);
+		rpn.rpn(argv[1]);
 	}
 	catch(const std::exception &e)
 	{
