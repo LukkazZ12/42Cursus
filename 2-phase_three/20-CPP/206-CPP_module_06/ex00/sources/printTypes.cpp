@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/02 11:00:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 20:18:17 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	printInt(long double number)
 		if (isprint(integer))
 			std::cout << "'" << static_cast<char>(integer) << "'" << std::endl;
 		else
-			std::cout << "non displayble\n";
+			std::cout << "non displayable\n";
 	}
 	else
 		std::cout << "impossible\n";
@@ -49,7 +49,7 @@ void	printFloat(long double number, int decimals)
 		if (isprint(floor))
 			std::cout << "'" << static_cast<char>(floor) << "'" << std::endl;
 		else
-			std::cout << "non displayble\n";
+			std::cout << "non displayable\n";
 	}
 	else
 		std::cout << "impossible\n";
@@ -76,7 +76,7 @@ void	printDouble(long double number, int decimals)
 		if (isprint(floor))
 			std::cout << "'" << static_cast<char>(floor) << "'" << std::endl;
 		else
-			std::cout << "non displayble\n";
+			std::cout << "non displayable\n";
 	}
 	else
 		std::cout << "impossible\n";
