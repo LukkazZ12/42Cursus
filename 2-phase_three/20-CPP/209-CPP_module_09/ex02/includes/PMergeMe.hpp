@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:18:24 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:11:48 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 # define PMERGEME_HPP
 
 # include <iostream>
-# include <stack>
+# include <vector>
+# include <deque>
 # include <sstream>
 # include <cstdlib>
-# include <limits>
-# include <algorithm>
-# include <string>
+#include <algorithm>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -30,19 +29,26 @@
 # define CYAN			"\033[36m"
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
-class RPN
+class PMergeMe
 {
 	private:
-		std::stack<std::string>	parameters;
-		std::stack<double>		numbers;
+		// int					straggler;
+		// void				sortVector();
+		std::vector<int>	unsortedVector;
+		std::vector<int>	sortedVector;
+		// void				sortDeque();
+		std::deque<int>		unsortedDeque;
+		std::deque<int>		sortedDeque;
 	public:
-		RPN(void);
-		RPN(const RPN &rpn);
-		RPN	&operator=(const RPN &rpn);
-		~RPN(void);
-		void	rpn(std::string str);
-		void	populateStack(std::string parameter);
-		void	calculateResult(void);
+		PMergeMe();
+		// PMergeMe(std::vector<int> vector, std::deque<int> deque);
+		PMergeMe(const PMergeMe &merge);
+		PMergeMe &operator=(const PMergeMe &merge);
+		~PMergeMe();
+		void				sort(int argc, char **argv);
+		// std::vector<int>	getSortedVector() const;
+		// std::deque<int>		getSortedDeque() const;
+	
 };
 
 #endif

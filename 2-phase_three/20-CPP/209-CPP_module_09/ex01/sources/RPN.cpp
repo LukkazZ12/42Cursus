@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:14:06 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:44:20 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ static void	validateNumbersOperations(std::string &str)
 	return ;
 }
 
-static bool	validateStr(std::string str)
+static void	validateStr(std::string str)
 {
 	if (str.find_first_not_of("0123456789+-*/ ") != std::string::npos)
 		throw std::runtime_error("Error: Invalid parameter.");
 	validateNumbersOperations(str);
-	return (true);
+	return ;
 }
 
 void	RPN::calculateResult(void)

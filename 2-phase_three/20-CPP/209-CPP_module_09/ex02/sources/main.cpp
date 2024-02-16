@@ -6,29 +6,29 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 14:06:09 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:50:25 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#include "PMergeMe.hpp"
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc == 1)
 	{
 		std::cerr << RED << "Invalid arguments.\n" << RESET;
-		std::cerr << GREEN << "Usage: ./RPN <parameter>\n" << RESET;
+		std::cerr << GREEN << "Usage: ./PMergeMe [parameters]\n" << RESET;
 		return (1);
 	}
 
-	RPN	rpn;
+	PMergeMe	merge;
 	try
 	{
-		rpn.rpn(argv[1]);
+		merge.sort(argc, argv);
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << RED << e.what() << std::endl;
+		std::cerr << RED << e.what()<< RESET << std::endl;
 	}
 	return (0);
 }

@@ -1,151 +1,84 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*   PMergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:14:06 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:27:18 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#include "PMergeMe.hpp"
 
-RPN::RPN(void)
+PMergeMe::PMergeMe(void)
 {
 	return ;
 }
 
-RPN::RPN(const RPN &rpn)
+PMergeMe::PMergeMe(const PMergeMe &merge)
 {
-	*this = rpn;
+	*this = merge;
 	return ;
 }
 
-RPN	&RPN::operator=(const RPN &rpn)
+PMergeMe	&PMergeMe::operator=(const PMergeMe &merge)
 {
-	if (this != &rpn)
+	if (this != &merge)
 	{
-		this->parameters = rpn.parameters;
-		this->numbers = rpn.numbers;
+		this->unsortedVector = merge.unsortedVector;
+		this->unsortedDeque = merge.unsortedDeque;
 	}
 	return (*this);
 }
 
-RPN::~RPN(void)
+PMergeMe::~PMergeMe(void)
 {
 	return ;
 }
 
-static double	add(double first, double second)
+static void	validateParameters(int argc, char **argv)
 {
-	return (first + second);
-}
+	size_t						j;
+	float						number;
+	std::vector<int>			vector;
+	std::vector<int>::iterator	it;
+	std::vector<int>::iterator	itEnd;
+	std::vector<int>::iterator	itNext;
 
-static double	subtract(double first, double second)
-{
-	return (first - second);
-}
-
-static double	multiply(double first, double second)
-{
-	return (first * second);
-}
-
-static double	divide(double first, double second)
-{
-	if (!second)
-		throw std::runtime_error("Error: Couldn't divide by 0.");
-	return (first / second);
-}
-
-static void	validateNumbersOperations(std::string &str)
-{
-	std::string			subString;
-	std::stringstream	line(str);
-
-	while (std::getline(line, subString, ' '))
+	for (int i = 1; i < argc; i++)
 	{
-		if (subString.size() > 1)
-			throw std::runtime_error("Error: Invalid parameter.");
-	}
-	return ;
-}
-
-static bool	validateStr(std::string str)
-{
-	if (str.find_first_not_of("0123456789+-*/ ") != std::string::npos)
-		throw std::runtime_error("Error: Invalid parameter.");
-	validateNumbersOperations(str);
-	return (true);
-}
-
-void	RPN::calculateResult(void)
-{
-	std::string	parameter;
-	double		first;
-	double		second;
-
-	while (this->parameters.size())
-	{
-		parameter = this->parameters.top();
-		if (isdigit(parameter[0]))
+		if (!argv[i][0])
+			throw std::runtime_error("Error: Empty string.");
+		argv[i][0] == '+' ? j = 1 : j = 0;
+		for (; argv[i][j]; j++)
 		{
-			std::istringstream	toDouble(parameter);
-			double				value;
-
-			toDouble >> value;
-			this->numbers.push(value);
+			if (!isdigit(argv[i][j]))
+				throw std::runtime_error("Error: It's not a integer or it's a negative integer.");
 		}
-		else if (this->numbers.size() >= 2)
-		{
-			second = this->numbers.top();
-			this->numbers.pop();
-			first = this->numbers.top();
-			this->numbers.pop();
-			if (parameter[0] == '+')
-				this->numbers.push(add(first, second));
-			else if (parameter[0] == '-')
-				this->numbers.push(subtract(first, second));
-			else if (parameter[0] == '*')
-				this->numbers.push(multiply(first, second));
-			else if (parameter[0] == '/')
-				this->numbers.push(divide(first, second));
-		}
-		else
-			throw std::runtime_error("Error: Invalid parameter.");
-		this->parameters.pop();
+		number = atof(argv[i]);
+		if (number > (float)2147483647)
+			throw std::runtime_error("Error: Too large a integer.");
+		vector.push_back(atoi(argv[i]));
 	}
-	if (this->numbers.size() >= 2)
-		throw std::runtime_error("Error: Invalid parameter.");
-	return ;
+	std::sort(vector.begin(), vector.end());
+	it = vector.begin();
+	itEnd = vector.end();
+	for (; it != itEnd; it++)
+	{
+		itNext = it;
+		itNext++;
+		if (itNext != itEnd)
+		{
+			if (*it == *itNext)
+				throw std::runtime_error("Error: Duplicate integers.");
+		}
+	}
 }
 
-void	RPN::populateStack(std::string parameter)
+void	PMergeMe::sort(int argc, char **argv)
 {
-	std::string				subString;
-	std::stringstream		line(parameter);
-	std::stack<std::string>	parametersAux;
-
-	while (std::getline(line, subString, ' '))
-	{
-		if (subString[0])
-			parametersAux.push(subString);
-	}
-	while (parametersAux.size())
-	{
-		this->parameters.push(parametersAux.top());
-		parametersAux.pop();
-	}
-	return ;
-};
-
-void	RPN::rpn(std::string parameter)
-{
-	validateStr(parameter);
-	populateStack(parameter);
-	calculateResult();
-	std::cout << GREEN << this->numbers.top() << RESET << std::endl;
+	validateParameters(argc, argv);
 	return ;
 };
