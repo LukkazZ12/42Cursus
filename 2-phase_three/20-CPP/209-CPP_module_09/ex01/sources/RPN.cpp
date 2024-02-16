@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 14:08:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:05:59 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,6 @@ static double	divide(double first, double second)
 	return (first / second);
 }
 
-static bool	isWhitespace(char c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (true);
-	return (false);
-}
-
-static void	whitespacesToSpace(std::string &str)
-{
-	unsigned int	i = 0;
-
-	while (str[i])
-	{
-		if (isWhitespace(str[i]))
-			str[i] = ' ';
-		i++;
-	}
-	return ;
-}
 static void	validateNumbersOperations(std::string &str)
 {
 	std::string			subString;
@@ -86,7 +67,7 @@ static void	validateNumbersOperations(std::string &str)
 
 	while (std::getline(line, subString, ' '))
 	{
-		if (subString.size() != 1)
+		if (subString.size() > 1)
 			throw std::runtime_error("Error: Invalid parameter.");
 	}
 	return ;
@@ -94,9 +75,8 @@ static void	validateNumbersOperations(std::string &str)
 
 static bool	validateStr(std::string str)
 {
-	if (str.find_first_not_of("0123456789+-*/ \t\n\v\f\r") != std::string::npos)
+	if (str.find_first_not_of("0123456789+-*/ ") != std::string::npos)
 		throw std::runtime_error("Error: Invalid parameter.");
-	whitespacesToSpace(str);
 	validateNumbersOperations(str);
 	return (true);
 }
@@ -114,7 +94,7 @@ void	RPN::calculateResult(void)
 		if (isdigit(parameter[0]))
 		{
 			std::istringstream	toDouble(parameter);
-			float				value;
+			double				value;
 
 			toDouble >> value;
 			this->numbers.push(value);
@@ -150,7 +130,10 @@ void	RPN::populateStack(std::string parameter)
 	std::stack<std::string>	parametersAux;
 
 	while (std::getline(line, subString, ' '))
-		parametersAux.push(subString);
+	{
+		if (subString[0])
+			parametersAux.push(subString);
+	}
 	while (parametersAux.size())
 	{
 		this->parameters.push(parametersAux.top());

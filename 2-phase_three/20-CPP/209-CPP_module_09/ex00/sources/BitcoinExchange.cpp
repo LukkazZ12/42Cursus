@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:29:38 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 13:03:08 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:22:01 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 BitcoinExchange::BitcoinExchange(void)
 {
-	std::cout << BLUE <<
-		"BitcoinExchange default constructor called.\n" << RESET;
 	return ;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &bitcoin)
 {
-	std::cout << BLUE <<
-		"BitcoinExchange copy constructor called.\n" << RESET;
 	*this = bitcoin;
 	return ;
 }
@@ -36,8 +32,6 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &bitcoin)
 
 BitcoinExchange::~BitcoinExchange(void)
 {
-	std::cout << BLUE <<
-		"BitcoinExchange default destructor called.\n" << RESET;
 	return ;
 }
 

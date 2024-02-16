@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 14:04:28 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:45:22 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <sstream>
 # include <cstdlib>
 # include <limits>
+# include <algorithm>
+# include <string>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
