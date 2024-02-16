@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 15:05:59 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:14:06 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static bool	validateStr(std::string str)
 void	RPN::calculateResult(void)
 {
 	std::string	parameter;
-	double		(*f[4])(double first, double second) = {add, subtract, multiply, divide};
 	double		first;
 	double		second;
 
@@ -106,13 +105,13 @@ void	RPN::calculateResult(void)
 			first = this->numbers.top();
 			this->numbers.pop();
 			if (parameter[0] == '+')
-				this->numbers.push((*f[ADD])(first, second));
+				this->numbers.push(add(first, second));
 			else if (parameter[0] == '-')
-				this->numbers.push((*f[SUB])(first, second));
+				this->numbers.push(subtract(first, second));
 			else if (parameter[0] == '*')
-				this->numbers.push((*f[MULT])(first, second));
+				this->numbers.push(multiply(first, second));
 			else if (parameter[0] == '/')
-				this->numbers.push((*f[DIV])(first, second));
+				this->numbers.push(divide(first, second));
 		}
 		else
 			throw std::runtime_error("Error: Invalid parameter.");
