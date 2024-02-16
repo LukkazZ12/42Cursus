@@ -1,4 +1,4 @@
-NAME					=	mutantStack
+NAME					=	RPN
 
 HEADER_PATH				=	includes
 
@@ -10,7 +10,8 @@ FLAGS					=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER_PATH)
 
 CPP						=	c++
 
-SOURCES					=	main.cpp
+SOURCES					=	main.cpp \
+							RPN.cpp
 
 OBJECTS					=	$(addprefix $(OBJECTS_PATH)/,	$(SOURCES:.cpp=.o))
 
@@ -25,7 +26,7 @@ $(NAME):				$(OBJECTS_PATH) $(OBJECTS)
 $(OBJECTS_PATH):
 						@mkdir -p $(OBJECTS_PATH)
 
-$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/MutantStack.hpp
+$(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.cpp $(HEADER_PATH)/RPN.hpp
 						@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   PMergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:20:07 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:18:24 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 # include <iostream>
 # include <stack>
 # include <sstream>
+# include <cstdlib>
+# include <limits>
+# include <algorithm>
+# include <string>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"

@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/15 17:51:03 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:19:13 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <map>
 # include <fstream>
 # include <sstream>
-# include <string>
 # include <cmath>
 # include <iomanip>
 
