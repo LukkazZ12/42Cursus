@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 18:27:18 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 21:16:40 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ PMergeMe::~PMergeMe(void)
 static void	validateParameters(int argc, char **argv)
 {
 	size_t						j;
-	float						number;
+	unsigned int				number;
 	std::vector<int>			vector;
 	std::vector<int>::iterator	it;
 	std::vector<int>::iterator	itEnd;
@@ -57,8 +57,8 @@ static void	validateParameters(int argc, char **argv)
 			if (!isdigit(argv[i][j]))
 				throw std::runtime_error("Error: It's not a integer or it's a negative integer.");
 		}
-		number = atof(argv[i]);
-		if (number > (float)2147483647)
+		number = atoi(argv[i]);
+		if (number > 2147483647)
 			throw std::runtime_error("Error: Too large a integer.");
 		vector.push_back(atoi(argv[i]));
 	}
@@ -77,8 +77,57 @@ static void	validateParameters(int argc, char **argv)
 	}
 }
 
+void	PMergeMe::populateContainers(int argc, char **argv)
+{
+	int	number;
+
+	for (int i = 1; i < argc; i++)
+	{
+		number = atoi(argv[i]);
+		this->unsortedVector.push_back(atoi(argv[i]));
+		this->unsortedDeque.push_back(atoi(argv[i]));
+	}
+	this->numberOfElements = unsortedVector.size();
+	return ;
+}
+
+void	PMergeMe::FordJohnsonVector(void)
+{
+	
+	int							swap;
+	std::vector<int>::iterator	it = this->unsortedVector.begin();
+	std::vector<int>::iterator	itEnd = this->unsortedVector.end();
+	std::vector<int>::iterator	itNext;
+
+	for (; it != itEnd; (it++)++)
+	{
+		itNext = it;
+		itNext++;
+		if (itNext != itEnd && *it < *itNext)
+		{
+			swap = *it;
+			*it = *itNext;
+			*itNext = swap;
+		}
+	}
+	return ;
+}
+
 void	PMergeMe::sort(int argc, char **argv)
 {
 	validateParameters(argc, argv);
+	populateContainers(argc, argv);
+	// for (std::deque<int>::iterator it = this->unsortedDeque.begin(); it != this->unsortedDeque.end(); it++)
+	// {
+	// 	std::cout << *it << " ";
+	// }
+	// std::cout << "\n";
+	// std::cout << this->numberOfElements;
+	FordJohnsonVector();
+	// for (std::vector<int>::iterator it = this->unsortedVector.begin(); it != this->unsortedVector.end(); it++)
+	// {
+	// 	std::cout << *it << " ";
+	// }
+	// std::cout << "\n";
 	return ;
 };

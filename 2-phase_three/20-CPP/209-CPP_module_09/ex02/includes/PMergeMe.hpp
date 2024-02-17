@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 18:11:48 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 20:37:51 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class PMergeMe
 	private:
 		// int					straggler;
 		// void				sortVector();
+		int					numberOfElements;
 		std::vector<int>	unsortedVector;
 		std::vector<int>	sortedVector;
 		// void				sortDeque();
@@ -46,7 +47,8 @@ class PMergeMe
 		PMergeMe &operator=(const PMergeMe &merge);
 		~PMergeMe();
 		void				sort(int argc, char **argv);
-		// std::vector<int>	getSortedVector() const;
+		void				populateContainers(int argc, char **argv);
+		void				FordJohnsonVector(void);
 		// std::deque<int>		getSortedDeque() const;
 	
 };
