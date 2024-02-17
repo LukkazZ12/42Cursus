@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:19:13 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 22:05:46 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define CLEAR_WINDOW	"\033[2J\033[1;1H"
 
 # define DATA			"files/data.csv"
-# define NORMAL_YEAR	2
+# define REGULAR_YEAR	2
 # define LEAP_YEAR		3
 # define T_E_MONTH		5
 # define T_N_MONTH		7

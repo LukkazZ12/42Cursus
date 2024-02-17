@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:29:38 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 14:22:01 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/16 22:05:46 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static bool	validateYear(std::string &yearStr, int &ver)
 	if (year < 2009)
 		return (false);
 	(year % 100 != 0 && year % 4 == 0) || year % 400 == 0 ? \
-		ver = LEAP_YEAR : ver = NORMAL_YEAR;
+		ver = LEAP_YEAR : ver = REGULAR_YEAR;
 	return (true);
 }
 
@@ -124,7 +124,7 @@ static bool	validateMonth(std::string &monthStr, int &ver)
 	if (month < 1 || month > 12)
 		return (false);
 	if (month == FEB)
-		ver == NORMAL_YEAR ? ver = T_E_MONTH : ver = T_N_MONTH;
+		ver == REGULAR_YEAR ? ver = T_E_MONTH : ver = T_N_MONTH;
 	else
 		month == APR || month == JUN || month == SEP || month == NOV ? \
 			ver = T_MONTH : ver = T_O_MONTH;
