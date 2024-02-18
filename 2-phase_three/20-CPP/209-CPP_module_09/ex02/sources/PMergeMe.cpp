@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 21:16:40 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/17 23:35:40 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,23 @@ static void	validateParameters(int argc, char **argv)
 				throw std::runtime_error("Error: Duplicate integers.");
 		}
 	}
+	return ;
+}
+
+static unsigned int	generateJacobsthalNumbers(unsigned int j0, unsigned int j1)
+{
+	return (2 * j0 + j1);
+}
+
+static void	printTime (clock_t start, clock_t end, size_t size, std::string type)
+{
+	double	time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+	double	usTime = time * 1000000.0;
+
+	std::cout << "Time to process a range of " << GREEN << size << RESET
+		<< " elements with std::" << YELLOW << type << RESET
+		<< ": " << GREEN << usTime << RESET << " us\n";
+	return ;
 }
 
 void	PMergeMe::populateContainers(int argc, char **argv)
@@ -84,50 +101,202 @@ void	PMergeMe::populateContainers(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
 	{
 		number = atoi(argv[i]);
-		this->unsortedVector.push_back(atoi(argv[i]));
-		this->unsortedDeque.push_back(atoi(argv[i]));
+		this->unsortedVector.push_back(number);
+		this->unsortedDeque.push_back(number);
 	}
 	this->numberOfElements = unsortedVector.size();
+
+	std::vector<int>::iterator	it = unsortedVector.begin();
+	std::vector<int>::iterator	itEnd = unsortedVector.end();
+
+	std::cout << YELLOW << "Before:\t\t" << RESET;
+	for (; it != itEnd; it++)
+		std::cout << *it << (it != itEnd - 1 ? " " : "\n");
 	return ;
 }
 
-void	PMergeMe::FordJohnsonVector(void)
+void	PMergeMe::createAndSortMainChainVector(void)
 {
-	
-	int							swap;
+	std::vector<int>			mainChainAux;
+	std::vector<int>::iterator	itNext;
 	std::vector<int>::iterator	it = this->unsortedVector.begin();
 	std::vector<int>::iterator	itEnd = this->unsortedVector.end();
-	std::vector<int>::iterator	itNext;
 
-	for (; it != itEnd; (it++)++)
+	for (; it != itEnd; )
 	{
 		itNext = it;
 		itNext++;
-		if (itNext != itEnd && *it < *itNext)
+		if (*it > *itNext)
 		{
-			swap = *it;
-			*it = *itNext;
-			*itNext = swap;
+			mainChainAux.push_back(*it);
+			this->pendChainVector.push_back(*itNext);
+		}
+		else
+		{
+			mainChainAux.push_back(*itNext);
+			this->pendChainVector.push_back(*it);
+		}
+		it++;
+		it++;
+	}
+	if (this->straggler != -1)
+	{
+		this->sortedVector.push_back(this->straggler);
+		this->unsortedVector.push_back(this->straggler);
+	}
+	it = mainChainAux.begin();
+	itEnd = mainChainAux.end();
+	for (; it != itEnd; it++)
+		this->sortedVector.insert(std::upper_bound(this->sortedVector.begin(), \
+			this->sortedVector.end(), *it), *it);
+	return ;
+}
+
+void	PMergeMe::createAndSortMainChainDeque(void)
+{
+	std::deque<int>				mainChainAux;
+	std::deque<int>::iterator	itNext;
+	std::deque<int>::iterator	it = this->unsortedDeque.begin();
+	std::deque<int>::iterator	itEnd = this->unsortedDeque.end();
+
+	for (; it != itEnd; )
+	{
+		itNext = it;
+		itNext++;
+		if (*it > *itNext)
+		{
+			mainChainAux.push_back(*it);
+			this->pendChainDeque.push_back(*itNext);
+		}
+		else
+		{
+			mainChainAux.push_back(*itNext);
+			this->pendChainDeque.push_back(*it);
+		}
+		it++;
+		it++;
+	}
+	if (this->straggler != -1)
+	{
+		this->sortedDeque.push_back(this->straggler);
+		this->unsortedDeque.push_back(this->straggler);
+	}
+	it = mainChainAux.begin();
+	itEnd = mainChainAux.end();
+	for (; it != itEnd; it++)
+		this->sortedDeque.insert(std::upper_bound(this->sortedDeque.begin(), \
+			this->sortedDeque.end(), *it), *it);
+	return ;
+}
+
+void	PMergeMe::insertionVector(void)
+{
+	unsigned int				j0 = 1;
+	unsigned int				j1 = 1;
+	unsigned int				swap;
+	size_t						unsortedSize = this->unsortedVector.size();
+	size_t						pendChainSize = this->pendChainVector.size();
+	size_t						begin;
+	size_t						end;
+	std::vector<int>::iterator	it = this->pendChainVector.begin();
+
+	if (pendChainSize > 0)
+		this->sortedVector.insert(std::upper_bound(this->sortedVector.begin(), \
+			this->sortedVector.end(), *it), *it);
+	it++;
+	if (pendChainSize > 1)
+		this->sortedVector.insert(std::upper_bound(this->sortedVector.begin(), \
+			this->sortedVector.end(), *it), *it);
+	while (this->sortedVector.size() < unsortedSize)
+	{
+		swap = j1;
+		j1 = generateJacobsthalNumbers(j0, j1);
+		j0 = swap;
+		if (j1 >= pendChainSize)
+			j1 = pendChainSize - 1;
+		begin = pendChainSize - j1;
+		end = j1 - j0;
+		std::vector<int>::iterator	itEnd = this->pendChainVector.end();
+		while (begin--)
+			itEnd--;
+		begin = 0;
+		while (begin++ < end)
+		{
+			this->sortedVector.insert(std::upper_bound(this->sortedVector.begin(), \
+				this->sortedVector.end(), *itEnd), *itEnd);
+			itEnd--;
 		}
 	}
 	return ;
 }
 
-void	PMergeMe::sort(int argc, char **argv)
+void	PMergeMe::insertionDeque(void)
+{
+	unsigned int				j0 = 1;
+	unsigned int				j1 = 1;
+	unsigned int				swap;
+	size_t						unsortedSize = this->unsortedDeque.size();
+	size_t						pendChainSize = this->pendChainDeque.size();
+	size_t						begin;
+	size_t						end;
+	std::deque<int>::iterator	it = this->pendChainDeque.begin();
+
+	if (pendChainSize > 0)
+		this->sortedDeque.insert(std::upper_bound(this->sortedDeque.begin(), \
+			this->sortedDeque.end(), *it), *it);
+	it++;
+	if (pendChainSize > 1)
+		this->sortedDeque.insert(std::upper_bound(this->sortedDeque.begin(), \
+			this->sortedDeque.end(), *it), *it);
+	while (this->sortedDeque.size() < unsortedSize)
+	{
+		swap = j1;
+		j1 = generateJacobsthalNumbers(j0, j1);
+		j0 = swap;
+		if (j1 >= pendChainSize)
+			j1 = pendChainSize - 1;
+		begin = pendChainSize - j1;
+		end = j1 - j0;
+		std::deque<int>::iterator	itEnd = this->pendChainDeque.end();
+		while (begin--)
+			itEnd--;
+		begin = 0;
+		while (begin++ < end)
+		{
+			this->sortedDeque.insert(std::upper_bound(this->sortedDeque.begin(), \
+				this->sortedDeque.end(), *itEnd), *itEnd);
+			itEnd--;
+		}
+	}
+	return ;
+}
+
+void	PMergeMe::FordJohnson(int argc, char **argv)
 {
 	validateParameters(argc, argv);
 	populateContainers(argc, argv);
-	// for (std::deque<int>::iterator it = this->unsortedDeque.begin(); it != this->unsortedDeque.end(); it++)
-	// {
-	// 	std::cout << *it << " ";
-	// }
-	// std::cout << "\n";
-	// std::cout << this->numberOfElements;
-	FordJohnsonVector();
-	// for (std::vector<int>::iterator it = this->unsortedVector.begin(); it != this->unsortedVector.end(); it++)
-	// {
-	// 	std::cout << *it << " ";
-	// }
-	// std::cout << "\n";
+
+	clock_t	startVector = clock();
+
+	this->straggler = -1;
+	foundStraggler(this->unsortedVector, this->straggler);
+	createAndSortMainChainVector();
+	insertionVector();
+
+	clock_t	endVector = clock();
+
+	clock_t	startDeque = clock();
+
+	this->straggler = -1;
+	foundStraggler(this->unsortedDeque, this->straggler);
+	createAndSortMainChainDeque();
+	insertionDeque();
+
+	clock_t	endDeque = clock();
+
+	printMessage(this->sortedVector, "vector");
+	printMessage(this->sortedDeque, "deque");
+	printTime(startVector, endVector, this->unsortedVector.size(), "vector");
+	printTime(startDeque, endDeque, this->unsortedDeque.size(), "deque");
 	return ;
 };

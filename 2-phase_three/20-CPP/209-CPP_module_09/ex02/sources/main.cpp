@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:50:25 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/17 18:15:00 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	PMergeMe	merge;
 	try
 	{
-		merge.sort(argc, argv);
+		merge.FordJohnson(argc, argv);
 	}
 	catch(const std::exception &e)
 	{

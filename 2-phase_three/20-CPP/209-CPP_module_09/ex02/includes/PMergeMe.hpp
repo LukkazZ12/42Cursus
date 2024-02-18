@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 20:37:51 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/17 23:34:19 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <deque>
 # include <sstream>
 # include <cstdlib>
-#include <algorithm>
+# include <algorithm>
+# include <ctime>
+# include <typeinfo>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
@@ -32,25 +34,52 @@
 class PMergeMe
 {
 	private:
-		// int					straggler;
-		// void				sortVector();
+		int					straggler;
 		int					numberOfElements;
-		std::vector<int>	unsortedVector;
 		std::vector<int>	sortedVector;
-		// void				sortDeque();
-		std::deque<int>		unsortedDeque;
+		std::vector<int>	unsortedVector;
+		std::vector<int>	pendChainVector;
 		std::deque<int>		sortedDeque;
+		std::deque<int>		unsortedDeque;
+		std::deque<int>		pendChainDeque;
 	public:
 		PMergeMe();
-		// PMergeMe(std::vector<int> vector, std::deque<int> deque);
 		PMergeMe(const PMergeMe &merge);
 		PMergeMe &operator=(const PMergeMe &merge);
 		~PMergeMe();
-		void				sort(int argc, char **argv);
+		void				FordJohnson(int argc, char **argv);
 		void				populateContainers(int argc, char **argv);
-		void				FordJohnsonVector(void);
-		// std::deque<int>		getSortedDeque() const;
-	
+		void				createAndSortMainChainVector(void);
+		void				createAndSortMainChainDeque(void);
+		void				insertionVector(void);
+		void				insertionDeque(void);
 };
+
+template <typename T>
+void	foundStraggler(T &container, int &straggler)
+{
+	typename T::iterator	itStraggler;
+
+	if (container.size() % 2)
+	{
+		itStraggler = container.end();
+		itStraggler--;
+		straggler = *itStraggler;
+		container.pop_back();
+	}
+	return ;
+}
+
+template <typename T>
+void	printMessage(T sorted, std::string type)
+{
+	typename T::iterator	it = sorted.begin();
+	typename T::iterator	itEnd = sorted.end();
+
+	std::cout << GREEN <<"After (" << type << "):\t" << RESET;
+	for (; it != itEnd; it++)
+		std::cout << *it << (it != itEnd - 1 ? " " : "\n");
+	return ;
+}
 
 #endif
