@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 17:44:20 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:43:21 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,38 @@ static double	divide(double first, double second)
 	return (first / second);
 }
 
+static void	ltrim(std::string &str)
+{
+	size_t	i = 0;
+
+	while (i < str.size() && str[i] == ' ')
+		i++;
+	str = str.substr(i);
+}
+
+static void	rtrim(std::string &str)
+{
+	size_t	i = str.size();
+
+	while (i > 0 && str[i - 1] == ' ')
+		i--;
+	str = str.substr(0, i);
+}
+
+static void	trim(std::string &str)
+{
+	ltrim(str);
+	rtrim(str);
+}
+
 static void	validateNumbersOperations(std::string &str)
 {
 	std::string			subString;
 	std::stringstream	line(str);
 
+	trim(str);
+	if (!str[0])
+		throw std::runtime_error("Error: Invalid parameter.");
 	while (std::getline(line, subString, ' '))
 	{
 		if (subString.size() > 1)
@@ -75,7 +102,7 @@ static void	validateNumbersOperations(std::string &str)
 
 static void	validateStr(std::string str)
 {
-	if (str.find_first_not_of("0123456789+-*/ ") != std::string::npos)
+	if (!str[0] || str.find_first_not_of("0123456789+-*/ ") != std::string::npos)
 		throw std::runtime_error("Error: Invalid parameter.");
 	validateNumbersOperations(str);
 	return ;

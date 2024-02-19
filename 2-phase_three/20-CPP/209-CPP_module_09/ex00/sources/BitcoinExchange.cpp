@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:29:38 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/16 22:05:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:24:46 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static void	validateHeader(const std::string &header)
 	std::string			subString;
 	std::stringstream	line(header);
 
+	if (header[header.size() - 1] == '|')
+		throw std::runtime_error("Invalid header.");
 	while (std::getline(line, subString, '|'))
 	{
 		trim(subString);
@@ -84,6 +86,9 @@ static void	validateHeader(const std::string &header)
 		else
 			throw std::runtime_error("Invalid header.");
 	}
+	if (i < 2)
+		throw std::runtime_error("Invalid header.");
+	return ;
 }
 
 static bool	validateYear(std::string &yearStr, int &ver)
@@ -158,6 +163,8 @@ static bool	validateDate(std::string &date)
 	std::string			subString;
 	std::stringstream	line(date);
 
+	if (date.size() != 10)
+		return (false);
 	while (std::getline(line, subString, '-'))
 	{
 		if (!i)
@@ -179,7 +186,7 @@ static bool	validateDate(std::string &date)
 			return (false);
 		i++;
 	}
-	if (date == "2009-01-01")
+	if (date == "2009-01-01" || i < 3)
 		return (false);
 	return (true);
 }
@@ -188,13 +195,17 @@ static std::string	validateValue(std::string &value, bool &valueError)
 {
 	int			dot = 0;
 	int			i = 0;
-	int			size = (int)value.size() - 1;
+	int			size = (int)value.size();
 	int			decimals = -1;
 	bool		hasDot = false;
 	long double	number;
 
 	if (value[0] == '+' || value[0] == '-')
+	{
 		i++;
+		if (i == size)
+			return ("Error: bad input => " + value);
+	}
 	while(i < size)
 	{
 		if (value[i] != '.' && !isdigit(value[i]))
@@ -224,6 +235,7 @@ static std::string	validateValue(std::string &value, bool &valueError)
 void	BitcoinExchange::readFile(const std::string &filename)
 {
 	int				i;
+	float			value;
 	bool			valueError;
 	std::ifstream	file(filename.c_str());
 	std::string		line;
@@ -233,6 +245,7 @@ void	BitcoinExchange::readFile(const std::string &filename)
 	if (!file.is_open())
 		throw std::runtime_error("Couldn't open the input file.");
 	std::getline(file, line);
+	trim(line);
 	validateHeader(line);
 	while (std::getline(file, line))
 	{
@@ -242,6 +255,8 @@ void	BitcoinExchange::readFile(const std::string &filename)
 		{
 			valueError = true;
 			trim(subString);
+			if (!subString[0])
+				i = 2;
 			if (!i)
 			{
 				if (!validateDate(subString))
@@ -263,19 +278,20 @@ void	BitcoinExchange::readFile(const std::string &filename)
 				else
 				{
 					std::istringstream	toFloat(subString);
-					float				value;
 
 					toFloat >> value;
-					printMessage(subStringAux, value);
 				}
 			}
 			else
 			{
 				std::cerr << RED << "Error: bad input => " << line << RESET << std::endl;
+				i = 3;
 					break ;
 			}
 			i++;
 		}
+		if (i == 2)
+			printMessage(subStringAux, value);
 	}
 	file.close();
 	return ;

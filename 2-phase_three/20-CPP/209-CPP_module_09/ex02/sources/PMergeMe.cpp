@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/17 23:35:40 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:19:57 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ static void	validateParameters(int argc, char **argv)
 		if (!argv[i][0])
 			throw std::runtime_error("Error: Empty string.");
 		argv[i][0] == '+' ? j = 1 : j = 0;
+		if (!argv[i][j])
+			throw std::runtime_error("Error: It's not a integer.");
 		for (; argv[i][j]; j++)
 		{
 			if (!isdigit(argv[i][j]))
 				throw std::runtime_error("Error: It's not a integer or it's a negative integer.");
 		}
 		number = atoi(argv[i]);
-		if (number > 2147483647)
+		if (strlen(argv[i]) > 10 || number > 2147483647)
 			throw std::runtime_error("Error: Too large a integer.");
 		vector.push_back(atoi(argv[i]));
 	}
@@ -194,8 +196,8 @@ void	PMergeMe::insertionVector(void)
 	unsigned int				j0 = 1;
 	unsigned int				j1 = 1;
 	unsigned int				swap;
-	size_t						unsortedSize = this->unsortedVector.size();
 	size_t						pendChainSize = this->pendChainVector.size();
+	size_t						pendChainSizeAux = pendChainSize - 1;
 	size_t						begin;
 	size_t						end;
 	std::vector<int>::iterator	it = this->pendChainVector.begin();
@@ -207,7 +209,7 @@ void	PMergeMe::insertionVector(void)
 	if (pendChainSize > 1)
 		this->sortedVector.insert(std::upper_bound(this->sortedVector.begin(), \
 			this->sortedVector.end(), *it), *it);
-	while (this->sortedVector.size() < unsortedSize)
+	while (pendChainSizeAux--)
 	{
 		swap = j1;
 		j1 = generateJacobsthalNumbers(j0, j1);
@@ -235,8 +237,8 @@ void	PMergeMe::insertionDeque(void)
 	unsigned int				j0 = 1;
 	unsigned int				j1 = 1;
 	unsigned int				swap;
-	size_t						unsortedSize = this->unsortedDeque.size();
 	size_t						pendChainSize = this->pendChainDeque.size();
+	size_t						pendChainSizeAux = pendChainSize - 1;
 	size_t						begin;
 	size_t						end;
 	std::deque<int>::iterator	it = this->pendChainDeque.begin();
@@ -248,7 +250,7 @@ void	PMergeMe::insertionDeque(void)
 	if (pendChainSize > 1)
 		this->sortedDeque.insert(std::upper_bound(this->sortedDeque.begin(), \
 			this->sortedDeque.end(), *it), *it);
-	while (this->sortedDeque.size() < unsortedSize)
+	while (pendChainSizeAux--)
 	{
 		swap = j1;
 		j1 = generateJacobsthalNumbers(j0, j1);

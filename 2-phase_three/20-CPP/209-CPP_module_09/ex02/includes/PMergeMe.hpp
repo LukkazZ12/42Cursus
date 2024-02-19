@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/17 23:34:19 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:16:36 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <algorithm>
 # include <ctime>
 # include <typeinfo>
+# include <cstring>
 
 # define RESET			"\033[0m"
 # define RED			"\033[31m"
