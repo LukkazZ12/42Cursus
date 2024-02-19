@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/19 16:16:36 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:19:08 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ class PMergeMe
 		std::deque<int>		unsortedDeque;
 		std::deque<int>		pendChainDeque;
 	public:
-		PMergeMe();
+		PMergeMe(void);
 		PMergeMe(const PMergeMe &merge);
 		PMergeMe &operator=(const PMergeMe &merge);
-		~PMergeMe();
+		~PMergeMe(void);
 		void				FordJohnson(int argc, char **argv);
 		void				populateContainers(int argc, char **argv);
 		void				createAndSortMainChainVector(void);

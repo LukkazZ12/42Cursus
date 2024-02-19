@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/17 18:15:00 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:18:59 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << RED << e.what()<< RESET << std::endl;
+		std::cerr << RED << e.what() << std::endl << RESET;
 	}
 	return (0);
 }
