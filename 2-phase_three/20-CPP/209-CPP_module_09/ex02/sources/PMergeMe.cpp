@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/19 16:19:57 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:38:46 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ void	PMergeMe::insertionVector(void)
 	unsigned int				j1 = 1;
 	unsigned int				swap;
 	size_t						pendChainSize = this->pendChainVector.size();
-	size_t						pendChainSizeAux = pendChainSize - 1;
+	size_t						pendChainSizeAux = pendChainSize;
 	size_t						begin;
 	size_t						end;
 	std::vector<int>::iterator	it = this->pendChainVector.begin();
@@ -209,6 +209,8 @@ void	PMergeMe::insertionVector(void)
 	if (pendChainSize > 1)
 		this->sortedVector.insert(std::upper_bound(this->sortedVector.begin(), \
 			this->sortedVector.end(), *it), *it);
+	if (pendChainSize)
+		pendChainSizeAux--;
 	while (pendChainSizeAux--)
 	{
 		swap = j1;
@@ -238,7 +240,7 @@ void	PMergeMe::insertionDeque(void)
 	unsigned int				j1 = 1;
 	unsigned int				swap;
 	size_t						pendChainSize = this->pendChainDeque.size();
-	size_t						pendChainSizeAux = pendChainSize - 1;
+	size_t						pendChainSizeAux = pendChainSize;
 	size_t						begin;
 	size_t						end;
 	std::deque<int>::iterator	it = this->pendChainDeque.begin();
@@ -250,6 +252,8 @@ void	PMergeMe::insertionDeque(void)
 	if (pendChainSize > 1)
 		this->sortedDeque.insert(std::upper_bound(this->sortedDeque.begin(), \
 			this->sortedDeque.end(), *it), *it);
+	if (pendChainSize)
+		pendChainSizeAux--;
 	while (pendChainSizeAux--)
 	{
 		swap = j1;
