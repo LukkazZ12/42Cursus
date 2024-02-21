@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/01 12:48:07 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:41:10 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static bool	isFloat(std::string str)
 	}
 	if (decimals == -1)
 		decimals = 1;
-	if (str[i] != 'f' || dot > 1 || str[0] == '.' || str[i - 1] == '.')
+	if (!isdigit(str[i - 1]) || str[i] != 'f' || dot > 1 || str[0] == '.' || str[i - 1] == '.')
 		return (false);
 	number = atof(str.c_str());
 	if (number > std::numeric_limits<float>::max() ||
