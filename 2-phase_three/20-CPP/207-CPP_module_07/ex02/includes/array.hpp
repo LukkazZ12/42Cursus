@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/09 15:32:14 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/26 20:16:59 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,16 @@ class Array
 			this->array = NULL;
 			this->arraySize = 0;
 			return ;
-		};
+		}
 		Array(unsigned int size)
 		{
+			this->arraySize = size;
 			if (!size)
-			{
 				this->array = NULL;
-				this->arraySize = 0;
-			}
 			else
-			{
 				this->array = new T[size];
-				this->arraySize = size;
-			}
 			return ;
-		};
+		}
 		Array(const Array &array)
 		{
 			this->array = NULL;
@@ -79,8 +74,14 @@ class Array
 			this->arraySize = 0;
 			this->array = NULL;
 			return ;
-		};
+		}
 		T	&operator[](int index)
+		{
+			if (index < 0 || index >= (int)this->arraySize)
+				throw (std::out_of_range("Error: Index out of range."));
+			return (this->array[index]);
+		}
+		const T	&operator[](int index) const
 		{
 			if (index < 0 || index >= (int)this->arraySize)
 				throw (std::out_of_range("Error: Index out of range."));
