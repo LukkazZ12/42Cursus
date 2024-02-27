@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:41:01 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/02 16:51:24 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:32:23 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,25 @@ void	swap(T &a, T &b)
 }
 
 template <typename T>
-T	min(T a, T b)
+T	&min(T &a, T &b)
 {
 	return (a < b ? a : b);
 }
 
 template <typename T>
-T	max(T a, T b)
+const T	&min(const T &a, const T &b)
+{
+	return (a < b ? a : b);
+}
+
+template <typename T>
+T	&max(T &a, T &b)
+{
+	return (a > b ? a : b);
+}
+
+template <typename T>
+const T	&max(const T &a, const T &b)
 {
 	return (a > b ? a : b);
 }
