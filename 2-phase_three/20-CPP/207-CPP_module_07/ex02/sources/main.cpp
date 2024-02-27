@@ -6,11 +6,11 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/26 20:13:57 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:45:19 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.hpp"
+#include "Array.hpp"
 
 int main(int, char**)
 {
@@ -90,9 +90,9 @@ int main(int, char**)
 	}
 	delete [] mirror;
 
-	const Array<int>	zahlen(5);
+	const Array<int>	Zahlen(5);
 
 	// zahlen[0] = 1;
-	std::cout << "zahlen[0]: " << zahlen[0] << std::endl;
+	std::cout << "zahlen[0]: " << Zahlen[0] << std::endl;
 	return (0);
 }
