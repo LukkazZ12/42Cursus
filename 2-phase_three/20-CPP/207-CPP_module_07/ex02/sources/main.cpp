@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:17:14 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/26 21:45:19 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/02/26 22:03:07 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int, char**)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << RED << e.what() << '\n' << RESET;
 	}
 	try
 	{
@@ -31,7 +31,7 @@ int main(int, char**)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << RED << e.what() << '\n' << RESET;
 	}
 	std::cout << "a size: " << a.size() << std::endl;
 	std::cout << "a address: " << a.getArray() << std::endl;
@@ -90,9 +90,9 @@ int main(int, char**)
 	}
 	delete [] mirror;
 
-	const Array<int>	Zahlen(5);
+	const Array<int>	zahlen = numbers;
 
 	// zahlen[0] = 1;
-	std::cout << "zahlen[0]: " << Zahlen[0] << std::endl;
+	std::cout << "zahlen[0]: " << zahlen[0] << std::endl;
 	return (0);
 }
