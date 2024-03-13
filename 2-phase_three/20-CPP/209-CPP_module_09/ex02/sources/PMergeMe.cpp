@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:03:23 by lucade-s          #+#    #+#             */
-/*   Updated: 2024/02/19 19:38:46 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:11:35 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,8 @@ void	PMergeMe::insertionVector(void)
 			j1 = pendChainSize - 1;
 		begin = pendChainSize - j1;
 		end = j1 - j0;
+		if (!end)
+			break ;
 		std::vector<int>::iterator	itEnd = this->pendChainVector.end();
 		while (begin--)
 			itEnd--;
@@ -263,6 +265,8 @@ void	PMergeMe::insertionDeque(void)
 			j1 = pendChainSize - 1;
 		begin = pendChainSize - j1;
 		end = j1 - j0;
+		if (!end)
+			break ;
 		std::deque<int>::iterator	itEnd = this->pendChainDeque.end();
 		while (begin--)
 			itEnd--;
