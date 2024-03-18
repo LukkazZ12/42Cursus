@@ -6,7 +6,7 @@
 /*   By: lucade-s <lucade-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:10:15 by byoshimo          #+#    #+#             */
-/*   Updated: 2023/05/31 16:29:05 by lucade-s         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:29:17 by lucade-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ void	echo(char **token)
 	g_ms.exit_status = 0;
 	i = 1;
 	flag = 0;
-	if (token[i] && check_n_flag(token[i]))
-	{
+	while (token[i] && check_n_flag(token[i]))
 		i++;
+	if (i != 1)
 		flag = 1;
-	}
 	if (!token[i] && !flag)
 		ft_putstr_fd("\n", 1);
 	while (token[i])
