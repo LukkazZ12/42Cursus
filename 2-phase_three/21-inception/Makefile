@@ -29,6 +29,9 @@ ls:
 	@echo "\nNETWORKS:"
 	@docker network ls -f type=custom
 
+port:
+	@docker-compose -f ./srcs/docker-compose.yml ps
+
 clean: docker image prune -af
 
 fclean: delete-volumes
