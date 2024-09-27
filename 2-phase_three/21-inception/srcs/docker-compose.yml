@@ -8,6 +8,9 @@ services:
   nginx:
     container_name: nginx
     restart: always
+    image: nginx
+    depends_on:
+      - wordpress
     build:
       context: ./requirements/nginx
     networks:
@@ -15,17 +18,18 @@ services:
     volumes:
       - wordpress-data:/var/www/html
     ports:
-      - "443:443"
+      - 443:443
 
   mariadb:
     container_name: mariadb
     restart: always
+    image: mariadb
     build:
       context: ./requirements/mariadb
       args:
-        SQL_DATABASE: ${SQL_DATABASE}
-        SQL_USER: ${SQL_USER}
-        SQL_PASSWORD: ${SQL_PASSWORD}
+        - SQL_DATABASE=${SQL_DATABASE}
+        - SQL_USER=${SQL_USER}
+        - SQL_PASSWORD=${SQL_PASSWORD}
     healthcheck:
       test: mysqladmin ping -h localhost -u root
       interval: 1s
@@ -33,28 +37,30 @@ services:
       retries: 5
     networks:
       - inception
-    env_file: ./.env
+    env_file: .env
     volumes:
       - mariadb-data:/var/lib/mysql
 
   wordpress:
     container_name: wordpress
     restart: always
+    image: wordpress
+    depends_on:
+      mariadb:
+        condition: service_healthy
     build:
       context: ./requirements/wordpress
     environment:
-      - SQL_DATABASE=${SQL_DATABASE}
-      - SQL_USER=${SQL_USER}
-      - SQL_PASSWORD=${SQL_PASSWORD}
-      - WP_ADMIN_USER=${WP_ADMIN_USER}
-      - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
-      - WP_USER=${WP_USER}
-      - WP_USER_PASSWORD=${WP_USER_PASSWORD}
-    depends_on:
-      - mariadb
+      - SQL_DATABASE
+      - SQL_USER
+      - SQL_PASSWORD
+      - WP_ADMIN_USER
+      - WP_ADMIN_PASSWORD
+      - WP_USER
+      - WP_USER_PASSWORD
     networks:
       - inception
-    env_file: ./.env
+    env_file: .env
     volumes:
       - wordpress-data:/var/www/html
 

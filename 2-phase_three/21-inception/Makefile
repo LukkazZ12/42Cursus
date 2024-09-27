@@ -1,5 +1,5 @@
 LOGIN=lucade-s
-DOCKER_COMPOSE_PATH=srcs/docker-compose.yml
+DOCKER_COMPOSE_PATH=./srcs/docker-compose.yml
 
 all: up
 
@@ -29,13 +29,11 @@ ls:
 	@echo "\nNETWORKS:"
 	@docker network ls -f type=custom
 
-port:
-	@docker-compose -f ./srcs/docker-compose.yml ps
-
-clean: docker image prune -af
+clean:
+	docker image prune -af
 
 fclean: delete-volumes
-		docker system prune -fa
+	docker system prune -fa
 
 re: fclean all
 
