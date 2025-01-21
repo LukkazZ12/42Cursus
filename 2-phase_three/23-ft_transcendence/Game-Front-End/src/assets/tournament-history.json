@@ -1,0 +1,75 @@
+{
+	"currentPage": 2,
+	"pageSize": 10,
+	"nextPage": 3,
+	"previousPage": 1,
+	"hasNextPage": true,
+	"hasPreviousPage": true,
+	"data": [
+		{
+			"winner": "0",
+			"0": {
+				"name": "Jonas",
+				"score": 22,
+				"profileImage": "./assets/img/1.png"
+			},
+			"1": {
+				"name": "Bea",
+				"score": 21,
+				"profileImage": "./assets/img/2.png"
+			}
+		},
+		{
+			"winner": "1",
+			"0": {
+				"name": "Lucas",
+				"score": 18,
+				"profileImage": "./assets/img/1.png"
+			},
+			"1": {
+				"name": "Ana",
+				"score": 20,
+				"profileImage": "./assets/img/2.png"
+			}
+		},
+		{
+			"winner": "0",
+			"0": {
+				"name": "Carlos",
+				"score": 25,
+				"profileImage": "./assets/img/2.png"
+			},
+			"1": {
+				"name": "Sofia",
+				"score": 19,
+				"profileImage": "./assets/img/1.png"
+			}
+		},
+		{
+			"winner": "1",
+			"0": {
+				"name": "Marcos",
+				"score": 17,
+				"profileImage": "./assets/img/1.png"
+			},
+			"1": {
+				"name": "Juliana",
+				"score": 23,
+				"profileImage": "./assets/img/1.png"
+			}
+		},
+		{
+			"winner": "0",
+			"0": {
+				"name": "Pedro",
+				"score": 30,
+				"profileImage": "./assets/img/2.png"
+			},
+			"1": {
+				"name": "Clara",
+				"score": 28,
+				"profileImage": "./assets/img/1.png"
+			}
+		}
+	]
+}

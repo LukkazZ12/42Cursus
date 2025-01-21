@@ -1,0 +1,191 @@
+version: '3'
+secrets:
+  secrets_env:
+    file: .env
+
+services:
+
+  db-user:
+    image: postgres:16-alpine
+    container_name: db-user-session
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: "${USER_SESSION_POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${USER_SESSION_POSTGRES_DB}"
+    volumes:
+      - user-db-data:/var/lib/postgresql/data
+    secrets:
+      - secrets_env
+
+  user-session-migrate:
+    image: python:3.11
+    container_name: user-session-migrate
+    command: sh -c "pip install -r requirements.txt && python manage.py migrate"
+    working_dir: /app
+    environment:
+      DB_NAME: "${USER_SESSION_POSTGRES_DB}"
+      DB_USER: "${USER_SESSION_POSTGRES_USER}"
+      DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
+      DB_HOST: "db-user-session"
+      DB_PORT: "5432"
+    volumes:
+      - user-session-dev:/app
+    depends_on: 
+      - db-user
+
+  user-session:
+    image: python:3.11
+    container_name: user-session
+    command: sh -c "pip install -r requirements.txt && uvicorn session.asgi:application --host 0.0.0.0 --port 8002 --reload"
+    working_dir: /app
+    volumes:
+      - user-session-dev:/app
+    environment:
+      DB_NAME: "${USER_SESSION_POSTGRES_DB}"
+      DB_USER: "${USER_SESSION_POSTGRES_USER}"
+      DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
+      DB_HOST: "db-user-session"
+      DB_PORT: "5432"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      - user-session-migrate
+      - db-user
+      - redis
+
+  game-sync-session-worker:
+    image: python:3.11
+    container_name: game-sync-session-worker
+    command: sh -c "pip install -r requirements.txt && python manage.py game_integration"
+    working_dir: /app
+    volumes:
+      - user-session-dev:/app
+    environment:
+      DB_NAME: "${USER_SESSION_POSTGRES_DB}"
+      DB_USER: "${USER_SESSION_POSTGRES_USER}"
+      DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
+      DB_HOST: "db-user-session"
+      DB_PORT: "5432"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      - user-session
+      - redis
+
+  db-game:
+    image: postgres:16-alpine
+    container_name: db-game-core
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: "${CORE_GAME_POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${CORE_GAME_POSTGRES_DB}"
+    volumes:
+      - game-db-data:/var/lib/postgresql/data
+    secrets:
+      - secrets_env
+
+  game-core-migrate:
+    image: python:3.11
+    container_name: game-core-migrate
+    command: sh -c "pip install -r requirements.txt && python manage.py migrate"
+    working_dir: /app
+    environment:
+      DB_NAME: "${CORE_GAME_POSTGRES_DB}"
+      DB_USER: "${CORE_GAME_POSTGRES_USER}"
+      DB_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
+      DB_HOST: "db-game-core"
+      DB_PORT: "5432"
+    volumes:
+      - game-core-dev:/app
+    depends_on: 
+      - db-game
+
+  game-core:
+    image: python:3.11
+    container_name: game-core
+    command: sh -c "pip install -r requirements.txt && uvicorn game_project.asgi:application --host 0.0.0.0 --port 8001 --reload"
+    working_dir: /app
+    volumes:
+      - game-core-dev:/app
+    environment:
+      DB_NAME: "${CORE_GAME_POSTGRES_DB}"
+      DB_USER: "${CORE_GAME_POSTGRES_USER}"
+      DB_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
+      DB_HOST: "db-game-core"
+      DB_PORT: "5432"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      - db-game
+
+  game-worker:
+    image: python:3.11
+    container_name: game-worker
+    command: sh -c "pip install -r requirements.txt && python manage.py session_worker"
+    working_dir: /app
+    volumes:
+      - game-core-dev:/app
+    environment:
+      DB_NAME: "${CORE_GAME_POSTGRES_DB}"
+      DB_USER: "${CORE_GAME_POSTGRES_USER}"
+      DB_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
+      DB_HOST: "db-game-core"
+      DB_PORT: "5432"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      - game-core
+      - redis
+
+  nginx:
+    build:
+      context: ./Game-Front-End/
+      dockerfile: ./nginx/Dockerfile
+    image: game-front-end:latest
+    container_name: game-front-end
+    ports:
+      - "8080:80"
+      - "8443:443"
+    depends_on:
+      - game-core
+      - user-session
+  
+  redis:
+    image: "redis:latest"
+
+volumes:
+  game-core-dev:
+    name: game-core-dev
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./Game-Core/src
+
+  user-session-dev:
+    name: user-session-dev
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./User-Session/src
+
+  game-db-data:
+    name: game-db-data
+    driver: local
+    driver_opts:
+      o: 'bind'
+      type: 'none'
+      device: '~/goinfre/storage/game-data'
+
+  user-db-data:
+    name: user-db-data
+    driver: local
+    driver_opts:
+      o: 'bind'
+      type: 'none'
+      device: '~/goinfre/storage/user-data'

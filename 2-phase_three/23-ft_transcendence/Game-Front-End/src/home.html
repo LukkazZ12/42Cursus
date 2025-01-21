@@ -1,0 +1,67 @@
+
+<!-- Header Section -->
+<section id="header-section" class="cover-container bg-light mb-4 d-flex w-100 px-3 mx-auto flex-column"></section>
+
+<!-- Body Content -->
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+	<main  style="height: 85vh;" class="px-3 d-flex align-items-center justify-content-center flex-column">
+		<h1 class="h1 "><b>Transcendence</b></h1>
+		<p class="lead">A Pong Game</p>
+		<div class="d-flex align-items-around">
+			<p class="lead px-3">
+				<button data-page-name="/view-rooms.html" class="btn btn-open-list-rooms btn-lg btn-secondary">List Rooms</button>
+			</p>
+			<p class="lead px-3">
+				<button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#create-room" data-bs-whatever="@mdo">Create Room</button>
+			</p>
+		</div>
+	</main>
+</div>
+
+<!-- Form For Create A Room -->
+<div class="modal fade" id="create-room" tabindex="-1" aria-labelledby="createRoomModal" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header align-items-start">
+				<div>
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Create a room</h1>
+					<p>Create a room to play with up to 4 people</p>
+				</div>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form onsubmit="CreateRoom(event)"> 
+					<div class="mb-3">
+						<label for="nickname-input" class="col-form-label">Nickname</label>
+						<input name="nickname" type="text" class="form-control" id="nickname-input">
+					</div>
+					<div class="mb-3">
+						<label for="game-type-section" class="col-form-label">Game Type</label>
+						<select name="gameType" id="game-type-section" class="form-select form-select-sm" aria-label="game type selection" onchange="updateNumberOfPlayersOptions()">
+							<option selected value="2">Single Player</option>
+							<option value="0">Match</option>
+							<option value="1">Tournament</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="number-of-players-section" class="col-form-label">Number of Players</label>
+						<select name="numberOfPlayers" id="number-of-players-section" class="form-select form-select-sm" aria-label="number of players selection" disabled="">
+							<option selected value="1">1</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="room-name-input" class="col-form-label">Room Name</label>
+						<input name="roomName" class="form-control" id="room-name-input"></input>
+					</div>
+					<div class="form-check form-switch">
+						<input name="isPrivate" class="form-check-input" type="checkbox" role="switch" id="private-room-checkbox">
+						<label class="form-check-label" for="private-room-checkbox">Private Room<br><p>Private rooms do not appear in global search and can only be accessed by code.</p></label>
+					</div>
+					<div class="modal-footer mb-3">
+						<button type="submit" data-bs-dismiss="modal" style="width: 100vw;" class="h-100 btn btn-dark">Create The Room</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

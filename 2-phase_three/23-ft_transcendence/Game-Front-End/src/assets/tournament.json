@@ -1,0 +1,47 @@
+{
+	"round": 1,
+	"roomType": 1,
+	"roomName": "Irmão do Jorel",
+	"numberOfPlayers": 5,
+	"maxNumberOfPlayers": 16,
+	"owner": true,
+	"tournamentOwner": true,
+	"players": {
+		"1": {
+			"name": "bea",
+			"urlProfileImage": "/assets/img/1.png",
+			"color": "#782932"
+		},
+		"2": {
+			"name": "Lucas",
+			"urlProfileImage": "/assets/img/2.png",
+			"color": "#782932"
+		},
+		"3": null,
+		"4": null,
+		"5": {
+			"name": "davy",
+			"urlProfileImage": "/assets/img/2.png",
+			"color": "#782932"
+		},
+		"6": {
+			"name": "Ranna",
+			"urlProfileImage": "/assets/img/1.png",
+			"color": "#782932"
+		},
+		"7": {
+			"name": "Aurora",
+			"urlProfileImage": "/assets/img/1.png",
+			"color": "#782932"
+		},
+		"8": null,
+		"9": null,
+		"10": null,
+		"11": null,
+		"12": null,
+		"13": null,
+		"14": null,
+		"15": null,
+		"16": null
+	}
+}

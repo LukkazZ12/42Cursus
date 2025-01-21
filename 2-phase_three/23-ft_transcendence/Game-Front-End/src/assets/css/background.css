@@ -1,0 +1,80 @@
+.pbg {
+    background: 
+        linear-gradient(45deg, #f1f1f1 25%, transparent 50%),
+        linear-gradient(-45deg, #f1f1f1 25%, transparent 50%),
+        linear-gradient(45deg, transparent 75%, #f1f1f1 75%),
+        linear-gradient(-45deg, transparent 75%, #f1f1f1 75%);
+    background-size: 250px 250px;
+    background-position: 0 0, 0 125px, 125px -125px, -125px 0;
+}
+
+/* Skeleton loader styles */
+.skeleton-loader .skeleton-img {
+    width: 40px;
+    height: 40px;
+    background-color: #ddd;
+}
+
+/* Skeleton loader */
+.skeleton-loader .skeleton-line {
+    background-color: #ddd;
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+.skeleton-loader .skeleton-text .skeleton-line {
+    width: 100px;
+    height: 10px;
+    background-color: #ddd;
+    margin-top: 5px;
+}
+
+.skeleton-loader .skeleton-line.small {
+    width: 70px;
+}
+
+/* Efeito de animação opcional */
+.skeleton-line, .skeleton-img {
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.skeleton-loader .skeleton-title {
+    width: 60%;
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-loader .skeleton-players-count {
+    width: 20%;
+    height: 14px;
+    margin-bottom: 8px;
+}
+
+.skeleton-loader .skeleton-room-code {
+    width: 50%;
+    height: 12px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,47 @@
+<section id="header-section" class="cover-container bg-light mb-4 d-flex w-100 px-3 mx-auto flex-column"></section>
+
+<section style="height: 85vh;" class="my-5 container">
+	<div class="d-flex ">
+		<div id="list-of-players" class="w-75 my-2 list-group list-group-flush d-flex flex-row align-items-center">
+		</div>
+		<div class="w-25 d-flex align-items-center justify-content-end">
+			<button class="btn d-none btn-dark">Sair da Partida</button>
+		</div>
+	</div>
+</section>
+
+<div class="modal fade" id="gameOverWinnerModal" tabindex="-1" aria-labelledby="gameOverWinnerModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="gameOverWinnerModalLabel">Game Over</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Congratulations. You won!
+				Thank you for playing!
+			</div>
+			<div class="modal-footer">
+				<a data-page-name="/home.html" type="button" data-bs-dismiss="modal" class="btn btn-secondary">Go to initial menu</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="gameOverLoserModal" tabindex="-1" aria-labelledby="gameOverLoserModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="gameOverLoserModalLabel">Game Over</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				You lost!
+				Thank you for playing!
+			</div>
+			<div class="modal-footer">
+				<a data-page-name="/home.html" type="button" data-bs-dismiss="modal" class="btn btn-secondary">Go to initial menu</a>
+			</div>
+		</div>
+	</div>
+</div>

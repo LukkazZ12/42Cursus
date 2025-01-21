@@ -1,0 +1,25 @@
+<!-- Header Section -->
+<section class="cover-container d-flex w-100 p-3 mx-auto flex-row justify-content-center align-items-stretch">
+
+    <section class="h-75 w-50 mx-3 bg-light px-4 pt-3 pb-5 rounded-4 border border-1">
+        <div id="room-name"></div>
+        <div id="list-of-players" class="mb-3 list-group list-group-flush border-bottom scrollarea"></div>
+
+    </section>
+
+    <section id="room-actions" class="w-50 mx-3 d-flex flex-column align-items-center justify-content-between">
+
+    </section>
+</section>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="roomCodeToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Room code copied to clipboard!
+        </div>
+    </div>
+</div>

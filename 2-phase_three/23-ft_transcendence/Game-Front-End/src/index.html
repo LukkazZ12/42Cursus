@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home Page</title>
+
+	<link rel="stylesheet" href="./assets/css/background.css" />
+
+	<link rel="icon" type="image/png" href="/assets/icon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/assets/icon/favicon.svg" />
+	<link rel="shortcut icon" href="/assets/icon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png" />
+	<!--<link rel="manifest" href="/assets/icon/site.webmanifest" />-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="./assets/js/Enums.js"></script>
+    <script src="./assets/js/utils/CustomError.js"></script>
+    <script src="./assets/js/repositories/RoutesInfo.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+	<script src="/assets/js/game-front-end/WebglUtils.js"></script>
+	<script src="/assets/js/game-front-end/MVnew.js"></script>
+	<script src="/assets/js/game-front-end/Objects.js"></script>
+	<script src="/assets/js/game-front-end/Variables.js"></script>
+	<script src="/assets/js/game-front-end/InitAndUpdateObjects.js"></script>
+	<script src="/assets/js/game-front-end/Textures.js"></script>
+	<script src="/assets/js/game-front-end/Shaders.js"></script>
+	<script src="/assets/js/game-front-end/Render.js"></script>
+  <script src="/assets/js/Generics.js"></script>
+
+	<script src="./assets/js/components/PaginationComponent.js"></script>
+
+	<script src="./assets/js/components/HeaderComponent.js"></script>
+
+	<script src="./assets/js/repositories/RoomRepository.js"></script>
+	<script src="./assets/js/components/RoomComponent.js"></script>
+	<script src="./assets/js/Rooms.js"></script>
+	<script src="./assets/js/EventHandlers.js"></script>
+	<script src="./assets/js/Ranking.js"></script>
+	<script src="./assets/js/repositories/RankingRepository.js"></script>
+</head>
+<body>
+	<section id="header-section" class="cover-container bg-light mb-4 d-flex w-100 px-3 mx-auto flex-column">
+		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
+			<a class="d-flex align-items-center ms-5 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+				<svg data-page-name="/home.html" width="40" height="39" viewBox="0 0 40 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M17.6548 2H11.8214C10.2743 2 8.7906 2.61458 7.69664 3.70854C6.60268 4.80251 5.9881 6.28624 5.9881 7.83333C5.9881 9.38043 6.60268 10.8642 7.69664 11.9581C8.7906 13.0521 10.2743 13.6667 11.8214 13.6667M17.6548 2V13.6667M17.6548 2H23.4881C38.2635 3 38.5 27.0419 17.6548 19.5M17.6548 13.6667H11.8214M17.6548 13.6667V19.5M11.8214 13.6667C10.2743 13.6667 8.7906 14.2812 7.69664 15.3752M17.6548 25.3333H11.8214C10.2743 25.3333 8.7906 25.9479 7.69664 27.0419C6.60268 28.1358 5.9881 29.6196 5.9881 31.1667C5.9881 32.7138 6.60268 34.1975 7.69664 35.2915C8.7906 36.3854 10.2743 37 11.8214 37C13.3685 37 14.8523 36.3854 15.9462 35.2915C17.0402 34.1975 17.6548 32.7138 17.6548 31.1667V25.3333ZM17.6548 25.3333V19.5" stroke="#1E1E1E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+					<a data-page-name="/home.html" class="nav-link active" aria-current="page">Game</a>
+				</li>
+				<li class="nav-item">
+					<a data-page-name="/view-rooms.html" class="nav-link" aria-current="page">List Rooms</a>
+				</li>
+				<li class="nav-item">
+					<a data-page-name="/ranking.html" class="nav-link" aria-current="page">Ranking</a>
+				</li>
+			</ul>
+		</header>
+	</section>
+
+	<section id="canva-section" class="my-5 container d-none">
+		<div class="d-flex flex-column align-items-center">
+			<canvas width="850px" height="550px" class="bg-light border border-dark" id="myCanvas"></canvas>
+		</div>
+	</section>
+
+	<main style="height: 100vh;" class="pbg" id="root"></main>
+
+	<div id="connected-ws" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999">
+		<h5 class="bi bi-c-circle-fill text-danger"><span style="font-size: 20px"> disconnected</span></h2>
+	</div>
+
+	<script>
+		window.routes = new Router();
+
+		let	pageName = "/home.html"
+		let	page = localStorage.getItem("currentPage")
+		if (page)
+			pageName = page
+
+		window.onload = async function() {
+			await DOMRender(pageName);
+		}
+	</script>
+</body>
+</html>
